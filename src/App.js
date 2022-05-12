@@ -1,9 +1,6 @@
-import Statistic from "./components/Dashbord/Dashbord"
-
 function App() {
     return ( <
-        Statistic / >
-
+        h1 > Test < /h1>
     )
 }
 

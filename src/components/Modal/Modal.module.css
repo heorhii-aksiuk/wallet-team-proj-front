@@ -1,0 +1,39 @@
+@media screen and (min-width: 768px) {
+    .Modal__backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.25);
+    }
+}
+
+.Modal__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.Modal__content {
+    position: absolute;
+    top: 70px;
+    left: 3px;
+    max-width: 320px;
+    min-height: 568px;
+    padding: 20px 10px 153px 10px;
+    background-color: #fff;
+    border-top: 1px solid #bdbdbd;
+}
+
+@media screen and (min-width: 768px) {
+    .Modal__content {
+        max-height: 620px;
+        max-width: 540px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 40px 65px 60px 65px;
+        border-radius: 20px;
+    }
+}
