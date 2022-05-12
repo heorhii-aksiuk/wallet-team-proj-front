@@ -4,6 +4,7 @@
     --secondary-color: #6E78E8;
     --green-color: #24CCA7;
     --red-color: #FF6596;
+    --background-color: #ffffff;
 
     /* text colors */
     --main-text-color: #000000;
@@ -21,7 +22,7 @@
 
     
     /* breakpoints */
-    --responce: 320px;
+    --response: 320px;
     --mobile: 480px;
     --tablet: 768px;
     --desktop: 1280px;
