@@ -27,10 +27,13 @@ export default function Modal({ onClose, children }) {
         }, [onClose],
     );
 
-    return createPortal(
-      <div className = { s.Backdrop } onClick = { handleBackdropClick } >
-        <div className = { s.Content } onClose = { onClose } > { children } </div>
-      </div>,
+    return createPortal( <
+        div className = { s.Backdrop }
+        onClick = { handleBackdropClick } >
+        <
+        div className = { s.Content }
+        onClose = { onClose } > { children } < /div> <
+        /div>,
         modalRoot,
-    );
+    )
 }
