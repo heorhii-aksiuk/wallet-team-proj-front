@@ -1,5 +1,10 @@
+import Statistic from "./components/Dashbord/Dashbord"
+
 function App() {
-  return <h1>Test</h1>
+    return ( <
+        Statistic / >
+
+    )
 }
 
 export default App
