@@ -1,0 +1,28 @@
+:root {
+    /* colors */
+    --main-color: #4A56E2;
+    --secondary-color: #6E78E8;
+    --green-color: #24CCA7;
+    --red-color: #FF6596;
+
+    /* text colors */
+    --main-text-color: #000000;
+    --secondary-text-color: #ffffff;
+    --third-text-color: #4A56E2;
+
+    /* placeholder */
+    --placeholder-main-color: #BDBDBD; /* темно-серый */
+    --placeholder-secondary-color: #E0E0E0; /* светло-серый */
+    --placeholder-third-color: #A6A6A6; /* ваш баланс */
+
+    /* fonts */
+    --main-font: 'Circe', sans-serif;
+    --secondary-font: 'Poppins', sans-serif;
+
+    
+    /* breakpoints */
+    --responce: 320px;
+    --mobile: 480px;
+    --tablet: 768px;
+    --desktop: 1280px;
+}
