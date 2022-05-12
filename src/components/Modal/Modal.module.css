@@ -1,5 +1,5 @@
 @media screen and (min-width: 768px) {
-    .Modal__backdrop {
+    .Backdrop {
         position: fixed;
         top: 0;
         left: 0;
@@ -9,13 +9,13 @@
     }
 }
 
-.Modal__backdrop {
+.Backdrop {
     position: fixed;
     top: 0;
     left: 0;
 }
 
-.Modal__content {
+.Content {
     position: absolute;
     top: 70px;
     left: 3px;
@@ -27,7 +27,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .Modal__content {
+    .Content {
         max-height: 620px;
         max-width: 540px;
         top: 50%;
