@@ -1,15 +1,28 @@
-import Media from 'react-media'
-import { mediaQueries } from './utils/constants'
+// import Media from 'react-media'
+// import { mediaQueries } from './utils/constants'
+import React, { useState } from 'react'
+import CommonContainer from './containers/CommonContainer'
+import ButtonAddTransactions from './components/ButtonAddTransactions'
 
 function App() {
+  const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
+    useState(false)
+
+  const handleChange = () => {
+    setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
+  }
   return (
     <>
-      <Media queries={mediaQueries}>
-        {(matches) =>
-          matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
-        }
-        
-      </Media>
+      {/* <Media queries={mediaQueries}>
+          {(matches) =>
+            matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
+          }
+        </Media> */}
+      <CommonContainer>
+        <ButtonAddTransactions
+          onChange={() => handleChange}
+        ></ButtonAddTransactions>
+      </CommonContainer>
     </>
   )
 }
