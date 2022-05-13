@@ -22,17 +22,17 @@ img {
   height: auto;
 }
 
-.link {
+a {
   color: var(--main-text-color);
   text-decoration: none;
 }
 
-.list {
+li {
   list-style: none;
 }
 
 body {
   font-family: var(--main-font);
   color: var(--main-text-color);
-  background-color: var(--background-color);
+  background-color: var(--main-background-color);
 }
