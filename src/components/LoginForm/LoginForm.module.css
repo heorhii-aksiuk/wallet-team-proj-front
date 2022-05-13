@@ -1,0 +1,202 @@
+.container {
+    width: 100%;
+}
+
+.logo {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 110px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+}
+
+.logoIcon {
+    margin-left: auto;
+    margin-right: auto;
+    width: 120px;
+    height: 30px;
+}
+
+.input {
+    width: 280px;
+    height: 34px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-left: 55px;
+    font-size: 18px;
+    line-height: 27px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 0.5px, solid;
+    border-color: #e7eaf2;
+}
+
+::placeholder {
+    color: var(--placeholder-main-color);
+}
+
+.inputIcon {
+    position: absolute;
+    left: 10px;
+    bottom: 0px;
+}
+
+.authLabel {
+    position: relative;
+    width: 280px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.logBtn,
+.regBtn {
+    display: block;
+    width: 280px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 250ms ease;
+}
+
+.logBtn {
+    background-color: var(--green-color);
+    border-color: transparent;
+    outline: none;
+    color: var(--secondary-text-color);
+}
+
+.regBtn {
+    background-color: var(--secondary-text-color);
+    color: var(--third-text-color);
+    border: 1px solid var(--third-text-color);
+}
+
+.regBtn:hover,
+.regBtn:focus,
+.logBtn:hover,
+.logBtn:focus {
+    transform: scale(1.1);
+    box-shadow: '0px 5px 5px 0px #000';
+}
+
+
+
+.authLink {
+    outline: none;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 767px) {
+    .form {
+        text-align: center;
+        height: 100vh;
+        width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container {
+        background-color: var(--secondary-text-color);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .logoIcon {
+        width: 181px;
+        height: 40px;
+        margin-top: 40px;
+        margin-left: 180px;
+    }
+
+    .authForm {
+        background-color: var(--secondary-text-color);
+        margin-top: 360px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 140px;
+        width: 540px;
+        height: 100%;
+        border-radius: 20px;
+    }
+
+    .authLabel {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .input {
+        width: 410px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        outline: none;
+    }
+
+    .form {
+        margin-left: 65px;
+        margin-right: 65px;
+    }
+
+    .logBtn,
+    .regBtn {
+        display: inline;
+        width: 300px;
+        margin-left: 55px;
+    }
+
+    .logBtn {
+        margin-top: 30px;
+    }
+
+    .regBtn {
+        margin-top: 20px;
+        margin-bottom: 60px;
+    }
+
+    .heading {
+        display: block;
+        margin-left: 414px;
+        padding-top: 167px;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 45px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        display: flex;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .desktopContainer {
+        width: 100%;
+        height: 100vh;
+        margin-right: 0;
+        margin-left: 0;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(50px);
+    }
+
+    .authForm {
+        width: 540px;
+        height: auto;
+        margin-top: 136px;
+        margin-bottom: 116px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
