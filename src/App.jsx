@@ -1,5 +1,6 @@
 import Media from 'react-media'
 import { mediaQueries } from './utils/constants'
+import DiagramTab from './components/DiagramTab'
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
         }
         
       </Media>
+
+      <DiagramTab/>
     </>
   )
 }
