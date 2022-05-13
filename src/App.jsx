@@ -5,12 +5,19 @@ import Header from './components/Header'
 function App() {
   return (
     <>
-      {/* <Media queries={mediaQueries}>
+      <Media queries={mediaQueries}>
         {(matches) =>
-          matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
+          matches.response || matches.mobile ? (
+            <>
+              <Header media="mobile"></Header>
+            </>
+          ) : (
+            <>
+              <Header></Header>
+            </>
+          )
         }
-      </Media> */}
-      <Header></Header>
+      </Media>
     </>
   )
 }

@@ -1,4 +1,4 @@
-.header {
+.headerMobile {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -6,14 +6,25 @@
   background-color: var(--secondary-background-color);
 }
 
-.logoContainer {
+.header {
+  composes: headerMobile;
+  height: 80px;
+}
+
+.logoContainerMobile {
   display: flex;
   align-items: center;
   padding-left: 20px;
   padding-top: 15px;
 }
 
-.logo {
+.logoContainer {
+  composes: logoContainerMobile;
+  padding-left: 32px;
+  padding-top: 20px;
+}
+
+.logoMobile {
   padding-left: 16px;
   font-family: var(--secondary-font);
   font-weight: 700;
@@ -21,16 +32,30 @@
   font-size: 21px;
 }
 
-.authContainer {
+.logo {
+  composes: logoMobile;
+  padding-left: 20px;
+  font-size: 30px;
+}
+
+.authContainerMobile {
   padding-right: 20px;
   display: flex;
   align-items: center;
   padding-top: 15px;
 }
 
-.name {
+.authContainer {
+  composes: authContainerMobile;
+}
+
+.nameMobile {
   padding-right: 8px;
   font-style: 18px;
   line-height: 27px;
   color: var(--placeholder-main-color);
+}
+
+.name {
+  composes: nameMobile;
 }
