@@ -10,35 +10,37 @@ const RegistrationPage = () => {
   return (
     <div className={s.container}>
     <CommonContainer >      
-        <Media queries={mediaQueries}>          
-            {matches => (
-            <>            
-                {matches.tablet &&
-                    <div className={s.registerImgWrapper}>
-                      <img src={registerimg}
-                        alt="Человек с тележкой продуктов" 
-                        width='274px' 
-                        height='250px' 
-                        className={ s.registerImg}/>
-                        <p className={ s.appTitle}>Finance App</p>
-                    </div>
-                }
-                {matches.desktop && 
-                    <div className={s.registerImgWrapper}>
+        <div className={s.containerWrapper}>
+            <Media queries={mediaQueries}>          
+              {matches => (
+              <>            
+                  {matches.tablet &&
+                      <div className={s.registerImgWrapper}>
                         <img src={registerimg}
                           alt="Человек с тележкой продуктов" 
-                          width='452px' 
-                          height='413px' 
+                          width='274px' 
+                          height='250px' 
                           className={ s.registerImg}/>
-                        <p className={ s.appTitle}>Finance App</p>
-                    </div>}
-            </>
-          )}                   
-        </Media>       
-        
-        <div className={ s.form}>
-          <RegistrationForm />
-        </div>      
+                          <p className={ s.appTitle}>Finance App</p>
+                      </div>
+                  }
+                  {matches.desktop && 
+                      <div className={s.registerImgWrapper}>
+                          <img src={registerimg}
+                            alt="Человек с тележкой продуктов" 
+                            width='452px' 
+                            height='413px' 
+                            className={ s.registerImg}/>
+                          <p className={ s.appTitle}>Finance App</p>
+                      </div>}
+              </>
+            )}                   
+          </Media>       
+          
+          <div className={ s.form}>
+            <RegistrationForm />
+          </div>      
+        </div>
       </CommonContainer>
     </div>
   );
