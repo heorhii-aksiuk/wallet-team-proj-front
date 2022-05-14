@@ -4,6 +4,8 @@
     --secondary-color: #6E78E8;
     --green-color: #24CCA7;
     --red-color: #FF6596;
+    --main-background-color: rgba(255, 255, 255, 0.4);
+    --secondary-background-color:  #ffffff; /* header, modal, etc */
 
     /* text colors */
     --main-text-color: #000000;
@@ -17,11 +19,11 @@
 
     /* fonts */
     --main-font: 'Circe', sans-serif;
-    --secondary-font: 'Poppins', sans-serif;
+    --secondary-font: 'Segoeui', sans-serif;
 
     
     /* breakpoints */
-    --responce: 320px;
+    --response: 320px;
     --mobile: 480px;
     --tablet: 768px;
     --desktop: 1280px;
