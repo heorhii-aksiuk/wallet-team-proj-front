@@ -18,10 +18,20 @@
 }
 
 @media screen and (max-width: 767px){
+  .container {
+    background-color: #ffffff;
+    background-image: none;
+  }
+
+  .containerWrapper {
+    width: 768px;
+    padding: 0px 32px;
+  }
+
     .form {
+      background-color: #ffffff;
         width: 100vw;
-        height: 100vh;
-        background-color: aqua;
+        height: 100vh;        
         margin: 0;
     }
 }

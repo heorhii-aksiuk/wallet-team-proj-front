@@ -26,16 +26,17 @@ function App() {
       {/* <RegistrationPage/> */}
 
        
-      <Header />
-      <DiagramTab />
+      {/* <Header />
+      <DiagramTab /> */}
       
-      <LoginPage/>
+      {/* <LoginPage/> */}
+      <RegistrationPage/>
       <CommonContainer>
         <ButtonAddTransactions
           onChange={() => handleChange}
         ></ButtonAddTransactions>
       </CommonContainer>
-      <RegistrationForm />
+      {/* <RegistrationForm /> */}
     </>
   )
 }

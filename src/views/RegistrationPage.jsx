@@ -9,12 +9,12 @@ import s from "./RegistrationPage.module.css";
 const RegistrationPage = () => {
   return (
     <div className={s.container}>
-    <CommonContainer >      
+    {/* <CommonContainer >       */}
         <div className={s.containerWrapper}>
-            <Media queries={mediaQueries}>          
+          <Media queries={mediaQueries}> 
               {matches => (
-              <>            
-                  {matches.tablet &&
+                <>            
+                  {matches.tablet &&                      
                       <div className={s.registerImgWrapper}>
                         <img src={registerimg}
                           alt="Девушка с телефоном в руках" 
@@ -22,7 +22,7 @@ const RegistrationPage = () => {
                           height='250px' 
                           className={ s.registerImg}/>
                           <p className={ s.appTitle}>Finance App</p>
-                      </div>
+                      </div>                   
                   }
                   {matches.desktop && 
                       <div className={s.registerImgWrapper}>
@@ -34,14 +34,14 @@ const RegistrationPage = () => {
                           <p className={ s.appTitle}>Finance App</p>
                       </div>}
               </>
-            )}                   
+            )} 
           </Media>       
           
           <div className={ s.form}>
             <RegistrationForm />
           </div>      
         </div>
-      </CommonContainer>
+      {/* </CommonContainer> */}
     </div>
   );
 };
