@@ -1,0 +1,197 @@
+p {
+    margin: 0; 
+}
+
+.tableContainer {
+    width: 100%;
+
+    font-family: var(--main-font);
+    font-style: normal;
+
+    color: var(--main-text-color);
+}
+@media screen and (min-width: 768px) {
+    .tableContainer {
+        width: 336px;
+        padding-top: 40px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .tableContainer {
+        width: 395px;
+        padding-top: 97px;
+    }
+}
+
+.menu{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+@media screen and (min-width: 768px) {
+    .menu {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.item{
+    position: relative;
+    padding: 12px 20px 14px;
+    margin-bottom: 20px;
+    
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    
+    border: 1px solid #000000;
+    border-radius: 30px;
+}
+@media screen and (min-width: 768px) {
+    .item {
+        width: 160px;
+    }   
+}
+@media screen and (min-width: 1280px) {
+    .item {
+        width: 182px;
+    }   
+}
+
+.item:hover {
+    cursor: pointer;
+}
+
+.subMenu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(50px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    z-index: 4;
+}
+
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+}
+
+.subItem{
+    padding: 0 8px 0 20px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.subItem:hover {
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+.subItem:first-child:hover {
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.subItem:last-child:hover {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+/* таблица */
+.tableHead {
+    display: flex;
+    justify-content:space-between;
+    padding: 16px 20px 15px;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    
+    background: #ffffff;
+    border-radius: 30px;
+}
+@media screen and (min-width: 1280px) {
+    .tableHead {
+        padding: 16px 28px 15px;
+    }   
+}
+
+.tableBody{
+    margin: 0 0 16px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tableItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 52px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+
+    border-bottom: 1px solid #DCDCDF;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+.tableItem div {
+    display: flex;
+    align-items: center;
+}
+
+.tableItemSvg {
+    min-width: 24px;
+    margin-right: 16px;
+}
+
+.tableItemQuantity {
+    margin-left: 16px;
+
+    font-size: 16px;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.sum {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.expenses{  
+    margin-bottom: 17px;
+}
+
+.expenses span {
+    color: var(--red-color)
+}
+
+.income span {
+    color: var(--green-color)
+}
