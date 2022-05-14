@@ -7,7 +7,7 @@
 }
 
 .appTitle {
-    /* font-family: 'Poppins'; */
+    font-family: var(--secondary-font);
     font-style: normal;
     font-weight: 400;
     font-size: 30px;
@@ -22,11 +22,13 @@
             background-color: aqua;
             height: 533px;
             width: 616px;
+            margin: auto;
         }
     
     .registerImg {
         margin-top: 60px;
         margin-bottom: 50px;
+        margin-right: 40px;
     }
 
     .registerImgWrapper {

@@ -8,8 +8,8 @@ import s from "./RegistrationPage.module.css";
 
 const RegistrationPage = () => {
   return (
-    <CommonContainer >
-      <div className={s.container}>
+    <div className={s.container}>
+    <CommonContainer >      
         <Media queries={mediaQueries}>          
             {matches => (
             <>            
@@ -38,9 +38,9 @@ const RegistrationPage = () => {
         
         <div className={ s.form}>
           <RegistrationForm />
-        </div>
-      </div>
-    </CommonContainer>
+        </div>      
+      </CommonContainer>
+    </div>
   );
 };
 
