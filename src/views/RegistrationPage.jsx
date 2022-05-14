@@ -17,7 +17,7 @@ const RegistrationPage = () => {
                   {matches.tablet &&
                       <div className={s.registerImgWrapper}>
                         <img src={registerimg}
-                          alt="Человек с тележкой продуктов" 
+                          alt="Девушка с телефоном в руках" 
                           width='274px' 
                           height='250px' 
                           className={ s.registerImg}/>
@@ -27,7 +27,7 @@ const RegistrationPage = () => {
                   {matches.desktop && 
                       <div className={s.registerImgWrapper}>
                           <img src={registerimg}
-                            alt="Человек с тележкой продуктов" 
+                            alt="Девушка с телефоном в руках" 
                             width='452px' 
                             height='413px' 
                             className={ s.registerImg}/>

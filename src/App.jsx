@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import CommonContainer from './containers/CommonContainer'
 import ButtonAddTransactions from './components/ButtonAddTransactions'
 import RegistrationPage from './views/RegistrationPage'
+import LoginPage from './views/LoginPage'
 
 function App() {
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
@@ -19,7 +20,9 @@ function App() {
             matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
           }
         </Media> */}
-      <RegistrationPage/>
+      {/* <RegistrationPage/> */}
+
+      <LoginPage/>
       <CommonContainer>
         <ButtonAddTransactions
           onChange={() => handleChange}
