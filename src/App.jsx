@@ -1,17 +1,18 @@
 import Media from 'react-media'
 import { mediaQueries } from './utils/constants'
 import DiagramTab from './components/DiagramTab'
-import React, { useState } from 'react'
-import CommonContainer from './containers/CommonContainer'
-import ButtonAddTransactions from './components/ButtonAddTransactions'
+// import React, { useState } from 'react'
+// import CommonContainer from './containers/CommonContainer'
+// import ModalAddTransaction from './components/ModalAddTransaction'
+// import ButtonAddTransactions from './components/ButtonAddTransactions'
 
 function App() {
-  const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
-    useState(false)
+  // const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
+  //   useState(false)
 
-  const handleChange = () => {
-    setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
-  }
+  // const handleChange = () => {
+  //   setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
+  // }
   return (
     <>
       <Media queries={mediaQueries}>
@@ -20,11 +21,12 @@ function App() {
         }
       </Media>
       <DiagramTab />
-      <CommonContainer>
+      {/* <CommonContainer>
+        <ModalAddTransaction onChange={() => handleChange} />
         <ButtonAddTransactions
           onChange={() => handleChange}
         ></ButtonAddTransactions>
-      </CommonContainer>
+      </CommonContainer> */}
     </>
   )
 }
