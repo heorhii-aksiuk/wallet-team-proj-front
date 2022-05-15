@@ -5,7 +5,7 @@
 .logo {
     margin-right: 20px;
     margin-left: 20px;
-    margin-top: 110px;
+    /* margin-top: 110px; */ /* 11111 */
     margin-bottom: 30px;
     display: flex;
     flex-direction: row;
@@ -14,6 +14,7 @@
 }
 
 .logoIcon {
+    margin-top: 40px;     /* 11111 */
     margin-left: auto;
     margin-right: auto;
     width: 120px;
@@ -102,7 +103,7 @@
 @media screen and (max-width: 767px) {
     .form {
         text-align: center;
-        height: 100vh;
+        /* height: 100vh; */
         width: 320px;
         margin-left: auto;
         margin-right: auto;
@@ -123,10 +124,10 @@
 
     .authForm {
         background-color: var(--secondary-text-color);
-        margin-top: 360px;
+        /* margin-top: 360px; */ /*11111111111*/
         margin-right: auto;
         margin-left: auto;
-        margin-top: 140px;
+         /* margin-top: 140px; */ /*11111111111*/
         width: 540px;
         height: 100%;
         border-radius: 20px;
@@ -184,18 +185,19 @@
 
     .desktopContainer {
         width: 100%;
-        height: 100vh;
+        height: 105vh;
         margin-right: 0;
         margin-left: 0;
         background: rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(50px);
+        padding: 52px 91px 52px 107px; /*11111111111*/
     }
 
     .authForm {
         width: 540px;
-        height: auto;
-        margin-top: 136px;
-        margin-bottom: 116px;
+        max-height: 616px; /*11111111111*/
+        /* margin-top: 136px; */
+        /* margin-bottom: 116px; */
         margin-right: auto;
         margin-left: auto;
     }

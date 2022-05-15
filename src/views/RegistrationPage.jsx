@@ -1,7 +1,7 @@
 import React from "react";
 import Media from 'react-media';
 import RegistrationForm from "../components/RegistrationForm/RegistrationForm.jsx";
-import CommonContainer from '../containers/CommonContainer';
+// import CommonContainer from '../containers/CommonContainer';
 import { mediaQueries } from '../utils/constants.js';
 import registerimg from '../assets/img/register-img.png'
 import s from "./RegistrationPage.module.css";

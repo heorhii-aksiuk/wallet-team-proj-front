@@ -26,5 +26,11 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Poppins';
+    src: local('☺'), url('../assets/fonts/Poppins-Regular.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
 
 

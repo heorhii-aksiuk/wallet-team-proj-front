@@ -11,7 +11,7 @@ import s from "./LoginPage.module.css";
 const LoginPage = () => {
   return (
     <div className={s.container}>
-    <CommonContainer >      
+    {/* <CommonContainer >       */}
         <div className={s.containerWrapper}>
             <Media queries={mediaQueries}>          
               {matches => (
@@ -43,7 +43,7 @@ const LoginPage = () => {
             <LoginForm/>
           </div>      
         </div>
-      </CommonContainer>
+      {/* </CommonContainer> */}
     </div>
   );
 };

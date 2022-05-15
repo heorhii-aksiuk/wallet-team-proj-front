@@ -29,8 +29,8 @@ function App() {
       {/* <Header />
       <DiagramTab /> */}
       
-      {/* <LoginPage/> */}
-      <RegistrationPage/>
+      <LoginPage/>
+      {/* <RegistrationPage/> */}
       <CommonContainer>
         <ButtonAddTransactions
           onChange={() => handleChange}
