@@ -1,32 +1,36 @@
-import Media from 'react-media'
-import { mediaQueries } from './utils/constants'
+// import Media from 'react-media'
+// import { mediaQueries } from './utils/constants'
+import Header from './components/Header'
 import DiagramTab from './components/DiagramTab'
-// import React, { useState } from 'react'
-// import CommonContainer from './containers/CommonContainer'
-// import ModalAddTransaction from './components/ModalAddTransaction'
-// import ButtonAddTransactions from './components/ButtonAddTransactions'
+import React, { useState } from 'react'
+import CommonContainer from './containers/CommonContainer'
+import ButtonAddTransactions from './components/ButtonAddTransactions'
+import RegistrationForm from './components/RegistrationForm'
+import ModalAddTransaction from './components/ModalAddTransaction'
 
 function App() {
-  // const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
-  //   useState(false)
+  const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
+    useState(false)
 
-  // const handleChange = () => {
-  //   setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
-  // }
+  const handleChange = () => {
+    setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
+  }
   return (
     <>
-      <Media queries={mediaQueries}>
+      {/* <Media queries={mediaQueries}>
         {(matches) =>
           matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
         }
-      </Media>
+      </Media> */}
+      <Header />
       <DiagramTab />
-      {/* <CommonContainer>
+      <CommonContainer>
         <ModalAddTransaction onChange={() => handleChange} />
         <ButtonAddTransactions
           onChange={() => handleChange}
         ></ButtonAddTransactions>
-      </CommonContainer> */}
+      </CommonContainer>
+      <RegistrationForm />
     </>
   )
 }
