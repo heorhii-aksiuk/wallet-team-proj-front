@@ -8,6 +8,8 @@ import ButtonAddTransactions from './components/ButtonAddTransactions'
 import RegistrationPage from './views/RegistrationPage'
 import LoginPage from './views/LoginPage'
 import RegistrationForm from './components/RegistrationForm'
+// import ModalAddTransaction from './components/ModalAddTransaction'
+import Loader from './components/Loader'
 
 function App() {
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
@@ -19,24 +21,19 @@ function App() {
   return (
     <>
       {/* <Media queries={mediaQueries}>
-          {(matches) =>
-            matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
-          }
-        </Media> */}
-      {/* <RegistrationPage/> */}
-
-       
-      {/* <Header />
-      <DiagramTab /> */}
-      
-      <LoginPage/>
-      {/* <RegistrationPage/> */}
+        {(matches) =>
+          matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
+        }
+      </Media> */}
+      <Header />
+      <Loader />
+      <DiagramTab />
       <CommonContainer>
+        {/* <ModalAddTransaction onChange={() => handleChange} /> */}
         <ButtonAddTransactions
           onChange={() => handleChange}
         ></ButtonAddTransactions>
       </CommonContainer>
-      {/* <RegistrationForm /> */}
     </>
   )
 }

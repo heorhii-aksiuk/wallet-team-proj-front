@@ -1,16 +1,20 @@
 .container {
-    width: 100%;
+    min-width: 320px;
+    max-width: 479px;
+    padding: 107px 20px;
+    margin: 0 auto;
+    
+    background: rgba(226, 224, 224, 0.596);
 }
 
 .logo {
-    margin-right: 20px;
-    margin-left: 20px;
+    /* margin-right: 20px;
+    margin-left: 20px; */
     /* margin-top: 110px; */ /* 11111 */
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     display: flex;
-    flex-direction: row;
-    width: auto;
-    height: auto;
+    justify-content: center;
+    margin-bottom: 60px;
 }
 
 .logoIcon {
@@ -21,38 +25,66 @@
     height: 30px;
 }
 
-.input {
-    width: 280px;
-    height: 34px;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding-left: 55px;
+.form{
+    font-family: var(--main-font);
+    font-style: normal;
+    font-weight: 400;
     font-size: 18px;
     line-height: 27px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 0.5px, solid;
-    border-color: #e7eaf2;
+}
+
+.label {
+    position: relative;
+    display: block;
+    margin-bottom: 40px;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 10px;
+    top: 4px;
+}
+
+.input {
+    width: 100%;
+    height: 32px;
+    padding-left: 54.5px;
+
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
 }
 
 ::placeholder {
     color: var(--placeholder-main-color);
 }
 
-.inputIcon {
+.validErrorMes{
     position: absolute;
-    left: 10px;
-    bottom: 0px;
+    top: 28px;
+    left: 5px;
+
+    font-size: 12px;
+    color: rgb(255, 91, 92);
 }
 
-.authLabel {
-    position: relative;
-    width: 280px;
-    margin-left: 20px;
-    margin-right: 20px;
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: none;
+        width: 533px;
+        padding: 40px 58.5px 62px 65px;
+
+        border-radius: 20px;
+    }
+
+    .label {
+        margin-bottom: 42px;
+    }
 }
 
+
+
+/* кнопки-заглушки */
 .logBtn,
 .regBtn {
     display: block;
@@ -86,16 +118,9 @@
 }
 
 .regBtn:hover,
-.regBtn:focus,
-.logBtn:hover,
-.logBtn:focus {
-    transform: scale(1.1);
-    box-shadow: '0px 5px 5px 0px #000';
-}
-
-
-
-.authLink {
+.regBtn:focus {
+    background-color: var(--green-color);
+    border-color: transparent;
     outline: none;
     text-decoration: none;
 }
@@ -201,4 +226,12 @@
         margin-right: auto;
         margin-left: auto;
     }
+    /* color: var(--secondary-text-color); */
+}
+
+.logBtn:hover,
+.logBtn:focus {
+    color: var(--third-text-color);
+    background-color: var(--secondary-text-color);
+    border: 1px solid var(--third-text-color);
 }
