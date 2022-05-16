@@ -7,6 +7,7 @@ import CommonContainer from './containers/CommonContainer'
 import ButtonAddTransactions from './components/ButtonAddTransactions'
 // import ModalAddTransaction from './components/ModalAddTransaction'
 import Loader from './components/Loader'
+import Currency from './components/Currency/Currency'
 
 function App() {
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
@@ -23,14 +24,15 @@ function App() {
         }
       </Media> */}
       <Header />
-      <Loader />
+      <Currency />
+      {/* <Loader />
       <DiagramTab />
       <CommonContainer>
-        {/* <ModalAddTransaction onChange={() => handleChange} /> */}
+        <ModalAddTransaction onChange={() => handleChange} />
         <ButtonAddTransactions
           onChange={() => handleChange}
         ></ButtonAddTransactions>
-      </CommonContainer>
+      </CommonContainer> */}
     </>
   )
 }

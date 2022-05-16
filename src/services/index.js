@@ -1,1 +1,2 @@
-export { default } from './privateBankApi'
+export * from './privateBankApi'
+export * from './status'
