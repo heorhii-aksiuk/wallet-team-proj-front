@@ -2,4 +2,6 @@ const getTotalBalance = (state) => state.finance.totalBalance
 
 const getData = (state) => state.finance.data
 
-export { getTotalBalance, getData }
+const getError = (state) => state.finance.error
+
+export { getTotalBalance, getData, getError }

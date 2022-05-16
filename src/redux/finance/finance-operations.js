@@ -15,4 +15,18 @@ const fetchTransactions = createAsyncThunk(
   },
 )
 
-export { fetchTransactions }
+const addTransaction = createAsyncThunk(
+  'finance/addTransaction',
+  async (transaction, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/transactions', transaction)
+
+      return data
+    } catch (error) {
+      return thunkAPI.rejectWithValue()
+      // обработать ошибку
+    }
+  },
+)
+
+export { fetchTransactions, addTransaction }
