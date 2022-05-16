@@ -1,0 +1,25 @@
+.card {
+  min-width: 280px;
+  min-height: 80px;
+  padding: 8px 32px 12px 32px;
+  background-color: var(--secondary-background-color);
+  border-radius: 30px;
+}
+
+.title {
+  margin-bottom: 12px;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: var(--placeholder-third-color);
+}
+
+.content {
+  font-family: var(--third-font);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  color: var(--main-text-color);
+}
