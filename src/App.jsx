@@ -7,6 +7,7 @@ import CommonContainer from './containers/CommonContainer'
 import ButtonAddTransactions from './components/ButtonAddTransactions'
 import RegistrationForm from './components/RegistrationForm'
 import ModalAddTransaction from './components/ModalAddTransaction'
+import Currency from './components/Currency/Currency'
 
 function App() {
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
@@ -23,14 +24,15 @@ function App() {
         }
       </Media> */}
       <Header />
-      <DiagramTab />
-      <CommonContainer>
-        <ModalAddTransaction onChange={() => handleChange} />
-        <ButtonAddTransactions
+      <Currency />
+      {/* <DiagramTab />
+      <CommonContainer> */}
+      {/* <ModalAddTransaction onChange={() => handleChange} /> */}
+      {/* <ButtonAddTransactions
           onChange={() => handleChange}
         ></ButtonAddTransactions>
       </CommonContainer>
-      <RegistrationForm />
+      <RegistrationForm /> */}
     </>
   )
 }
