@@ -1,7 +1,3 @@
-p {
-    margin: 0; 
-}
-
 .tableContainer {
     width: 100%;
 
@@ -9,30 +5,6 @@ p {
     font-style: normal;
 
     color: var(--main-text-color);
-}
-@media screen and (min-width: 768px) {
-    .tableContainer {
-        width: 336px;
-        padding-top: 40px;
-    }
-}
-@media screen and (min-width: 1280px) {
-    .tableContainer {
-        width: 395px;
-        padding-top: 97px;
-    }
-}
-
-.menu{
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-@media screen and (min-width: 768px) {
-    .menu {
-        display: flex;
-        justify-content: space-between;
-    }
 }
 
 .item{
@@ -47,16 +19,6 @@ p {
     border: 1px solid #000000;
     border-radius: 30px;
 }
-@media screen and (min-width: 768px) {
-    .item {
-        width: 160px;
-    }   
-}
-@media screen and (min-width: 1280px) {
-    .item {
-        width: 182px;
-    }   
-}
 
 .item:hover {
     cursor: pointer;
@@ -66,8 +28,6 @@ p {
     position: absolute;
     top: 0;
     left: 0;
-    margin: 0;
-    padding: 0;
     width: 100%;
     list-style: none;
 
@@ -82,8 +42,6 @@ p {
     position: fixed;
     top: 0;
     left: 0;
-    padding: 0;
-    margin: 0;
     width: 100vw;
     height: 100vh;
     z-index: 3;
@@ -129,16 +87,9 @@ p {
     background: #ffffff;
     border-radius: 30px;
 }
-@media screen and (min-width: 1280px) {
-    .tableHead {
-        padding: 16px 28px 15px;
-    }   
-}
 
 .tableBody{
-    margin: 0 0 16px 0;
-    padding: 0;
-    list-style: none;
+    margin-bottom: 16px;
 }
 
 .tableItem{
@@ -194,4 +145,34 @@ p {
 
 .income span {
     color: var(--green-color)
+}
+
+@media screen and (min-width: 768px) {
+    .tableContainer {
+        width: 336px;
+        padding-top: 40px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .item {
+        width: 160px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .tableContainer {
+        width: 395px;
+        padding-top: 97px;
+    }
+
+    .item {
+        width: 182px;
+    }  
+
+    .tableHead {
+        padding: 16px 28px 15px;
+    }  
 }
