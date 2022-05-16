@@ -5,7 +5,6 @@ import DiagramTab from './components/DiagramTab'
 import React, { useState } from 'react'
 import CommonContainer from './containers/CommonContainer'
 import ButtonAddTransactions from './components/ButtonAddTransactions'
-import RegistrationForm from './components/RegistrationForm'
 // import ModalAddTransaction from './components/ModalAddTransaction'
 import Loader from './components/Loader'
 
@@ -32,7 +31,6 @@ function App() {
           onChange={() => handleChange}
         ></ButtonAddTransactions>
       </CommonContainer>
-      <RegistrationForm />
     </>
   )
 }
