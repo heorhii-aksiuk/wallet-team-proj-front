@@ -29,7 +29,7 @@ function App() {
       <Loader />
       <DiagramTab /> */}
 
-      <RegistrationPage/>
+      {/* <LoginPage/> */}
       <CommonContainer>
         {/* <ModalAddTransaction onChange={() => handleChange} /> */}
         <ButtonAddTransactions

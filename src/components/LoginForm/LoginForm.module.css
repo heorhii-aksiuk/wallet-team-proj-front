@@ -4,7 +4,7 @@
     padding: 107px 20px;
     margin: 0 auto;
     
-    background: rgba(226, 224, 224, 0.596);
+    /* background: rgba(226, 224, 224, 0.596); */
 }
 
 .logo {
@@ -18,9 +18,9 @@
 }
 
 .logoIcon {
-    margin-top: 40px;     /* 11111 */
+    /* margin-top: 40px;     11111
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
     width: 120px;
     height: 30px;
 }
@@ -73,6 +73,7 @@
         max-width: none;
         width: 533px;
         padding: 40px 58.5px 62px 65px;
+        background-color: var(--secondary-text-color);
 
         border-radius: 20px;
     }
@@ -140,12 +141,12 @@
 }
 
 @media screen and (min-width: 768px) {
-    .logoIcon {
+    /* .logoIcon {
         width: 181px;
         height: 40px;
         margin-top: 40px;
         margin-left: 180px;
-    }
+    } */
 
     .authForm {
         background-color: var(--secondary-text-color);
@@ -163,17 +164,17 @@
         margin-right: auto;
     }
 
-    .input {
+    /* .input {
         width: 410px;
         margin-top: 20px;
         margin-bottom: 20px;
         outline: none;
-    }
+    } */
 
-    .form {
+    /* .form {
         margin-left: 65px;
         margin-right: 65px;
-    }
+    } */
 
     .logBtn,
     .regBtn {
@@ -202,11 +203,12 @@
 }
 
 @media screen and (min-width: 1280px) {
-    .container {
+    /* .container {
         display: flex;
         margin-right: auto;
         margin-left: auto;
-    }
+    } */
+    
 
     .desktopContainer {
         width: 100%;
