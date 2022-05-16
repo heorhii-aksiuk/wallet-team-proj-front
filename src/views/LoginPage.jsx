@@ -2,8 +2,6 @@ import React from "react";
 import Media from 'react-media';
 import LoginForm from "../components/LoginForm";
 // import RegistrationForm from "../components/RegistrationForm/RegistrationForm.jsx";
-
-import CommonContainer from '../containers/CommonContainer';
 import { mediaQueries } from '../utils/constants.js';
 import signinImg from '../assets/img/signin-img.png'
 import s from "./LoginPage.module.css";
