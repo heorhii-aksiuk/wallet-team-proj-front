@@ -1,6 +1,6 @@
 import React from "react";
 import Media from 'react-media';
-import LoginForm from "../components/LoginForm/LoginForm.jsx";
+import LoginForm from "../components/LoginForm";
 // import RegistrationForm from "../components/RegistrationForm/RegistrationForm.jsx";
 
 import CommonContainer from '../containers/CommonContainer';

@@ -25,9 +25,11 @@ function App() {
           matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
         }
       </Media> */}
-      <Header />
+      {/* <Header />
       <Loader />
-      <DiagramTab />
+      <DiagramTab /> */}
+
+      <RegistrationPage/>
       <CommonContainer>
         {/* <ModalAddTransaction onChange={() => handleChange} /> */}
         <ButtonAddTransactions
