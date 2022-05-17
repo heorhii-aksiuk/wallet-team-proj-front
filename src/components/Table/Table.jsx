@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+
+import sprite from '../../assets/svg/sprite.svg'
 import s from './Table.module.css'
 
 const back = [
@@ -36,7 +38,6 @@ function Table() {
   const [yearsMenu, setYearsMenu] = useState(false)
 
   const openMonthMenu = () => {
-    setYearsMenu(false)
     setMonthsMenu(true)
   }
   const closeMonthsMenu = (e) => {
@@ -90,6 +91,9 @@ function Table() {
       <ul className={s.menu}>
         <li className={s.item} onClick={() => openMonthMenu()}>
           {selectedMonth ?? 'Месяц'}
+          <svg className={s.itemIcon}>
+            <use href={`${sprite}#icon-arrow`} x={10}></use>
+          </svg>
           {monthsMenu && (
             <ul className={s.subMenu}>
               {date.months.map((month, index) => (
@@ -112,6 +116,9 @@ function Table() {
 
         <li className={s.item} onClick={() => openYearMenu()}>
           {selectedYear ?? 'Год'}
+          <svg className={s.itemIcon}>
+            <use href={`${sprite}#icon-arrow`} x={10}></use>
+          </svg>
           {yearsMenu && (
             <ul className={s.subMenu}>
               {date.years.map((year, index) => (
