@@ -5,7 +5,12 @@ import { mediaQueries } from '../utils/constants.js';
 import registerimg from '../assets/img/register-img.png'
 import s from "./RegistrationPage.module.css";
 
+// import {store} from '../redux/store'
+
 const RegistrationPage = () => {
+  // const { isAuth } = store.getState().session.isAuth;
+
+  // console.log(store.getState().session.isAuth)
   return (
     <div className={s.container}>
     {/* <CommonContainer >       */}
