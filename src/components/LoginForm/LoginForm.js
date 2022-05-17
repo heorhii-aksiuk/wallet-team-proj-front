@@ -1,7 +1,10 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 // import Button from '../Button'
+import { sessionOperations } from '../../redux/session'
 import { loginSchema } from '../../utils/validationsSchemas'
 import sprite from '../../assets/svg/sprite.svg'
 import s from './LoginForm.module.css'
@@ -9,8 +12,16 @@ import s from './LoginForm.module.css'
 const LoginForm = () => {
   const initialValues = { email: '', password: '' }
 
+  const dispatch = useDispatch()
+
+  const history = useHistory()
+
+  const onRegistrationBtn = () => {
+    history.push('/registration')
+  }
+
   const onSubmit = (values, onSubmitProps) => {
-    console.log(values)
+    dispatch(sessionOperations.logIn(values))
 
     onSubmitProps.setSubmitting(false)
     onSubmitProps.resetForm()
@@ -43,7 +54,6 @@ const LoginForm = () => {
               <use href={`${sprite}#icon-email`}></use>
             </svg>
 
-            {/* вывод ошибки */}
             <ErrorMessage
               name="email"
               component="p"
@@ -63,7 +73,6 @@ const LoginForm = () => {
               <use href={`${sprite}#icon-password`}></use>
             </svg>
 
-            {/* вывод ошибки */}
             <ErrorMessage
               name="password"
               component="p"
@@ -75,7 +84,11 @@ const LoginForm = () => {
             Вход
           </button>
 
-          <button type="button" className={s.regBtn}>
+          <button
+            type="button"
+            className={s.regBtn}
+            onClick={onRegistrationBtn}
+          >
             Регистрация
           </button>
         </Form>
