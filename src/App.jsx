@@ -9,7 +9,11 @@ import RegistrationPage from './views/RegistrationPage'
 import LoginPage from './views/LoginPage'
 import RegistrationForm from './components/RegistrationForm'
 // import ModalAddTransaction from './components/ModalAddTransaction'
-import Loader from './components/Loader'
+import Loader from './components/Loader';
+import withAuthRedirect from './hoc/withAuthRedirect'
+import { Route, Routes } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
@@ -28,15 +32,19 @@ function App() {
       {/* <Header />
       <Loader />
       <DiagramTab /> */}
-
-      {/* <LoginPage /> */}
+      <BrowserRouter>      
+        <Switch>
+          <Route exact path='/'><RegistrationPage /></Route>
+          <Route exact path='/login'>{withAuthRedirect(<LoginPage />)}</Route>     
+        </Switch>  
+      </BrowserRouter>
       {/* <RegistrationPage/> */}
-      <CommonContainer>
+      {/* <CommonContainer> */}
         {/* <ModalAddTransaction onChange={() => handleChange} /> */}
-        <ButtonAddTransactions
+        {/* <ButtonAddTransactions
           onChange={() => handleChange}
         ></ButtonAddTransactions>
-      </CommonContainer>
+      </CommonContainer> */}
     </>
   )
 }
