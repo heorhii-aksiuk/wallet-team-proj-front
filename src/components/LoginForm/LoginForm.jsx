@@ -13,7 +13,6 @@ const LoginForm = () => {
   const initialValues = { email: '', password: '' }
 
   const dispatch = useDispatch()
-
   const history = useHistory()
 
   const onRegistrationBtn = () => {
