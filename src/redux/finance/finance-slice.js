@@ -4,7 +4,9 @@ import { sessionOperations } from '../session'
 
 const initialState = {
   totalBalance: 0,
-  data: [],
+  transactions: [],
+  statistics: [],
+  categories: [],
   error: null,
 }
 
@@ -12,20 +14,34 @@ const financeSlice = createSlice({
   name: 'finanse',
   initialState,
   extraReducers: {
-    [financeOperations.fetchTransactions.fulfilled](state, { payload }) {
+    [financeOperations.getAllTransactions.fulfilled](state, { payload }) {
       state.totalBalance = payload.totalBalance
-      state.data = payload.data
+      state.transactions = payload.transactions
       state.error = null
     },
-    [financeOperations.fetchTransactions.rejected](state, { payload }) {
+    [financeOperations.getAllTransactions.rejected](state, { payload }) {
       state.error = payload.error
     },
     [financeOperations.addTransaction.fulfilled](state, { payload }) {
       state.totalBalance = payload.totalBalance
-      state.data = payload.data
+      state.transactions = payload.transactions
       state.error = null
     },
     [financeOperations.addTransaction.rejected](state, { payload }) {
+      state.error = payload.error
+    },
+    [financeOperations.getStatistics.fulfilled](state, { payload }) {
+      state.statistics = payload.statistics
+      state.state.error = null
+    },
+    [financeOperations.getStatistics.rejected](state, { payload }) {
+      state.error = payload.error
+    },
+    [financeOperations.getCategories.fulfilled](state, { payload }) {
+      state.categories = payload.categories
+      state.state.error = null
+    },
+    [financeOperations.getCategories.rejected](state, { payload }) {
       state.error = payload.error
     },
     [sessionOperations.logOut.fulfilled](state) {

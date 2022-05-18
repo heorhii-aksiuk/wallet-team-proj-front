@@ -25,13 +25,13 @@ const globalSlice = createSlice({
     [globalActions.closeModalLogout](state) {
       state.isModalLogoutOpen = false
     },
-    [financeOperations.fetchTransactions.pending](state) {
+    [financeOperations.getAllTransactions.pending](state) {
       state.isLoading = true
     },
-    [financeOperations.fetchTransactions.fulfilled](state) {
+    [financeOperations.getAllTransactions.fulfilled](state) {
       state.isLoading = false
     },
-    [financeOperations.fetchTransactions.rejected](state) {
+    [financeOperations.getAllTransactions.rejected](state) {
       state.isLoading = false
     },
     [financeOperations.addTransaction.pending](state) {
@@ -41,6 +41,24 @@ const globalSlice = createSlice({
       state.isLoading = false
     },
     [financeOperations.addTransaction.rejected](state) {
+      state.isLoading = false
+    },
+    [financeOperations.getStatistics.pending](state) {
+      state.isLoading = true
+    },
+    [financeOperations.getStatistics.fulfilled](state) {
+      state.isLoading = false
+    },
+    [financeOperations.getStatistics.rejected](state) {
+      state.isLoading = false
+    },
+    [financeOperations.getCategories.pending](state) {
+      state.isLoading = true
+    },
+    [financeOperations.getCategories.fulfilled](state) {
+      state.isLoading = false
+    },
+    [financeOperations.getCategories.rejected](state) {
       state.isLoading = false
     },
     [sessionOperations.signUp.pending](state) {
