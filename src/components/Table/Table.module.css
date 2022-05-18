@@ -133,6 +133,11 @@
     white-space: nowrap;
 }
 
+.messEmpty {
+    padding: 0 20px;
+    margin-bottom: 16px;
+}
+
 .sum {
     display: flex;
     justify-content: space-between;

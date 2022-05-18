@@ -15,30 +15,30 @@ const back = [
   { id: 9, color: '#00AD84', name: 'Другие расходы', quantity: 610.0 },
 ]
 
-const names = back.map((obj) => obj.name)
-const colors = back.map((obj) => obj.color)
-const quantities = back.map((obj) => obj.quantity)
-
-ChartJS.register(ArcElement, Tooltip)
-
-const data = {
-  labels: names,
-  datasets: [
-    {
-      label: '# of Votes',
-      data: quantities,
-      backgroundColor: colors,
-      borderWidth: 0,
-      cutout: '70%',
-    },
-  ],
-}
-
 function Chart() {
+// { statistics,
+//   totalBalance }
+  ChartJS.register(ArcElement, Tooltip)
+  const names = back.map((obj) => obj.name)
+  const colors = back.map((obj) => obj.color)
+  const quantities = back.map((obj) => obj.quantity)
+  const doughnutData = {
+    labels: names,
+    datasets: [
+      {
+        label: '# of Votes',
+        data: quantities,
+        backgroundColor: colors,
+        borderWidth: 0,
+        cutout: '70%',
+      },
+    ],
+  }
+
   return (
     <div className={s.diagramContainer}>
       <div className={s.balance}>₴ 24 000.00</div>
-      <Doughnut data={data} />
+      <Doughnut data={doughnutData} />
     </div>
   )
 }
