@@ -1,7 +1,17 @@
 const getTotalBalance = (state) => state.finance.totalBalance
 
-const getData = (state) => state.finance.data
+const getAllTransactions = (state) => state.finance.transactions
+
+const getStatistics = (state) => state.finance.statistics
+
+const getCategories = (state) => state.finance.categories
 
 const getError = (state) => state.finance.error
 
-export { getTotalBalance, getData, getError }
+export {
+  getTotalBalance,
+  getAllTransactions,
+  getStatistics,
+  getCategories,
+  getError,
+}
