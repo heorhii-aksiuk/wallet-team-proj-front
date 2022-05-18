@@ -11,34 +11,23 @@ function DiagramTab() {
   const [endDate, setEndDate] = useState(null)
 
   const dispatch = useDispatch()
-  // статистика и баланс
-  // const statistics = useSelector()
-  // const totalBalance = useSelector()
 
-  // const changeStartDate = (date) => {
-  //   setStartDate(date)
-  // }
-
-  const changeEndDate = (date) => {
-    setEndDate(date)
-  }
+  const statistics = useSelector(financeSelectors.getStatistics)
+  const totalBalance = useSelector(financeSelectors.getTotalBalance)
 
   useEffect(() => {
-    // запросить статистику
-    // dispatch()
-  }, [startDate, endDate])
+    // dispatch(financeOperations.getStatistics({startDate, endDate}))
+    console.log(startDate, endDate)
+  }, [startDate, endDate, dispatch])
 
   return (
     <div className={s.container}>
       <div className={s.box}>
         <h2 className={s.title}>Статистика</h2>
-        <Chart
-        //  statistics={statistics}
-        //  totalBalance={totalBalance}
-        />
+        <Chart statistics={statistics.data} totalBalance={totalBalance} />
       </div>
       <Table
-        //  statistics={statistics}
+        statistics={statistics.data}
         setStartDate={setStartDate}
         setEndDate={setEndDate}
       />

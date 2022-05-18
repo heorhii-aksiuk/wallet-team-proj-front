@@ -4,19 +4,7 @@ import { getPeriodStatistics } from '../../services/dateServices'
 import sprite from '../../assets/svg/sprite.svg'
 import s from './Table.module.css'
 
-const back = [
-  // { id: 1, color: '#FED057', name: 'Основные расходы', quantity: '8700.00' },
-  // { id: 2, color: '#FFD8D0', name: 'Продукты', quantity: '3800.74' },
-  // { id: 3, color: '#FD9498', name: 'Машина', quantity: '1500.00' },
-  // { id: 4, color: '#C5BAFF', name: 'Забота о себе', quantity: '800.00' },
-  // { id: 5, color: '#6E78E8', name: 'Забота о детях', quantity: '2208.50' },
-  // { id: 6, color: '#4A56E2', name: 'Товары для дома', quantity: '300.00' },
-  // { id: 7, color: '#81E1FF', name: 'Образование', quantity: '3400.00' },
-  // { id: 8, color: '#24CCA7', name: 'Досуг', quantity: '1230.00' },
-  // { id: 9, color: '#00AD84', name: 'Другие расходы', quantity: '610.00' },
-]
-
-function Table({ setStartDate, setEndDate }) {
+function Table({ statistics, setStartDate, setEndDate }) {
   const [selectedMonth, setSelectedMonth] = useState(null)
   const [selectedYear, setSelectedYear] = useState(null)
   const [monthsMenu, setMonthsMenu] = useState(false)
@@ -27,7 +15,10 @@ function Table({ setStartDate, setEndDate }) {
     selectedYear,
   )
 
-  useEffect(() => {}, [selectedMonth, selectedYear])
+  useEffect(() => {
+    setStartDate(startDate)
+    setEndDate(endDate)
+  }, [startDate, endDate, setStartDate, setEndDate])
 
   const openMonthMenu = () => {
     setMonthsMenu(true)
@@ -141,9 +132,9 @@ function Table({ setStartDate, setEndDate }) {
         <p>Сумма</p>
       </div>
 
-      {back.length !== 0 ? (
+      {statistics.length !== 0 ? (
         <ul className={s.tableBody}>
-          {back.map((operation, index) => (
+          {statistics.map((operation, index) => (
             <li key={index} className={s.tableItem}>
               <div>
                 <svg width={24} height={24} className={s.tableItemSvg}>
@@ -163,14 +154,26 @@ function Table({ setStartDate, setEndDate }) {
           ))}
         </ul>
       ) : (
-        <div className={s.messEmpty}>Sorry</div>
+        <div className={s.messEmpty}>
+          Трансакции за данный период отсутствуют
+        </div>
       )}
 
-      <div className={`${s.sum} ${s.expenses}`}>
-        Расходы:<span>22 549.24</span>
+      <div className={`${s.result} ${s.expenses}`}>
+        Расходы:
+        {statistics.length !== 0 ? (
+          <span className={s.sum}>22 549.24</span>
+        ) : (
+          <span className={s.empty}>--</span>
+        )}
       </div>
-      <div className={`${s.sum} ${s.income}`}>
-        Доходы:<span>27 350.00</span>
+      <div className={`${s.result} ${s.income}`}>
+        Доходы:
+        {statistics.length !== 0 ? (
+          <span className={s.sum}>27 350.00</span>
+        ) : (
+          <span className={s.empty}>--</span>
+        )}
       </div>
     </div>
   )
