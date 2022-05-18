@@ -31,9 +31,9 @@ const addTransaction = createAsyncThunk(
 
 const getStatistics = createAsyncThunk(
   'finance/getStatistics',
-  async (_, thunkAPI) => {
+  async (period, thunkAPI) => {
     try {
-      const { data } = await axios.get('/statistics')
+      const { data } = await axios.get('/statistics', period)
 
       return data
     } catch (error) {
