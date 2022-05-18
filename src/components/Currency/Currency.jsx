@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { getListCurrency, Status } from '../../services'
+import Loader from '../Loader'
 import s from './Currency.module.css'
 
 const Currency = () => {
   const [dataCurrency, setDataCurrency] = useState([])
   const [error, setError] = useState(null)
   const [status, setStatus] = useState(Status.IDLE)
+
   useEffect(() => {
     setStatus(Status.PENDING)
     getListCurrency()
@@ -15,36 +16,37 @@ const Currency = () => {
         setStatus(Status.RESOLVED)
       })
       .catch((error) => {
-        console.log(error)
-        setError('Что-то пошло не так. Зайдите позже.')
+        setError('Что-то пошло не так. Проверьте позднее.')
         setStatus(Status.REJECTED)
       })
   }, [])
 
   return (
     <div className={s.card}>
-      <table className={s.table}>
-        <tbody>
-          <tr className={s.header}>
-            <th className={s.th}>Валюта</th>
-            <th className={s.th}>Покупка</th>
-            <th className={s.th}>Продажа</th>
-          </tr>
-        </tbody>
-        {dataCurrency &&
-          dataCurrency.map((el, i) => {
-            console.log(el.buy)
-            return (
-              <tbody key={i}>
-                <tr>
-                  <td>{el.ccy}</td>
-                  <td>{parseFloat(el.buy).toFixed(2)}</td>
-                  <td>{parseFloat(el.sale).toFixed(2)}</td>
-                </tr>
-              </tbody>
-            )
-          })}
-      </table>
+      <ul className={`${s.list} ${s.header}`}>
+        <li>Валюта</li>
+        <li>Покупка</li>
+        <li>Продажа</li>
+      </ul>
+      <div
+        className={`${s.body} ${
+          status.includes(Status.REJECTED) ? s.flex_center : ''
+        }`}
+      >
+        {status.includes(Status.PENDING) && <Loader />}
+        {status.includes(Status.RESOLVED) &&
+          dataCurrency &&
+          dataCurrency.map((el, i) => (
+            <ul key={i} className={`${s.list} ${s.list_body}`}>
+              <li>{el.ccy}</li>
+              <li>{parseFloat(el.buy).toFixed(2)}</li>
+              <li>{parseFloat(el.sale).toFixed(2)}</li>
+            </ul>
+          ))}
+        {status.includes(Status.REJECTED) && (
+          <div className={`${s.error}`}>{error}</div>
+        )}
+      </div>
     </div>
   )
 }

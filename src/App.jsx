@@ -5,9 +5,8 @@ import DiagramTab from './components/DiagramTab'
 import React, { useState } from 'react'
 import CommonContainer from './containers/CommonContainer'
 import ButtonAddTransactions from './components/ButtonAddTransactions'
-// import ModalAddTransaction from './components/ModalAddTransaction'
+import ModalAddTransaction from './components/ModalAddTransaction'
 import Loader from './components/Loader'
-import Currency from './components/Currency/Currency'
 
 function App() {
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
@@ -24,15 +23,14 @@ function App() {
         }
       </Media> */}
       <Header />
-      <Currency />
-      {/* <Loader />
+      <Loader />
       <DiagramTab />
       <CommonContainer>
         <ModalAddTransaction onChange={() => handleChange} />
         <ButtonAddTransactions
           onChange={() => handleChange}
         ></ButtonAddTransactions>
-      </CommonContainer> */}
+      </CommonContainer>
     </>
   )
 }
