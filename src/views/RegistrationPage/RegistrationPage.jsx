@@ -1,8 +1,8 @@
 import React from "react";
 import Media from 'react-media';
-import RegistrationForm from "../components/RegistrationForm";
-import { mediaQueries } from '../utils/constants.js';
-import registerimg from '../assets/img/register-img.png'
+import RegistrationForm from "../../components/RegistrationForm";
+import { mediaQueries } from '../../utils/constants.js';
+import registerimg from '../../assets/img/register-img.png'
 import s from "./RegistrationPage.module.css";
 
 // import {store} from '../redux/store'

@@ -1,7 +1,7 @@
 .container {
     background-color: #e7eaf2;
-    background-image: url('../assets/img/ellipse-violet.png'),
-        url('../assets/img/ellipse-pink.png');
+    background-image: url('../../assets/img/ellipse-violet.png'),
+        url('../../assets/img/ellipse-pink.png');
     background-repeat: no-repeat, no-repeat;
     background-position: left bottom, right top;
     height: 105vh
@@ -55,23 +55,18 @@
     }
 }
 
-@media screen and (min-width: 1280px) {
-    /* .container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-
-    }
+@media screen and (min-width: 1280px) {    
 
     .form {
-        width: 533px;
-        height: 616px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 105vh;
         background-color: rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(50px);
-        padding: 52 91 52 107;
+        padding: 52px 91px 52px 107px;
         margin: 0;
-    } */
+    } 
 
     .signinImg {
         margin-left: 66px;

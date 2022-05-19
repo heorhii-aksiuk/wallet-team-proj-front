@@ -1,10 +1,10 @@
 .container {
     background-color: #e7eaf2;
-    background-image: url('../assets/img/ellipse-violet.png'),
-    url('../assets/img/ellipse-pink.png');
+    background-image: url('../../assets/img/ellipse-violet.png'),
+    url('../../assets/img/ellipse-pink.png');
     background-repeat: no-repeat, no-repeat;
     background-position: left bottom, right top;
-    height: 100%;
+    height: 105vh;
     padding-bottom: 48px;  
 }
 
@@ -20,7 +20,7 @@
 
 @media screen and (max-width: 767px){
   .container {
-    background-color: #ffffff;
+    background-color: var(--secondary-background-color);
     background-image: none;
   }
 
@@ -30,20 +30,15 @@
   }
 
     .form {
-      background-color: #ffffff;
-        width: 100vw;
-        height: 100vh;        
-        margin: auto;
+      background-color: var(--secondary-background-color);
+      width: 100vw;
+      height: 105vh;        
+      margin: auto;
     }
 }
 
-@media screen and (max-width: 1279px) and (min-width: 768px) {
-  /* .container {
-    padding-bottom: 42px;
-  } */
-  .form {   
-    /* height: 533px;
-    width: 616px; */
+@media screen and (max-width: 1279px) and (min-width: 768px) {  
+  .form {       
     margin: auto;
     margin-top: 0;
   }
@@ -63,17 +58,19 @@
 
 @media screen and (min-width: 1280px) {
     .container {
-        height: 115vh;
+        height: 105vh;
         
     }
 
-    .form {        
-        /* background-color: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(50px); */
-        /* padding: 52 91 52 107; */
-        /* margin: auto; */
-        /* padding-top: 52px;
-        padding-bottom: 52px;  */
+    .form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 105vh;
+      background-color: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(50px);
+      padding: 52px 91px 52px 107px;
+      margin: 0;
     }
 
     .registerImg {

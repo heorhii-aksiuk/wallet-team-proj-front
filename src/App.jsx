@@ -32,7 +32,7 @@ function App() {
       </Media> */}
       <Header />
       {/* <Loader /> */}
-      <DiagramTab />
+      {/* <DiagramTab /> */}     
       {/* <CommonContainer> */}
         {/* <ModalAddTransaction onChange={() => handleChange} /> */}
         {/* <ButtonAddTransactions
