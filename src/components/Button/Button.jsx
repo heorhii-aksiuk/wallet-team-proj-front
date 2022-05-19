@@ -1,21 +1,31 @@
 import PropTypes from 'prop-types'
 import s from './Button.module.css'
 
-const Button = ({ title = 'title', type = 'primary', onClick }) => (
-  <div
+const Button = ({
+  title = 'title',
+  typeButton = 'primary',
+  onClick,
+  className,
+  ...props
+}) => (
+  <button
     className={
-      type.includes('primary') ? s.button__primary : s.button__secondary
+      typeButton.includes('primary')
+        ? `${s.primary} ${className ? className : ''}`
+        : `${s.secondary} ${className ? className : ''}`
     }
     onClick={onClick}
+    {...props}
   >
     {title}
-  </div>
+  </button>
 )
 
 Button.propTypes = {
   title: PropTypes.string,
   onClick: PropTypes.func,
-  type: PropTypes.oneOf(['primary', 'secondary']),
+  typeButton: PropTypes.oneOf(['primary', 'secondary']),
+  className: PropTypes.string,
 }
 
 export default Button

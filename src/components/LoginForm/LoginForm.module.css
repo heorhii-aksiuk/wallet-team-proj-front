@@ -1,126 +1,124 @@
 .container {
-    min-width: 320px;
-    max-width: 479px;
-    padding: 107px 20px;
-    margin: 0 auto;
-    
-    border: 1px solid rgba(226, 224, 224, 0.596)
+  min-width: 320px;
+  max-width: 479px;
+  padding: 107px 20px;
+  margin: 0 auto;
+
+  border: 1px solid rgba(226, 224, 224, 0.596);
 }
 
 .logo {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
 }
 
 .logoIcon {
-    width: 120px;
-    height: 30px;
+  width: 120px;
+  height: 30px;
 }
 
-.form{
-    font-family: var(--main-font);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
+.form {
+  font-family: var(--main-font);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
 }
 
 .label {
-    position: relative;
-    display: block;
-    margin-bottom: 40px;
+  position: relative;
+  display: block;
+  margin-bottom: 40px;
 }
 
 .inputIcon {
-    position: absolute;
-    left: 10px;
-    top: 4px;
+  position: absolute;
+  left: 10px;
+  top: 4px;
 }
 
 .input {
-    width: 100%;
-    height: 32px;
-    padding-left: 54.5px;
+  width: 100%;
+  height: 32px;
+  padding-left: 54.5px;
 
-    outline: none;
-    border: none;
-    border-bottom: 1px solid #E0E0E0;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 ::placeholder {
-    color: var(--placeholder-main-color);
+  color: var(--placeholder-main-color);
 }
 
-.validErrorMes{
-    position: absolute;
-    top: 28px;
-    left: 5px;
+.validErrorMes {
+  position: absolute;
+  top: 28px;
+  left: 5px;
 
-    font-size: 12px;
-    color: rgb(255, 91, 92);
+  font-size: 12px;
+  color: rgb(255, 91, 92);
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: none;
-        width: 533px;
-        padding: 40px 58.5px 62px 65px;
+  .container {
+    max-width: none;
+    width: 533px;
+    padding: 40px 58.5px 62px 65px;
 
-        border-radius: 20px;
-    }
+    border-radius: 20px;
+  }
 
-    .label {
-        margin-bottom: 42px;
-    }
+  .label {
+    margin-bottom: 42px;
+  }
 }
-
-
 
 /* кнопки-заглушки */
 .logBtn,
 .regBtn {
-    display: block;
-    width: 280px;
-    height: 50px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    border-radius: 20px;
-    text-transform: uppercase;
-    font-size: 18px;
-    line-height: 27px;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    transition: all 250ms ease;
+  display: block;
+  width: 280px;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  border-radius: 20px;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 250ms ease;
 }
 
 .logBtn {
-    background-color: var(--green-color);
-    border-color: transparent;
-    outline: none;
-    color: var(--secondary-text-color);
+  background-color: var(--green-color);
+  border-color: transparent;
+  outline: none;
+  color: var(--secondary-text-color);
 }
 
 .regBtn {
-    background-color: var(--secondary-text-color);
-    color: var(--third-text-color);
-    border: 1px solid var(--third-text-color);
+  background-color: var(--secondary-text-color);
+  color: var(--third-text-color);
+  border: 1px solid var(--third-text-color);
 }
 
 .regBtn:hover,
 .regBtn:focus {
-    background-color: var(--green-color);
-    border-color: transparent;
-    outline: none;
-    color: var(--secondary-text-color);
+  background-color: var(--green-color);
+  border-color: transparent;
+  outline: none;
+  color: var(--secondary-text-color);
 }
 
 .logBtn:hover,
 .logBtn:focus {
-    color: var(--third-text-color);
-    background-color: var(--secondary-text-color);
-    border: 1px solid var(--third-text-color);
+  color: var(--third-text-color);
+  background-color: var(--secondary-text-color);
+  border: 1px solid var(--third-text-color);
 }
