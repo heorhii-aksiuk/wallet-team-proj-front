@@ -1,36 +1,72 @@
-// import Media from 'react-media'
-// import { mediaQueries } from './utils/constants'
-import Header from './components/Header'
-import DiagramTab from './components/DiagramTab'
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { Route, Link } from 'react-router-dom'
+
+import { sessionOperations } from './redux/session'
 import CommonContainer from './containers/CommonContainer'
-import ButtonAddTransactions from './components/ButtonAddTransactions'
-// import ModalAddTransaction from './components/ModalAddTransaction'
-// import Loader from './components/Loader'
+import Loader from './components/Loader'
 
 function App() {
-  const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
-    useState(false)
+  const dispatch = useDispatch()
 
-  const handleChange = () => {
-    setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
-  }
+  useEffect(() => {
+    dispatch(sessionOperations.refreshCurrentUser())
+  }, [dispatch])
   return (
     <>
-      {/* <Media queries={mediaQueries}>
-        {(matches) =>
-          matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
-        }
-      </Media> */}
-      <Header />
-      {/* <Loader /> */}
-      <DiagramTab />
-      <CommonContainer>
-        {/* <ModalAddTransaction onChange={() => handleChange} /> */}
-        <ButtonAddTransactions
-          onChange={() => handleChange}
-        ></ButtonAddTransactions>
-      </CommonContainer>
+      <Route exact path="/">
+        <div>
+          <h2 style={{ marginBottom: '50px' }}>Home Page</h2>
+
+          <ul>
+            <li>
+              <Link to="/">home-page</Link>
+            </li>
+            <li>
+              <Link to="/login">login-page</Link>
+            </li>
+            <li>
+              <Link to="/registration">registration-page</Link>
+            </li>
+          </ul>
+        </div>
+      </Route>
+
+      <Route path="/login">
+        <div>
+          <h2 style={{ marginBottom: '50px' }}>Login Page</h2>
+
+          <ul>
+            <li>
+              <Link to="/">home-page</Link>
+            </li>
+            <li>
+              <Link to="/login">login-page</Link>
+            </li>
+            <li>
+              <Link to="/registration">registration-page</Link>
+            </li>
+          </ul>
+        </div>
+      </Route>
+
+      <Route path="/registration">
+        <div>
+          <h2 style={{ marginBottom: '50px' }}>Registration Page</h2>
+
+          <ul>
+            <li>
+              <Link to="/">home-page</Link>
+            </li>
+            <li>
+              <Link to="/login">login-page</Link>
+            </li>
+            <li>
+              <Link to="/registration">registration-page</Link>
+            </li>
+          </ul>
+        </div>
+      </Route>
     </>
   )
 }
