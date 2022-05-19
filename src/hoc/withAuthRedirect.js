@@ -17,13 +17,10 @@ const withAuthRedirect = Component => {
     // }
     // const history = useHistory();
    
-    if (!isAuth) { 
-        console.log('sssss', isAuth)
+    if (isAuth) {         
         // return history.push('/')
         return <Redirect to='/'/>
-    }
-    console.log('kkkkk', isAuth)
-    console.dir(Component)
+    }    
     return Component
 }
 
