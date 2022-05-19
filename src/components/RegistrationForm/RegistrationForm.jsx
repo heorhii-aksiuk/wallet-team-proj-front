@@ -1,165 +1,124 @@
 import { React, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import PasswordStrength from './PasswordStrength'
-import { Formik } from 'formik'
-import * as yup from 'yup'
+import { sessionOperations } from '../../redux/session'
+import { Link } from 'react-router-dom'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { singupSchema } from '../../utils/validationsSchemas'
 import sprite from '../../assets/svg/sprite.svg'
 import s from './RegistrationForm.module.css'
 
 const RegistrationForm = () => {
+  const initialValues = {
+    email: '',
+    password: '',
+    confirmPassword: '',
+    name: '',
+  }
   const [password, setPassword] = useState('')
+  const history = useHistory()
 
-  const validationSchema = yup.object().shape({
-    name: yup
-      .string()
-      .typeError('Должно быть строкой')
-      .required('Обязательное поле'),
-    password: yup
-      .string()
-      .min(4, 'Пароль должен быть длиннее 4 символов')
-      .max(15, 'Пароль должен содержать не более 15 символов')
-      .typeError('Должно быть строкой')
-      .required('Обязательное поле'),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref('password')], 'Пароли не совпадают'),
-    email: yup
-      .string()
-      .email('Введите верный email')
-      .typeError('Должно быть строкой')
-      .required('Обязательное поле'),
-  })
+  const onSubmit = (values) => {
+    sessionOperations.signUp({ values })
+    history.push('/login')
+  }
 
   return (
-    <div>
+    <div className={s.container}>
+      <div className={s.logo}>
+        <svg className={s.logoIcon}>
+          <use href={`${sprite}#icon-logo`}></use>
+        </svg>
+      </div>
+
       <Formik
-        initialValues={{
-          email: '',
-          password: '',
-          confirmPassword: '',
-          name: '',
-        }}
-        validateOnBlur
-        onSubmit={(values) => {
-          console.log(values)
-        }}
-        validationSchema={validationSchema}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={singupSchema}
+        validateOnChange={false}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          isValid,
-          handleSubmit,
-          dirty,
-        }) => (
-          <div className={s.formContainer}>
-            <div className={s.desktopContainer}>
-              <div className={s.authForm}>
-                <div className={s.logo}>
-                  <svg className={s.logoIcon}>
-                    <use href={`${sprite}#icon-logo`}></use>
-                  </svg>
-                </div>
+        <Form className={s.form}>
+          <label className={s.label}>
+            <Field
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              className={s.input}
+            />
 
-                <div className={s.form}>
-                  <label className={s.authLabel}>
-                    <input
-                      className={s.input}
-                      placeholder="E-mail"
-                      name={'email'}
-                      type={'email'}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.email}
-                    ></input>
-                    <svg width="24" height="24" className={s.inputIcon}>
-                      <use href={`${sprite}#icon-email`}></use>
-                    </svg>
-                  </label>
-                  {touched.email && errors.email && (
-                    <p className={s.error}>{errors.email}</p>
-                  )}
+            <svg width="24" height="24" className={s.inputIcon}>
+              <use href={`${sprite}#icon-email`}></use>
+            </svg>
 
-                  <label className={s.authLabel}>
-                    <input
-                      id="inputcheck"
-                      className={s.input}
-                      placeholder="Пароль"
-                      name={'password'}
-                      type={'password'}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.password}
-                      onInput={(e) => setPassword(e.target.value)}
-                    ></input>
-                    <svg width="24" height="24" className={s.inputIcon}>
-                      <use href={`${sprite}#icon-password`}></use>
-                    </svg>
-                  </label>
-                  {touched.password && errors.password && (
-                    <p className={s.error}>{errors.password}</p>
-                  )}
+            <ErrorMessage
+              name="email"
+              component="p"
+              className={s.validErrorMes}
+            />
+          </label>
+          <label className={s.label}>
+            <Field
+              type="password"
+              name="password"
+              placeholder="Пароль"
+              className={s.input}
+              onInput={(e) => setPassword(e.target.value)}
+            />
 
-                  <label className={s.authLabel}>
-                    <input
-                      id="inputcheck"
-                      className={s.input}
-                      placeholder="Подтвердите пароль"
-                      name={'confirmPassword'}
-                      type={'password'}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.confirmPassword}
-                    ></input>
-                    <svg width="24" height="24" className={s.inputIcon}>
-                      <use href={`${sprite}#icon-password`}></use>
-                    </svg>
-                  </label>
-                  {touched.confirmPassword && errors.confirmPassword && (
-                    <p className={s.errorConfirm}>{errors.confirmPassword}</p>
-                  )}
-                  <div className={s.progressBar}>
-                    <PasswordStrength password={password} />
-                  </div>
+            <svg width="24" height="24" className={s.inputIcon}>
+              <use href={`${sprite}#icon-password`}></use>
+            </svg>
 
-                  <div id="check"></div>
+            <ErrorMessage
+              name="password"
+              component="p"
+              className={s.validErrorMes}
+            />
+          </label>
+          <label className={s.label}>
+            <Field
+              type="password"
+              name="confirmPassword"
+              placeholder="Подтвердите пароль"
+              className={s.input}
+            />
 
-                  <label className={s.authLabel}>
-                    <input
-                      type={'text'}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.name}
-                      className={s.input}
-                      placeholder="Ваше имя"
-                      name={'name'}
-                    ></input>
-                    <svg width="24" height="24" className={s.inputIcon}>
-                      <use href={`${sprite}#icon-account`}></use>
-                    </svg>
-                  </label>
-                  {touched.name && errors.name && (
-                    <p className={s.error}>{errors.name}</p>
-                  )}
-                  <button
-                    type={'submit'}
-                    className={s.regBtn}
-                    disabled={!isValid && !dirty}
-                    onClick={handleBlur}
-                  >
-                    регистрация
-                  </button>
+            <svg width="24" height="24" className={s.inputIcon}>
+              <use href={`${sprite}#icon-password`}></use>
+            </svg>
 
-                  <button className={s.logBtn} type="submit">
-                    вход
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+            <ErrorMessage
+              name="confirmPassword"
+              component="p"
+              className={s.validErrorMes}
+            />
+          </label>
+          <PasswordStrength password={password} />
+          <label className={s.label}>
+            <Field
+              type="text"
+              name="name"
+              placeholder="Ваше имя"
+              className={s.input}
+            />
+
+            <svg width="24" height="24" className={s.inputIcon}>
+              <use href={`${sprite}#icon-password`}></use>
+            </svg>
+
+            <ErrorMessage
+              name="name"
+              component="p"
+              className={s.validErrorMes}
+            />
+          </label>
+          <button className={s.logBtn} type="submit" onSubmit={onSubmit}>
+            Вход
+          </button>
+          <Link to="/login" className={s.regBtn}>
+            Регистрация
+          </Link>
+        </Form>
       </Formik>
     </div>
   )

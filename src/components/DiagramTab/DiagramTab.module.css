@@ -3,9 +3,6 @@
     max-width: 479px;
     padding: 0 20px;
     margin: 0 auto;
-    /* backdrop-filter: blur(50px); */
-
-    background: rgba(226, 224, 224, 0.596);
 }
 
 .box {

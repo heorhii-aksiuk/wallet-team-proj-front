@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import * as sessionOperations from './session-operations'
 
 const initialState = {
-  user: { name: 'Anatolii', email: null },
+  user: { name: null, email: null },
   token: null,
   error: null,
   isAuth: true,

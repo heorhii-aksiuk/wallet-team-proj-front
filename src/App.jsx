@@ -22,6 +22,7 @@ function App() {
   const handleChange = () => {
     setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
   }
+
   return (
     <>
       {/* <Media queries={mediaQueries}>
@@ -29,16 +30,9 @@ function App() {
           matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
         }
       </Media> */}
-      {/* <Header />
-      <Loader />
-      <DiagramTab /> */}
-      <BrowserRouter>      
-        <Switch>
-          <Route exact path='/'><RegistrationPage /></Route>
-          <Route exact path='/login'>{withAuthRedirect(<LoginPage />)}</Route>     
-        </Switch>  
-      </BrowserRouter>
-      {/* <RegistrationPage/> */}
+      <Header />
+      {/* <Loader /> */}
+      <DiagramTab />
       {/* <CommonContainer> */}
         {/* <ModalAddTransaction onChange={() => handleChange} /> */}
         {/* <ButtonAddTransactions

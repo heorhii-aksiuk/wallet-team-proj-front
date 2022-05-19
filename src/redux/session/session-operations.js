@@ -1,8 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-axios.defaults.baseURL = 'locall-host:8000' // backend-url
-
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`
@@ -22,7 +20,9 @@ const signUp = createAsyncThunk(
 
       return data
     } catch (error) {
+      console.log(error)
       return thunkAPI.rejectWithValue()
+      
       // обработать ошибку
     }
   },
