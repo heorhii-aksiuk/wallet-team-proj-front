@@ -2,32 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Datetime from 'react-datetime';
 import 'moment/locale/ru';
 import { addTransaction } from '../../redux/transactions';
-//import balance
+import {getTotalBalance} from "../../redux/finance/finance-selectors";
 import { useDispatch, useSelector } from 'react-redux';
+import {getCategories} from "../../redux/finance/finance-selectors";
 import sprite from '../../assets/svg/sprite.svg'
 import PluSvg from '../../assets/svg/Plus.svg'
 import MinusSvg from '../../assets/svg/Minus.svg'
 import { ReactSVG } from 'react-svg';
 import styles from './AddTransaction.module.css';
-//там має реалізовуватися ModalAddTransaction
-//  const toggleModal = () => {
-//     setShowModal(!showModal);
-//   };
-//
-//   function toggleAddTransaction() {
-//     setAddTransaction(!showAddTransaction);
-//   }
-
-//      {showModal && (
-//         <Modal>
-//           {showAddTransaction && (
-//             <AddTransaction
-//               toggleAddTransaction={toggleAddTransaction}
-//               toggleModal={toggleModal}
-//             />
-//           )}
-//         </Modal>
-//       )}
+import Select from "react-select/base";
 
 function AddTransaction({ toggleModal, toggleAddTransaction }) {
     const [transactionType, setTransactionType] = useState('income');
@@ -39,6 +22,8 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
 
 
     const dispatch = useDispatch();
+const currentBalance = useSelector(getTotalBalance)
+    const categories = useSelector(getCategories)
 
     useEffect(() => {
         const backdrop = document.querySelector('#backdrop');
@@ -77,7 +62,63 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
         }
     }, [listActive]);
     //
+    //schema for validate data
+    const SCHEMA = {
+        type: 'required|boolean',
+        category: 'required|string',
+        sum: 'required|number',
+        comment: 'string',
+        day: 'required|number',
+        month: 'required|number',
+        year: 'required|number',
+    };
 
+    async function SubmitHandler(e) {
+        e.preventDefault()
+
+        const nextBalance = currentBalance - summ
+
+        if (nextBalance <= 0 && transactionType === 'spending' && category !== 'Выберите категорию') {
+            //notify
+            return;
+        }
+        if (category === 'Выберите категорию') {
+            //notify
+            return;
+        }
+        const userBalance = currentBalance.toString();
+        const transaction = {
+            day: date.getDate(),
+            month: date.getMonth() + 1,
+            year: date.getFullYear(),
+            type: transactionType === 'income' ? true : false,
+            category: category,
+            sum: parseFloat(summ),
+            comment: comment,
+            balance: transactionType === 'income' ?
+                userBalance + parseFloat(summ) : userBalance - parseFloat(summ),
+
+        };
+        const transactionNoComment = {
+            day: date.getDate(),
+            month: date.getMonth() + 1,
+            year: date.getFullYear(),
+            type: transactionType === 'income' ? true : false,
+            category: category,
+            sum: parseFloat(summ),
+            balance: transactionType === 'income' ?
+                userBalance + parseFloat(summ) : userBalance - parseFloat(summ),
+        };
+        // нормалізація даних на бекенд
+
+        try {
+            //валідація даних
+            dispatch(addTransaction(comment ? transaction : transactionNoComment));
+            closeComponent();
+        } catch (error) {
+            console.log(error[0].message);
+        }
+    }
 
     function switchClickHandler(e) {
         if (!e.target.checked) {
@@ -103,6 +144,20 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
     }
 
 
+    function summChange(e) {
+        const number = Number(e.target.value);
+        const integer = Number.isInteger(number);
+
+        if (!integer) {
+            const [int, float] = String(number).split('.');
+            setSumm(`${int}.${float.slice(0, 2)}`);
+            return;
+        }
+
+        setSumm(e.target.value);
+    }
+
+
     function commentChange(e) {
         const field = document.querySelector(`.${styles.commentField}`);
         field.style.cssText = 'height:' + field.scrollHeight + 'px';
@@ -114,7 +169,6 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
         toggleModal();
     }
 
-    // задача данных функций, повесить дополнительный класс по условию.
     function DropMenuActiveTrigger() {
         if (category !== 'Выберите категорию') {
             const basic = styles.dropDownField;
@@ -157,12 +211,14 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
     return (
         <div className={styles.addTransContainer}>
             <div onClick={closeComponent} className={styles.closeBtnBox}>
-                <ReactSVG className={styles.closeIcon} src={ <svg width="24" height="24">
-                    <use href={`${sprite}#icon-close`} />
-                </svg> } />
+                <button onClick={closeComponent}>
+                    <svg width="24" height="24" className={styles.closeIcon}>
+                        <use href={`${sprite}#icon-close`} />
+                    </svg>
+                </button>
             </div>
             <h2 className={styles.title}>Добавить транзакцию</h2>
-            <form id="transaction" className={styles.form}>
+            <form id="transaction" className={styles.form} onSubmit={SubmitHandler}>
                 <div className={styles.transTypeContainer}>
                     <span className={incomeActiveTrigger()}>Доход</span>
                     <div className={styles.switchToggleContainer}>
@@ -192,10 +248,12 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
                     <input
                         className={styles.summField}
                         required
+                        onChange={summChange}
                         min="0.00"
                         step="0.01"
                         type="number"
                         placeholder="0.00"
+                        value={summ}
                     />
                 </div>
 
@@ -207,9 +265,9 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
                         closeOnSelect={true}
                         timeFormat={false}
                     />
-                    <ReactSVG className={styles.calendarIcon} src={ <svg width="24" height="24">
+                    <svg width="24" height="24" className={styles.calendarIcon}>
                         <use href={`${sprite}#icon-calendar`} />
-                    </svg>} />
+                    </svg>
                 </div>
 
                 <div className={styles.commentFieldContainer}>

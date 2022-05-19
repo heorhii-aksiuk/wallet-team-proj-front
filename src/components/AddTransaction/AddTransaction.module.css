@@ -1,5 +1,4 @@
 .addTransContainer {
-    /*  position: relative; */
     padding-top: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -28,8 +27,6 @@
         transform: translate(-50%, -50%);
     }
 }
-
-/* стили кнопки закрытия окна */
 
 .closeBtnBox {
     display: none;
@@ -62,9 +59,6 @@
     height: 18px;
 }
 
-/* стили кнопки закрытия окна */
-
-/* заголовок и поле формы */
 
 .title {
     margin: 0;
@@ -90,9 +84,6 @@
     }
 }
 
-/* заголовок и поле формы */
-
-/* стили для переключателя расход\доход */
 
 .transTypeContainer {
     position: relative;
@@ -181,9 +172,6 @@
     height: 20px;
 }
 
-/* стили для переключателя расход\доход */
-
-/* Стили для выпадающего меню */
 
 .dropDownContainer {
     position: relative;
@@ -273,9 +261,6 @@
     height: 9px;
 }
 
-/*стили для выпадающего меню закончены */
-
-/* стили для суммы */
 
 .summFieldContainer {
     position: relative;
@@ -325,12 +310,9 @@
 .summField::-webkit-outer-spin-button,
 .summField::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    /* -moz-appearance: textfield; */
+
 }
 
-/* стили для суммы */
-
-/* стили для календаря */
 
 .calendarContainer {
     position: relative;
@@ -379,9 +361,6 @@
     height: 20px;
 }
 
-/* стили для календаря */
-
-/* стили для поля комментария */
 
 .commentFieldContainer {
     position: relative;
@@ -420,9 +399,6 @@
     outline: none;
 }
 
-/* стили для поля комментария */
-
-/* стили для блока кнопок отправить\отмена */
 
 .buttonsContainer {
     margin-top: 40px;
@@ -470,4 +446,3 @@
     }
 }
 
-/* стили для блока кнопок отправить\отмена */
