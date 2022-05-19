@@ -1,10 +1,11 @@
-.button__primary,
-.button__secondary {
+.primary,
+.secondary {
+  display: block;
   width: 100%;
   height: 100%;
   max-width: 300px;
   max-height: 50px;
-  padding: 13px 65px;
+  padding: 13px 55px;
 
   font-family: var(--main-font);
   font-weight: 400;
@@ -18,29 +19,28 @@
   cursor: pointer;
 }
 
-.button__primary {
+.primary {
   color: var(--secondary-text-color);
   background-color: var(--green-color);
   border: 1px solid var(--secondary-text-color);
 }
 
-.button__secondary {
+.secondary {
   color: var(--third-text-color);
   background-color: var(--background-color);
   border: 1px solid var(--main-color);
 }
 
-.button__primary:hover,
-.button__primary:focus,
-.button__secondary:hover,
-.button__secondary:focus {
+.primary:hover,
+.primary:focus,
+.secondary:hover,
+.secondary:focus {
   transform: scale(1.02);
-  box-shadow: '0px 5px 5px 0px #000';
 }
 
-@media (max-width: 480px) {
-  .button__primary,
-  .button__secondary {
-    padding: 13px 55px;
+@media screen and (min-width: 480px) {
+  .primary,
+  .secondary {
+    padding: 13px 65px;
   }
 }

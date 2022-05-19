@@ -1,104 +1,104 @@
 .nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 13px;
 }
 
 .navItem:not(:last-child) {
-    margin-right: 36px;
+  margin-right: 36px;
 }
 
 .iconWrapper,
 .navIcon {
-    width: 38px;
-    height: 38px;
-    fill: var(--main-color);
+  width: 38px;
+  height: 38px;
+  fill: var(--main-color);
 }
 
 .navText {
-    display: none;
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
-    .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 143px;
-        margin-bottom: 20px;
-    }
-    .navItem {
-        height: 27px;
-    }
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 143px;
+    margin-bottom: 20px;
+  }
+  .navItem {
+    height: 27px;
+  }
 
-    .navItem:not(:last-child) {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
+  .navItem:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 
-    .iconWrapper {
-        margin-right: 23px;
-    }
+  .iconWrapper {
+    margin-right: 23px;
+  }
 
-    .iconWrapper,
-    .navIcon {
-        width: 18px;
-        height: 18px;
-    }
+  .iconWrapper,
+  .navIcon {
+    width: 18px;
+    height: 18px;
+  }
 
-    .navText {
-      display: block;
-      font-family: var(--main-text-color);
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 1.5;
-    }
+  .navText {
+    display: block;
+    font-family: var(--main-text-color);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+  }
 
-    .navLinkActive .navText {
-      font-weight: 700;
-    }
+  .navLinkActive .navText {
+    font-weight: 700;
+  }
 }
 
 .navLink {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-color);
 }
 
 .navLink:hover,
 .navLink:focus {
-    color: var(--main-color);
+  color: var(--main-color);
 
-    transition: color 250ms linear;
+  transition: color 250ms linear;
 }
 
 .navLinkActive {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--main-text-color);
-    transition: color 250ms linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-text-color);
+  transition: color 250ms linear;
 }
 
 navLinkActive:hover,
-navLinkActive:focus{
-    color: var(--main-text-color);
+navLinkActive:focus {
+  color: var(--main-text-color);
 }
 
-@media screen and (min-width:1280px) {
-    .nav {
-        margin-bottom: 30px;  
-    }
+@media screen and (min-width: 1280px) {
+  .nav {
+    margin-bottom: 30px;
+  }
 
-    .navItem {
-        cursor: pointer;
-    }
+  .navItem {
+    cursor: pointer;
+  }
 }
 
 .navLinkActive .iconWrapper {
-    background-color: var(--secondary-background-color);
-    border-radius: 6px;
-    fill:var(--main-color);
-    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  background-color: var(--secondary-background-color);
+  border-radius: 6px;
+  fill: var(--main-color);
+  filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
 }

@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 import CommonContainer from './containers/CommonContainer'
 import ButtonAddTransactions from './components/ButtonAddTransactions'
 // import ModalAddTransaction from './components/ModalAddTransaction'
-import Loader from './components/Loader'
+// import Loader from './components/Loader'
 
 function App() {
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
@@ -23,7 +23,7 @@ function App() {
         }
       </Media> */}
       <Header />
-      <Loader />
+      {/* <Loader /> */}
       <DiagramTab />
       <CommonContainer>
         {/* <ModalAddTransaction onChange={() => handleChange} /> */}
