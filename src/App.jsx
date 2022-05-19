@@ -1,6 +1,8 @@
 // import Media from 'react-media'
 // import { mediaQueries } from './utils/constants'
 import Header from './components/Header'
+import Navigation from './components/Navigation'
+import HomeTab from './components/HomeTab'
 import DiagramTab from './components/DiagramTab'
 import React, { useState } from 'react'
 import CommonContainer from './containers/CommonContainer'
@@ -24,6 +26,8 @@ function App() {
       </Media> */}
       <Header />
       {/* <Loader /> */}
+      <Navigation />
+      <HomeTab />
       <DiagramTab />
       <CommonContainer>
         {/* <ModalAddTransaction onChange={() => handleChange} /> */}
