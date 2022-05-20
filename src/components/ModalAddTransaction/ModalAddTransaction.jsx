@@ -9,7 +9,7 @@ import sprite from '../../assets/svg/sprite.svg'
 import PluSvg from '../../assets/svg/Plus.svg'
 import MinusSvg from '../../assets/svg/Minus.svg'
 import { ReactSVG } from 'react-svg'
-import styles from './AddTransaction.module.css'
+import styles from './ModalAddTransaction.module.css'
 import Select from 'react-select/base'
 //this is realisation AddTransaction
 //  const [showModal, setShowModal] = useState(false);
@@ -242,7 +242,7 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
   return (
     <div className={styles.addTransContainer}>
       <div onClick={closeComponent} className={styles.closeBtnBox}>
-        <button onClick={closeComponent}>
+        <button className={styles.closeButton} onClick={closeComponent}>
           <svg width="24" height="24" className={styles.closeIcon}>
             <use href={`${sprite}#icon-close`} />
           </svg>

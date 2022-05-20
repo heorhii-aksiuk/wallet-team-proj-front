@@ -12,9 +12,9 @@
 			<path fill="#4a56e2" style="fill: var(--color2, #4a56e2)" d="M12 14.667h-2.667v2.667h2.667v-2.667zM17.333 14.667h-2.667v2.667h2.667v-2.667zM22.667 14.667h-2.667v2.667h2.667v-2.667zM25.333 5.333h-1.333v-2.667h-2.667v2.667h-10.667v-2.667h-2.667v2.667h-1.333c-1.48 0-2.653 1.2-2.653 2.667l-0.013 18.667c0 1.473 1.194 2.667 2.667 2.667v0h18.667c1.467 0 2.667-1.2 2.667-2.667v-18.667c0-1.467-1.2-2.667-2.667-2.667zM25.333 26.667h-18.667v-14.667h18.667v14.667z">
 			</path>
 		</symbol>
-		<symbol id="icon-close" viewBox="0 0 32 32">
-			<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.7778" d="M1.778 1.778l28.444 28.444M1.778 30.222l28.444-28.444">
-			</path>
+		<symbol id="icon-close" viewBox="0 0 18 18" fill="none">
+			<path d="M1 1L17 17" stroke="black"/>
+			<path d="M1 17L17 0.999999" stroke="black"/>
 		</symbol>
 		<symbol id="icon-currency" viewBox="0 0 32 32">
 			<path fill="#fff" style="fill: var(--color3, #fff)" d="M8.828 3.862h14.345c1.828 0 3.31 1.482 3.31 3.31v14.345c0 1.828-1.482 3.31-3.31 3.31h-14.345c-1.828 0-3.31-1.482-3.31-3.31v-14.345c0-1.828 1.482-3.31 3.31-3.31z">
