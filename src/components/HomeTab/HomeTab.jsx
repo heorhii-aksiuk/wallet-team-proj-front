@@ -1,13 +1,16 @@
 import HomeTabMobile from './HomeTabMobile'
 import HomeTabDesktop from './HomeTabDesktop'
 
-import MediaQuery from 'react-responsive'
+import Media from 'react-media'
 
 const TransactionTab = () => {
   return (
-    <MediaQuery maxWidth={767}>
+    <Media queries={{
+      mobile: '(max-width: 767px)',
+    }}
+    >
       {matches => (matches ? <HomeTabMobile /> : <HomeTabDesktop />)}
-    </MediaQuery>
+    </Media>
   );
 };
 
