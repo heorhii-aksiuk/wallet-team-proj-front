@@ -1,7 +1,5 @@
 import React from 'react'
 import zxcvbn from 'zxcvbn'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
 import s from './PasswordStrength.module.css'
 
 const PasswordStrength = ({ password }) => {
@@ -48,8 +46,8 @@ const PasswordStrength = ({ password }) => {
   })
   return (
     <div className={s.progressBar}>
-      <div className="progress" style={{ height: '7px' }}>
-        <div className="progress-bar" style={changePasswordColor()}></div>
+      <div className={s.progress} style={{ height: '7px' }}>
+        <div className={s.progress} style={changePasswordColor()}></div>
       </div>
       <p className={s.Text} style={{ color: funcProgressColor() }}>
         {createPasswordLabel()}
