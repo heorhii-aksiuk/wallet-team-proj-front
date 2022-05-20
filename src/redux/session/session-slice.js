@@ -5,7 +5,7 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   error: null,
-  isAuth: true,
+  isAuth: false,
 }
 
 const sessionSlice = createSlice({

@@ -1,202 +1,215 @@
 .tableContainer {
-    width: 100%;
+  width: 100%;
 
-    font-family: var(--main-font);
-    font-style: normal;
+  font-family: var(--main-font);
+  font-style: normal;
 
-    color: var(--main-text-color);
+  color: var(--main-text-color);
 }
 
-.item{
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px 14px;
-    margin-bottom: 20px;
-    
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    
-    border: 1px solid #000000;
-    border-radius: 30px;
+.menu {
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px 14px;
+  margin-bottom: 20px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  border: 1px solid #000000;
+  border-radius: 30px;
 }
 
 .item:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.itemIcon{
-    width: 40px;
-    height: 20px;
+.itemIcon {
+  width: 40px;
+  height: 20px;
 }
 
-.subMenu{
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: 102%;
-    list-style: none;
+.subMenu {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 102%;
+  list-style: none;
 
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
-    z-index: 4;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  z-index: 4;
 }
 
-.backdrop{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 3;
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
 }
 
-.subItem{
-    padding: 0 8px 0 20px;
-    height: 44px;
-    display: flex;
-    align-items: center;
+.subItem {
+  padding: 0 8px 0 20px;
+  height: 44px;
+  display: flex;
+  align-items: center;
 
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .subItem:hover {
-    font-weight: 600;
-    cursor: pointer;
-    background-color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #ffffff;
 }
 
 .subItem:first-child:hover {
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
 .subItem:last-child:hover {
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
 
 /* таблица */
 .tableHead {
-    display: flex;
-    justify-content:space-between;
-    padding: 16px 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 20px 15px;
 
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 27px;
-    
-    background: #ffffff;
-    border-radius: 30px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+
+  background: #ffffff;
+  border-radius: 30px;
 }
 
-.tableBody{
-    margin-bottom: 16px;
+.tableHead p {
+  margin: 0;
 }
 
-.tableItem{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    height: 52px;
+.tableBody {
+  margin-bottom: 16px;
+}
 
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
+.tableItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 52px;
 
-    border-bottom: 1px solid #DCDCDF;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }
 
 .tableItem div {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .tableItemSvg {
-    min-width: 24px;
-    margin-right: 16px;
+  min-width: 24px;
+  margin-right: 16px;
 }
 
 .tableItemQuantity {
-    margin-left: 16px;
+  margin-left: 16px;
 
-    font-size: 16px;
-    line-height: 24px;
-    white-space: nowrap;
+  font-size: 16px;
+  line-height: 24px;
+  white-space: nowrap;
 }
 
 .messEmpty {
-    padding: 0 20px;
-    margin-bottom: 36px;
+  padding: 0 20px;
+  margin-bottom: 36px;
+  margin-top: 36px;
 
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 18px;
-    text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
 
-    color: var(--placeholder-third-color)
+  color: var(--placeholder-third-color);
 }
 
 .result {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
 
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.expenses{  
-    margin-bottom: 17px;
+.expenses {
+  margin-bottom: 17px;
 }
 
 .expenses .sum {
-    color: var(--red-color)
+  color: var(--red-color);
 }
 
 .income .sum {
-    color: var(--green-color)
+  color: var(--green-color);
 }
 
 .empty {
-    color: var(--placeholder-third-color)
+  color: var(--placeholder-third-color);
 }
 
 @media screen and (min-width: 768px) {
-    .tableContainer {
-        width: 336px;
-        padding-top: 40px;
-    }
+  .tableContainer {
+    width: 336px;
+    padding-top: 20px;
+  }
 
-    .menu {
-        display: flex;
-        justify-content: space-between;
-    }
+  .menu {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
 
-    .item {
-        width: 160px;
-    }
+  .item {
+    width: 160px;
+  }
 }
 @media screen and (min-width: 1280px) {
-    .tableContainer {
-        width: 395px;
-        padding-top: 97px;
-    }
+  .tableContainer {
+    width: 395px;
+    padding-top: 97px;
+    margin-left: 32px;
+  }
 
-    .item {
-        width: 182px;
-    }  
+  .item {
+    width: 182px;
+  }
 
-    .tableHead {
-        padding: 16px 28px 15px;
-    }  
+  .tableHead {
+    padding: 16px 28px 15px;
+  }
 }

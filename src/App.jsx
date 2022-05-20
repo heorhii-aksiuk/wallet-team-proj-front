@@ -1,72 +1,51 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { Route, Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 
 import { sessionOperations } from './redux/session'
+import { globalSelectors } from './redux/globall'
 import CommonContainer from './containers/CommonContainer'
+import WithAuthRedirect from './hoc/withAuthRedirect'
+import DashboardPage from './views/DashboardPage'
+import LoginPage from './views/LoginPage'
+import RegistrationPage from './views/RegistrationPage'
 import Loader from './components/Loader'
 
 function App() {
   const dispatch = useDispatch()
 
+  const isLoading = useSelector(globalSelectors.getIsLoading)
+
   useEffect(() => {
     dispatch(sessionOperations.refreshCurrentUser())
   }, [dispatch])
+
   return (
     <>
-      <Route exact path="/">
-        <div>
-          <h2 style={{ marginBottom: '50px' }}>Home Page</h2>
+      <Switch>
+        <Route exact path="/login">
+          <CommonContainer>
+            <LoginPage />
+          </CommonContainer>
+        </Route>
 
-          <ul>
-            <li>
-              <Link to="/">home-page</Link>
-            </li>
-            <li>
-              <Link to="/login">login-page</Link>
-            </li>
-            <li>
-              <Link to="/registration">registration-page</Link>
-            </li>
-          </ul>
-        </div>
-      </Route>
+        <Route exact path="/registration">
+          <CommonContainer>
+            <RegistrationPage />
+          </CommonContainer>
+        </Route>
 
-      <Route path="/login">
-        <div>
-          <h2 style={{ marginBottom: '50px' }}>Login Page</h2>
+        <Route exact path="/*">
+          <CommonContainer>
+            <DashboardPage />
+          </CommonContainer>
+        </Route>
+      </Switch>
 
-          <ul>
-            <li>
-              <Link to="/">home-page</Link>
-            </li>
-            <li>
-              <Link to="/login">login-page</Link>
-            </li>
-            <li>
-              <Link to="/registration">registration-page</Link>
-            </li>
-          </ul>
-        </div>
-      </Route>
+      {isLoading && <Loader />}
 
-      <Route path="/registration">
-        <div>
-          <h2 style={{ marginBottom: '50px' }}>Registration Page</h2>
-
-          <ul>
-            <li>
-              <Link to="/">home-page</Link>
-            </li>
-            <li>
-              <Link to="/login">login-page</Link>
-            </li>
-            <li>
-              <Link to="/registration">registration-page</Link>
-            </li>
-          </ul>
-        </div>
-      </Route>
+      <Toaster />
     </>
   )
 }
