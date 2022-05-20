@@ -3,27 +3,12 @@ import * as financeOperations from './finance-operations'
 import { sessionOperations } from '../session'
 
 const initialState = {
-  totalBalance: '90000.98',
+  totalBalance: null,
   transactions: [],
   statistics: {
-    data: [
-      {
-        id: 1,
-        color: '#FED057',
-        name: 'Основные расходы',
-        quantity: '8700.00',
-      },
-      { id: 2, color: '#FFD8D0', name: 'Продукты', quantity: '3800.74' },
-      { id: 3, color: '#FD9498', name: 'Машина', quantity: '1500.00' },
-      { id: 4, color: '#C5BAFF', name: 'Забота о себе', quantity: '800.00' },
-      { id: 5, color: '#6E78E8', name: 'Забота о детях', quantity: '2208.50' },
-      { id: 6, color: '#4A56E2', name: 'Товары для дома', quantity: '300.00' },
-      { id: 7, color: '#81E1FF', name: 'Образование', quantity: '3400.00' },
-      { id: 8, color: '#24CCA7', name: 'Досуг', quantity: '1230.00' },
-      { id: 9, color: '#00AD84', name: 'Другие расходы', quantity: '610.00' },
-    ],
-    expenses: '25400.40', // расходы
-    income: '19700', // доходы
+    data: [],
+    expenses: null,
+    income: null,
   },
   categories: [],
   error: null,
@@ -34,34 +19,34 @@ const financeSlice = createSlice({
   initialState,
   extraReducers: {
     [financeOperations.getAllTransactions.fulfilled](state, { payload }) {
-      state.totalBalance = payload.totalBalance
-      state.transactions = payload.transactions
+      state.totalBalance = payload.totals.balance
+      state.transactions = payload.AllTransactions
       state.error = null
     },
     [financeOperations.getAllTransactions.rejected](state, { payload }) {
-      state.error = payload.error
+      state.error = payload
     },
     [financeOperations.addTransaction.fulfilled](state, { payload }) {
-      state.totalBalance = payload.totalBalance
-      state.transactions = payload.transactions
       state.error = null
     },
     [financeOperations.addTransaction.rejected](state, { payload }) {
-      state.error = payload.error
+      state.error = payload
     },
     [financeOperations.getStatistics.fulfilled](state, { payload }) {
-      state.statistics = payload.statistics
-      state.state.error = null
+      state.statistics.data = payload.data.statistics
+      state.statistics.extenses = payload.data.totals.expense
+      state.statistics.income = payload.data.totals.income
+      state.error = null
     },
     [financeOperations.getStatistics.rejected](state, { payload }) {
-      state.error = payload.error
+      state.error = payload
     },
     [financeOperations.getCategories.fulfilled](state, { payload }) {
-      state.categories = payload.categories
-      state.state.error = null
+      state.categories = payload.data.categories
+      state.error = null
     },
     [financeOperations.getCategories.rejected](state, { payload }) {
-      state.error = payload.error
+      state.error = payload
     },
     [sessionOperations.logOut.fulfilled](state) {
       state = initialState

@@ -1,1 +1,1 @@
-export { default } from './AddTransaction'
+export { default } from './ModalAddTransaction'

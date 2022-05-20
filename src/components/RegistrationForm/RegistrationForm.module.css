@@ -64,6 +64,7 @@
     max-width: none;
     width: 533px;
     padding: 40px 58.5px 62px 65px;
+    background-color: var(--secondary-background-color);
 
     border-radius: 20px;
   }
