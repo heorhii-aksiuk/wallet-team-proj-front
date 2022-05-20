@@ -2,7 +2,9 @@ import { Toaster } from 'react-hot-toast'
 // import Media from 'react-media'
 // import { mediaQueries } from './utils/constants'
 import Header from './components/Header'
-// import DiagramTab from './components/DiagramTab'
+import Navigation from './components/Navigation'
+import HomeTab from './components/HomeTab'
+import DiagramTab from './components/DiagramTab'
 import React, { useState } from 'react'
 // import CommonContainer from './containers/CommonContainer'
 // import ButtonAddTransactions from './components/ButtonAddTransactions'
@@ -33,14 +35,15 @@ function App() {
       </Media> */}
       <Header />
       {/* <Loader /> */}
-      {/* <DiagramTab /> */}
+      <Navigation />
+      <HomeTab />
+      <DiagramTab />
       {/* <CommonContainer> */}
-      {/* <AddTransaction></AddTransaction> */}
-      <ModalAddTransaction onChange={() => handleChange} />
-      {/* <ButtonAddTransactions
-          onChange={() => handleChange
-        ></ButtonAddTransactions>
-      </CommonContainer>*/}
+        {/* <ModalAddTransaction onChange={() => handleChange} /> */}
+        {/* <ButtonAddTransactions
+          onChange={() => handleChange}
+        ></ButtonAddTransactions> */}
+      {/* </CommonContainer> */}
       <Toaster />
     </>
   )
