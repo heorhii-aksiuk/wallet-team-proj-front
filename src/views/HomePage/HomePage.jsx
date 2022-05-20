@@ -6,6 +6,7 @@ import Header from '../../components/Header'
 import Navigation from '../../components/Navigation'
 import Balance from '../../components/Balance'
 import Currency from '../../components/Currency'
+import HomeTab from '../../components/HomeTab'
 import s from './HomePage.module.css'
 
 function HomePage() {
@@ -17,8 +18,18 @@ function HomePage() {
         <Media queries={mediaQueries}>
           {(matches) => (
             <>
-              {matches.response && <Navigation />}
-              {matches.mobile && <Navigation />}
+              {matches.response && (
+                <>
+                  <Navigation />
+                  <Balance />
+                </>
+              )}
+              {matches.mobile && (
+                <>
+                  <Navigation />
+                  <Balance />
+                </>
+              )}
               {matches.tablet && (
                 <>
                   <div className={s.subBox1}>
@@ -44,7 +55,7 @@ function HomePage() {
       </div>
 
       <div className={s.box2}>
-        <div>тут будет </div>
+        <HomeTab />
       </div>
     </div>
   )

@@ -1,16 +1,23 @@
 import React from 'react'
-import Media from 'react-media'
-import { useHistory, Route, Switch } from 'react-router-dom'
-
-import { mediaQueries } from '../../utils/constants'
+import { useSelector, useDispatch } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
 
 import HomePage from '../HomePage'
 import StatisticsPage from '../StatisticsPage'
 import CurrencyPage from '../CurrencyPage'
-import Navigation from '../../components/Navigation'
+import Modal from '../../components/Modal'
+import ModalLogout from '../../components/ModalLogout'
+import ModalAddTransaction from '../../components/ModalAddTransaction'
+import { globalSelectors } from '../../redux/globall'
 import s from './DashboardPage.module.css'
 
 const DashboardPage = () => {
+  const isModalAddTransactionOpen = useSelector(
+    globalSelectors.getIsModalAddTransactionOpen,
+  )
+
+  const isModalLogoutOpen = useSelector(globalSelectors.getModalLogoutOpen)
+
   return (
     <div className={s.backgroundWrapper}>
       <div className={s.container}>
@@ -31,6 +38,18 @@ const DashboardPage = () => {
             <HomePage />
           </Route>
         </Switch>
+
+        {isModalAddTransactionOpen && (
+          <Modal>
+            <ModalAddTransaction />
+          </Modal>
+        )}
+
+        {isModalLogoutOpen && (
+          <Modal>
+            <ModalLogout />
+          </Modal>
+        )}
       </div>
     </div>
   )
