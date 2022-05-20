@@ -1,5 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import toast from 'react-hot-toast'
+
+axios.defaults.baseURL = 'https://wallet-team-proj.herokuapp.com'
 
 const getAllTransactions = createAsyncThunk(
   'finance/getAllTransactions',
@@ -9,8 +12,9 @@ const getAllTransactions = createAsyncThunk(
 
       return data
     } catch (error) {
-      return thunkAPI.rejectWithValue()
-      // обработать ошибку
+      toast.error(error.response.data.message)
+
+      return thunkAPI.rejectWithValue(error.response.data)
     }
   },
 )
@@ -21,10 +25,13 @@ const addTransaction = createAsyncThunk(
     try {
       const { data } = await axios.post('/transactions', transaction)
 
+      toast.success('Трансакция добавлена')
+
       return data
     } catch (error) {
-      return thunkAPI.rejectWithValue()
-      // обработать ошибку
+      toast.error(error.response.data.message)
+
+      return thunkAPI.rejectWithValue(error.response.data)
     }
   },
 )
@@ -37,8 +44,9 @@ const getStatistics = createAsyncThunk(
 
       return data
     } catch (error) {
-      return thunkAPI.rejectWithValue()
-      // обработать ошибку
+      toast.error(error.response.data.message)
+
+      return thunkAPI.rejectWithValue(error.response.data)
     }
   },
 )
@@ -51,8 +59,9 @@ const getCategories = createAsyncThunk(
 
       return data
     } catch (error) {
-      return thunkAPI.rejectWithValue()
-      // обработать ошибку
+      toast.error(error.response.data.message)
+
+      return thunkAPI.rejectWithValue(error.response.data)
     }
   },
 )

@@ -12,14 +12,8 @@ const sessionSlice = createSlice({
   name: 'session',
   initialState,
   extraReducers: {
-    [sessionOperations.signUp.fulfilled](state, { payload }) {
-      state.user = payload.user
-      state.token = payload.token
-      state.error = null
-      state.isAuth = true
-    },
     [sessionOperations.signUp.rejected](state, { payload }) {
-      state.error = payload.error
+      state.error = payload
     },
     [sessionOperations.logIn.fulfilled](state, { payload }) {
       state.user = payload.user
@@ -28,7 +22,7 @@ const sessionSlice = createSlice({
       state.isAuth = true
     },
     [sessionOperations.logIn.rejected](state, { payload }) {
-      state.error = payload.error
+      state.error = payload
     },
     [sessionOperations.refreshCurrentUser.fulfilled](state, { payload }) {
       state.user = payload.user
@@ -37,7 +31,7 @@ const sessionSlice = createSlice({
       state.isAuth = true
     },
     [sessionOperations.refreshCurrentUser.rejected](state, { payload }) {
-      state.error = payload.error
+      state.error = payload
     },
     [sessionOperations.logOut.fulfilled](state) {
       state.user = { name: null, email: null }
@@ -46,7 +40,7 @@ const sessionSlice = createSlice({
       state.isAuth = false
     },
     [sessionOperations.logOut.rejected](state, { payload }) {
-      state.error = payload.error
+      state.error = payload
     },
   },
 })

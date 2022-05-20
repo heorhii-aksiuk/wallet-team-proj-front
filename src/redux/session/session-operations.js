@@ -1,5 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import toast from 'react-hot-toast'
+
+axios.defaults.baseURL = 'https://wallet-team-proj.herokuapp.com/api'
 
 const token = {
   set(token) {
@@ -11,35 +14,37 @@ const token = {
 }
 
 const signUp = createAsyncThunk(
-  'session/register',
+  'session/signUp',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/auth/register', credentials)
+      const { data } = await axios.post(
+        '/auth-routes/registration',
+        credentials,
+      )
 
-      token.set(data.token)
-
+      toast.success('Регистрация прошла успешно')
       return data
     } catch (error) {
-      console.log(error)
-      return thunkAPI.rejectWithValue()
-      
-      // обработать ошибку
+      toast.error(error.response.data.message)
+
+      return thunkAPI.rejectWithValue(error.response.data)
     }
   },
 )
 
 const logIn = createAsyncThunk(
-  'session/login',
+  'session/logIn',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/auth/login', credentials)
+      const { data } = await axios.post('/auth-routes/login', credentials)
 
       token.set(data.token)
 
       return data
     } catch (error) {
-      return thunkAPI.rejectWithValue()
-      // обработать ошибку
+      toast.error(error.response.data.message)
+
+      return thunkAPI.rejectWithValue(error.response.data)
     }
   },
 )
@@ -52,17 +57,15 @@ const refreshCurrentUser = createAsyncThunk(
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue()
-      // обработать ошибку
     }
 
     token.set(persistedToken)
 
     try {
-      const { data } = await axios.get('/auth/current')
+      const { data } = await axios.get('/auth-routes/current')
       return data
     } catch (error) {
       return thunkAPI.rejectWithValue()
-      // обработать ошибку
     }
   },
 )
@@ -73,8 +76,9 @@ const logOut = createAsyncThunk('session/logout', async (_, thunkAPI) => {
 
     token.unSet()
   } catch (error) {
-    return thunkAPI.rejectWithValue()
-    // обработать ошибку
+    toast.error(error.response.data.message)
+
+    return thunkAPI.rejectWithValue(error.response.data)
   }
 })
 

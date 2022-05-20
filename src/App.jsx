@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast'
 // import Media from 'react-media'
 // import { mediaQueries } from './utils/constants'
 import Header from './components/Header'
@@ -38,7 +39,8 @@ function App() {
         {/* <ButtonAddTransactions
           onChange={() => handleChange}
         ></ButtonAddTransactions>
-      </CommonContainer> */}
+      </CommonContainer>
+      <Toaster />
     </>
   )
 }
