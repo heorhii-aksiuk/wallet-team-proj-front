@@ -33,17 +33,17 @@ const financeSlice = createSlice({
       state.error = payload
     },
     [financeOperations.getStatistics.fulfilled](state, { payload }) {
-      state.statistics.data = payload.statistics
-      state.statistics.extenses = payload.totals.expense
-      state.statistics.income = payload.totals.income
-      state.state.error = null
+      state.statistics.data = payload.data.statistics
+      state.statistics.extenses = payload.data.totals.expense
+      state.statistics.income = payload.data.totals.income
+      state.error = null
     },
     [financeOperations.getStatistics.rejected](state, { payload }) {
       state.error = payload
     },
     [financeOperations.getCategories.fulfilled](state, { payload }) {
-      state.categories = payload.categories
-      state.state.error = null
+      state.categories = payload.data.categories
+      state.error = null
     },
     [financeOperations.getCategories.rejected](state, { payload }) {
       state.error = payload
