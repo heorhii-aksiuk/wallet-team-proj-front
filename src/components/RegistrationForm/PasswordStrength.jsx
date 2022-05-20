@@ -1,6 +1,5 @@
 import React from 'react'
 import zxcvbn from 'zxcvbn'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 import s from './PasswordStrength.module.css'
 
