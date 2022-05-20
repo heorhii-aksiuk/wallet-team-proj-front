@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Datetime from 'react-datetime';
 import 'moment/locale/ru';
-import { addTransaction } from '../../redux/transactions';
+import {addTransaction} from "../../redux/finance/finance-operations";
 import {getTotalBalance} from "../../redux/finance/finance-selectors";
 import { useDispatch, useSelector } from 'react-redux';
 import {getCategories} from "../../redux/finance/finance-selectors";
@@ -243,6 +243,7 @@ const currentBalance = useSelector(getTotalBalance)
                     />
                     <span className={spendingActiveTrigger()}>Расход</span>
                 </div>
+<Select />
 
                 <div className={styles.summFieldContainer}>
                     <input
