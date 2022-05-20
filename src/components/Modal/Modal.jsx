@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 import styles from './Modal.module.css';
 
-export default function Backdrop({children}) {
+export default function Modal ({children}) {
   const modalRoot = document.querySelector('#modal-root')
   return (
       createPortal(

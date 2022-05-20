@@ -17,7 +17,7 @@ function DiagramTab() {
 
   useEffect(() => {
     // dispatch(financeOperations.getStatistics({startDate, endDate}))
-    console.log(startDate, endDate)
+    // console.log(startDate, endDate)
   }, [startDate, endDate, dispatch])
 
   return (

@@ -10,7 +10,37 @@ import PluSvg from '../../assets/svg/Plus.svg'
 import MinusSvg from '../../assets/svg/Minus.svg'
 import { ReactSVG } from 'react-svg';
 import styles from './AddTransaction.module.css';
+<<<<<<< HEAD:src/components/AddTransaction/AddTransaction.jsx
 import Select from "react-select/base";
+=======
+//this is realisation AddTransaction
+//  const [showModal, setShowModal] = useState(false);
+//   const [showAddTransaction, setAddTransaction] = useState(false);
+
+//  const toggleModal = () => {
+//     setShowModal(!showModal);
+//   };
+//
+//   function toggleAddTransaction() {
+//     setAddTransaction(!showAddTransaction);
+//   }
+//      <DashboardPage />
+//       <ButtonAddTransaction
+//         toggleAddTransaction={toggleAddTransaction}
+//         toggleModal={toggleModal}
+//       />
+//
+//       {showModal && (
+//         <Modal>
+//           {showAddTransaction && (
+//             <AddTransaction
+//               toggleAddTransaction={toggleAddTransaction}
+//               toggleModal={toggleModal}
+//             />
+//           )}
+//         </Modal>
+//       )}
+>>>>>>> main:src/components/ModalAddTransaction/AddTransaction.jsx
 
 function AddTransaction({ toggleModal, toggleAddTransaction }) {
     const [transactionType, setTransactionType] = useState('income');
@@ -22,8 +52,12 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
 
 
     const dispatch = useDispatch();
+<<<<<<< HEAD:src/components/AddTransaction/AddTransaction.jsx
 const currentBalance = useSelector(getTotalBalance)
     const categories = useSelector(getCategories)
+=======
+    //const currentBalance = useSelector(balance)
+>>>>>>> main:src/components/ModalAddTransaction/AddTransaction.jsx
 
     useEffect(() => {
         const backdrop = document.querySelector('#backdrop');
@@ -73,6 +107,7 @@ const currentBalance = useSelector(getTotalBalance)
         year: 'required|number',
     };
 
+<<<<<<< HEAD:src/components/AddTransaction/AddTransaction.jsx
     async function SubmitHandler(e) {
         e.preventDefault()
 
@@ -118,6 +153,68 @@ const currentBalance = useSelector(getTotalBalance)
         } catch (error) {
             console.log(error[0].message);
         }
+=======
+async function SubmitHandler(e) {
+    e.preventDefault()
+//розкоментувати коли буде баланс
+    // const nextBalance = currentBalance - summ
+
+    // if (nextBalance <= 0 && transactionType === 'spending' && category !== 'Выберите категорию') {
+    //     //notify
+    //     return;
+    // }
+    if (category === 'Выберите категорию') {
+    //notify
+        return;
+    }
+    // const userBalance = currentBalance.toString();
+    // нормалізація даних на бекенд
+    // const transaction = {
+    //     day: date.getDate(),
+    //     month: date.getMonth() + 1,
+    //     year: date.getFullYear(),
+    //     type: transactionType === 'income' ? true : false,
+    //     category: category,
+    //     sum: parseFloat(summ),
+    //     comment: comment,
+    //     balance: transactionType === 'income' ?
+    //         // userBalance + parseFloat(summ) : userBalance - parseFloat(summ),
+    //     // balance: currentBalance.toString()
+    // };
+    const transactionNoComment = {
+        day: date.getDate(),
+        month: date.getMonth() + 1,
+        year: date.getFullYear(),
+        type: transactionType === 'income' ? true : false,
+        category: category,
+        sum: parseFloat(summ),
+        // balance: transactionType === 'income' ?
+        //     userBalance + parseFloat(summ) : userBalance - parseFloat(summ),
+        // balance: currentBalance.toString()
+    };
+    // нормалізація даних на бекенд
+
+    try {
+        //валідація даних
+        // dispatch(addTransaction(comment ? transaction : transactionNoComment));
+        closeComponent();
+    } catch (error) {
+        console.log(error[0].message);
+    }
+}
+
+    function summChange(e) {
+        const number = Number(e.target.value);
+        const integer = Number.isInteger(number);
+
+        if (!integer) {
+            const [int, float] = String(number).split('.');
+            setSumm(`${int}.${float.slice(0, 2)}`);
+            return;
+        }
+
+        setSumm(e.target.value);
+>>>>>>> main:src/components/ModalAddTransaction/AddTransaction.jsx
     }
 
     function switchClickHandler(e) {
@@ -169,6 +266,10 @@ const currentBalance = useSelector(getTotalBalance)
         toggleModal();
     }
 
+<<<<<<< HEAD:src/components/AddTransaction/AddTransaction.jsx
+=======
+    // function for add class
+>>>>>>> main:src/components/ModalAddTransaction/AddTransaction.jsx
     function DropMenuActiveTrigger() {
         if (category !== 'Выберите категорию') {
             const basic = styles.dropDownField;
@@ -245,6 +346,7 @@ const currentBalance = useSelector(getTotalBalance)
                 </div>
 <Select />
 
+
                 <div className={styles.summFieldContainer}>
                     <input
                         className={styles.summField}
@@ -266,7 +368,11 @@ const currentBalance = useSelector(getTotalBalance)
                         closeOnSelect={true}
                         timeFormat={false}
                     />
+<<<<<<< HEAD:src/components/AddTransaction/AddTransaction.jsx
                     <svg width="24" height="24" className={styles.calendarIcon}>
+=======
+                     <svg width="24" height="24" className={styles.calendarIcon}>
+>>>>>>> main:src/components/ModalAddTransaction/AddTransaction.jsx
                         <use href={`${sprite}#icon-calendar`} />
                     </svg>
                 </div>

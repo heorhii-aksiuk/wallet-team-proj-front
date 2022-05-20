@@ -1,21 +1,21 @@
 .container {
-  min-width: 320px;
-  max-width: 479px;
-  padding: 107px 20px;
-  margin: 0 auto;
-
-  border: 1px solid rgba(226, 224, 224, 0.596);
+    min-width: 320px;
+    max-width: 479px;
+    padding: 107px 20px;
+    margin: 0 auto;
+    
+    /* background: rgba(226, 224, 224, 0.596); */
 }
 
 .logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
 }
 
-.logoIcon {
-  width: 120px;
-  height: 30px;
+.logoIcon {    
+    width: 120px;
+    height: 30px;
 }
 
 .form {
@@ -62,10 +62,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
+    .container {
     max-width: none;
     width: 533px;
     padding: 40px 58.5px 62px 65px;
+    background-color: var(--secondary-background-color);
 
     border-radius: 20px;
   }

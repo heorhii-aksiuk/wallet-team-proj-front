@@ -27,7 +27,8 @@ const LoginForm = () => {
   }
 
   return (
-    <div className={s.container}>
+    <div className={s.desktopContainer}>
+      <div className={s.container}>
       <div className={s.logo}>
         <svg className={s.logoIcon}>
           <use href={`${sprite}#icon-logo`}></use>
@@ -92,6 +93,7 @@ const LoginForm = () => {
           </button>
         </Form>
       </Formik>
+    </div>
     </div>
   )
 }
