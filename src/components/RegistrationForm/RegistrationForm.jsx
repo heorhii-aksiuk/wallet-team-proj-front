@@ -120,10 +120,10 @@ const RegistrationForm = () => {
             />
           </label>
 
-          <Button title="Начать" type="submit" className={s.submitBtn} />
+          <Button title="Регистрация" type="submit" className={s.submitBtn} />
 
           <Button
-            title="Войти"
+            title="Вход"
             type="button"
             typeButton="secondary"
             onClick={onLoginBtn}
