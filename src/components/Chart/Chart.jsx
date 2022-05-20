@@ -1,6 +1,7 @@
 import React from 'react'
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
+import { normalizeNum } from '../../utils'
 
 import s from './Chart.module.css'
 
@@ -38,13 +39,11 @@ function Chart({ statistics, totalBalance }) {
     }
   }
 
-  const normalizeNum = (str) => {
-    return str?.replace(/(\d)(?=(\d{3})+(\D|$))/g, '$1 ')
-  }
-
   return (
     <div className={s.diagramContainer}>
-      <div className={s.balance}>₴ {normalizeNum(totalBalance)}</div>
+      <div className={s.balance}>
+        ₴ {totalBalance ? normalizeNum(totalBalance) : 0}
+      </div>
       <Doughnut data={doughnutData} />
     </div>
   )

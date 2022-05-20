@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 import Button from '../Button'
 import { sessionOperations } from '../../redux/session'
-import { loginSchema } from '../../utils/validationsSchemas'
+import { loginSchema } from '../../utils'
 import sprite from '../../assets/svg/sprite.svg'
 import s from './LoginForm.module.css'
 
