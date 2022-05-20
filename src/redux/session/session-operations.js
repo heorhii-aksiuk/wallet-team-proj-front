@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-axios.defaults.baseURL = 'https://wallet-team-proj.herokuapp.com/api'
+axios.defaults.baseURL = 'https://wallet-team-proj.herokuapp.com'
 
 const token = {
   set(token) {
@@ -17,10 +17,7 @@ const signUp = createAsyncThunk(
   'session/signUp',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post(
-        '/auth-routes/registration',
-        credentials,
-      )
+      const { data } = await axios.post('/auth/registration', credentials)
 
       toast.success('Регистрация прошла успешно')
       return data
@@ -36,9 +33,9 @@ const logIn = createAsyncThunk(
   'session/logIn',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/auth-routes/login', credentials)
+      const { data } = await axios.post('/auth/login', credentials)
 
-      token.set(data.token)
+      token.set(data.user.token)
 
       return data
     } catch (error) {
@@ -62,7 +59,8 @@ const refreshCurrentUser = createAsyncThunk(
     token.set(persistedToken)
 
     try {
-      const { data } = await axios.get('/auth-routes/current')
+      const { data } = await axios.get('/users/current')
+
       return data
     } catch (error) {
       return thunkAPI.rejectWithValue()

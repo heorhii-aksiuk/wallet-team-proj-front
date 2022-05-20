@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import * as sessionOperations from './session-operations'
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null },
   token: null,
   error: null,
   isAuth: false,
@@ -13,11 +13,12 @@ const sessionSlice = createSlice({
   initialState,
   extraReducers: {
     [sessionOperations.signUp.rejected](state, { payload }) {
+      state.isAuth = false
       state.error = payload
     },
     [sessionOperations.logIn.fulfilled](state, { payload }) {
-      state.user = payload.user
-      state.token = payload.token
+      state.user.name = payload.user.name
+      state.token = payload.user.token
       state.error = null
       state.isAuth = true
     },
@@ -25,16 +26,12 @@ const sessionSlice = createSlice({
       state.error = payload
     },
     [sessionOperations.refreshCurrentUser.fulfilled](state, { payload }) {
-      state.user = payload.user
-      state.token = payload.token
+      state.user.name = payload.data.name
       state.error = null
       state.isAuth = true
     },
-    [sessionOperations.refreshCurrentUser.rejected](state, { payload }) {
-      state.error = payload
-    },
     [sessionOperations.logOut.fulfilled](state) {
-      state.user = { name: null, email: null }
+      state.user = { name: null }
       state.token = null
       state.error = null
       state.isAuth = false
