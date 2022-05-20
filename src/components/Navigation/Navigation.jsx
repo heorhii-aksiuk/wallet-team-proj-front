@@ -14,7 +14,7 @@ const Navigation = () => {
           }}
         >
           <div className={s.iconWrapper}>
-            <svg className={s.navIcon}>
+            <svg className={s.navIconHome}>
               <use href={`${sprite}#icon-home`}></use>
             </svg>
           </div>
