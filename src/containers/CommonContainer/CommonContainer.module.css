@@ -11,11 +11,11 @@
   }
 }
 
-@media (min-width: 480px) {
+/* @media (min-width: 480px) {
   .container {
     max-width: 480px;
   }
-}
+} */
 
 @media (min-width: 481px) and (max-width: 767px) {
   .container {

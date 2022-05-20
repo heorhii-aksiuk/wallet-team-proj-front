@@ -1,7 +1,3 @@
-p {
-    margin: 0; 
-}
-
 .tableContainer {
     width: 100%;
 
@@ -10,33 +6,12 @@ p {
 
     color: var(--main-text-color);
 }
-@media screen and (min-width: 768px) {
-    .tableContainer {
-        width: 336px;
-        padding-top: 40px;
-    }
-}
-@media screen and (min-width: 1280px) {
-    .tableContainer {
-        width: 395px;
-        padding-top: 97px;
-    }
-}
-
-.menu{
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-@media screen and (min-width: 768px) {
-    .menu {
-        display: flex;
-        justify-content: space-between;
-    }
-}
 
 .item{
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 12px 20px 14px;
     margin-bottom: 20px;
     
@@ -47,32 +22,25 @@ p {
     border: 1px solid #000000;
     border-radius: 30px;
 }
-@media screen and (min-width: 768px) {
-    .item {
-        width: 160px;
-    }   
-}
-@media screen and (min-width: 1280px) {
-    .item {
-        width: 182px;
-    }   
-}
 
 .item:hover {
     cursor: pointer;
 }
 
+.itemIcon{
+    width: 40px;
+    height: 20px;
+}
+
 .subMenu{
     position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+    top: -2px;
+    left: -2px;
+    width: 102%;
     list-style: none;
 
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(50px);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     z-index: 4;
@@ -82,8 +50,6 @@ p {
     position: fixed;
     top: 0;
     left: 0;
-    padding: 0;
-    margin: 0;
     width: 100vw;
     height: 100vh;
     z-index: 3;
@@ -96,8 +62,8 @@ p {
     align-items: center;
 
     font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .subItem:hover {
@@ -129,16 +95,9 @@ p {
     background: #ffffff;
     border-radius: 30px;
 }
-@media screen and (min-width: 1280px) {
-    .tableHead {
-        padding: 16px 28px 15px;
-    }   
-}
 
 .tableBody{
-    margin: 0 0 16px 0;
-    padding: 0;
-    list-style: none;
+    margin-bottom: 16px;
 }
 
 .tableItem{
@@ -174,7 +133,19 @@ p {
     white-space: nowrap;
 }
 
-.sum {
+.messEmpty {
+    padding: 0 20px;
+    margin-bottom: 36px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+
+    color: var(--placeholder-third-color)
+}
+
+.result {
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
@@ -188,10 +159,44 @@ p {
     margin-bottom: 17px;
 }
 
-.expenses span {
+.expenses .sum {
     color: var(--red-color)
 }
 
-.income span {
+.income .sum {
     color: var(--green-color)
+}
+
+.empty {
+    color: var(--placeholder-third-color)
+}
+
+@media screen and (min-width: 768px) {
+    .tableContainer {
+        width: 336px;
+        padding-top: 40px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .item {
+        width: 160px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .tableContainer {
+        width: 395px;
+        padding-top: 97px;
+    }
+
+    .item {
+        width: 182px;
+    }  
+
+    .tableHead {
+        padding: 16px 28px 15px;
+    }  
 }
