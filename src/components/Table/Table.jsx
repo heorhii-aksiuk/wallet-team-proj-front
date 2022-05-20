@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { getPeriodStatistics } from '../../services/dateServices'
+import { getPeriodStatistics } from '../../services'
 import sprite from '../../assets/svg/sprite.svg'
 import s from './Table.module.css'
 

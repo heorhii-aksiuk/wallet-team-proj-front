@@ -1,4 +1,4 @@
-const getPeriodStatistics = (month, year) => {
+export const getPeriodStatistics = (month, year) => {
   const monthsList = [
     { id: '01', name: 'Январь' },
     { id: '02', name: 'Февраль' },
@@ -38,5 +38,3 @@ const getPeriodStatistics = (month, year) => {
 
   return { monthsList, yearsList, startDate, endDate }
 }
-
-export { getPeriodStatistics }
