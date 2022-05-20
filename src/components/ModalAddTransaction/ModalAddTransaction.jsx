@@ -9,6 +9,8 @@ import sprite from '../../assets/svg/sprite.svg'
 import PluSvg from '../../assets/svg/Plus.svg'
 import MinusSvg from '../../assets/svg/Minus.svg'
 import { ReactSVG } from 'react-svg'
+
+import 'react-datetime/css/react-datetime.css'
 import styles from './ModalAddTransaction.module.css'
 import Select from 'react-select/base'
 //this is realisation AddTransaction
@@ -40,7 +42,7 @@ import Select from 'react-select/base'
 //       )}
 
 function AddTransaction({ toggleModal, toggleAddTransaction }) {
-  const [transactionType, setTransactionType] = useState('income')
+  const [transactionType, setTransactionType] = useState('spending')
   const [category, setCategory] = useState('Регулярный доход')
   const [listActive, setListActive] = useState(false)
   const [summ, setSumm] = useState('')
@@ -214,7 +216,7 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
   function incomeActiveTrigger() {
     if (transactionType === 'income') {
       const basic = styles.transTypeText
-      const active = styles.transTypeTextActive
+      const active = styles.transTypeTextActiveIncome
       return `${basic} ${active}`
     }
 
@@ -224,7 +226,7 @@ function AddTransaction({ toggleModal, toggleAddTransaction }) {
   function spendingActiveTrigger() {
     if (transactionType === 'spending') {
       const basic = styles.transTypeText
-      const active = styles.transTypeTextActive
+      const active = styles.transTypeTextActiveSpending
       return `${basic} ${active}`
     }
 

@@ -109,8 +109,11 @@
   color: #bdbdbd;
 }
 
-.transTypeTextActive {
+.transTypeTextActiveIncome {
   color: #24cca7;
+}
+.transTypeTextActiveSpending {
+  color: #ff6596;
 }
 
 .switchToggleContainer {
