@@ -32,8 +32,12 @@
   color: var(--placeholder-main-color);
 }
 
-.lineSvg {
-  display: none;
+.button {
+  height: fit-content;
+  padding: unset;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .exitSvg {
@@ -42,10 +46,6 @@
   position: absolute;
   right: 30px;
   top: 21px;
-}
-
-.exit {
-  display: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -73,7 +73,6 @@
   }
 
   .lineSvg {
-    display: block;
     width: 2px;
     height: 30px;
     position: absolute;
@@ -90,7 +89,6 @@
   }
 
   .exit {
-    display: block;
     padding-left: 30px;
     font-size: 18px;
     line-height: 27px;
