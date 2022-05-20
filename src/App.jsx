@@ -10,7 +10,7 @@ import RegistrationPage from './views/RegistrationPage'
 import LoginPage from './views/LoginPage'
 import RegistrationForm from './components/RegistrationForm'
 // import ModalAddTransaction from './components/ModalAddTransaction'
-import Loader from './components/Loader';
+import Loader from './components/Loader'
 import withAuthRedirect from './hoc/withAuthRedirect'
 import { Route, Routes } from 'react-router-dom'
 import { Switch } from 'react-router-dom'
@@ -33,13 +33,13 @@ function App() {
       </Media> */}
       <Header />
       {/* <Loader /> */}
-      {/* <DiagramTab /> */}     
+      {/* <DiagramTab /> */}
       {/* <CommonContainer> */}
-        {/* <ModalAddTransaction onChange={() => handleChange} /> */}
-        {/* <ButtonAddTransactions
-          onChange={() => handleChange}
+      {/* <ModalAddTransaction onChange={() => handleChange} /> */}
+      {/* <ButtonAddTransactions
+          onChange={() => handleChange
         ></ButtonAddTransactions>
-      </CommonContainer>
+      </CommonContainer>*/}
       <Toaster />
     </>
   )
