@@ -1,8 +1,10 @@
 import { React, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
 import PasswordStrength from './PasswordStrength'
+import Button from '../Button'
 import { sessionOperations } from '../../redux/session'
-import { Link } from 'react-router-dom'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { singupSchema } from '../../utils/validationsSchemas'
 import sprite from '../../assets/svg/sprite.svg'
@@ -12,14 +14,19 @@ const RegistrationForm = () => {
   const initialValues = {
     email: '',
     password: '',
-    confirmPassword: '',
+    repeatPassword: '',
     name: '',
   }
   const [password, setPassword] = useState('')
   const history = useHistory()
+  const dispatch = useDispatch()
 
   const onSubmit = (values) => {
-    sessionOperations.signUp({ values })
+    dispatch(sessionOperations.signUp(values))
+    history.push('/login')
+  }
+
+  const onLoginBtn = () => {
     history.push('/login')
   }
 
@@ -78,7 +85,7 @@ const RegistrationForm = () => {
           <label className={s.label}>
             <Field
               type="password"
-              name="confirmPassword"
+              name="repeatPassword"
               placeholder="Подтвердите пароль"
               className={s.input}
             />
@@ -88,7 +95,7 @@ const RegistrationForm = () => {
             </svg>
 
             <ErrorMessage
-              name="confirmPassword"
+              name="repeatPassword"
               component="p"
               className={s.validErrorMes}
             />
@@ -112,12 +119,16 @@ const RegistrationForm = () => {
               className={s.validErrorMes}
             />
           </label>
-          <button className={s.logBtn} type="submit" onSubmit={onSubmit}>
-            Вход
-          </button>
-          <Link to="/login" className={s.regBtn}>
-            Регистрация
-          </Link>
+
+          <Button title="Начать" type="submit" className={s.submitBtn} />
+
+          <Button
+            title="Войти"
+            type="button"
+            typeButton="secondary"
+            onClick={onLoginBtn}
+            className={s.loginBtn}
+          />
         </Form>
       </Formik>
     </div>

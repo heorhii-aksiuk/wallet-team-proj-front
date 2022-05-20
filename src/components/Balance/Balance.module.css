@@ -23,3 +23,15 @@
   line-height: 45px;
   color: var(--main-text-color);
 }
+
+@media (min-width: 768px) {
+  .card {
+    min-width: 336px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .card {
+    margin-bottom: 32px;
+  }
+}

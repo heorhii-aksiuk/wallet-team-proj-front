@@ -1,6 +1,12 @@
 .container {
-    background-color: var(--secondary-background-color);
-    height: 105vh;     
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  max-width: 480px;
+}
+
+.form {
+  width: 100%;
 }
 
 .appTitle {
@@ -13,46 +19,16 @@
   color: #000000;
 }
 
-@media screen and (min-width: 481px) and (max-width: 767px){
+@media screen and (min-width: 768px) {
   .container {
-    background-color: var(--secondary-background-color);
-    background-image: none;
-  }
-
-  .containerWrapper {
-    max-width: 480px;
-    padding: 0px 20px;
-  }
-
-    .form {
-      background-color: var(--secondary-background-color);
-      width: 100vw;
-      height: 105vh;        
-      margin: auto;
-    }
-}
-
-@media screen and (max-width: 1279px) and (min-width: 768px) {  
-  .container {
-    background-color: #e7eaf2;
-    background-image: url('../../assets/img/ellipse-violet.png'),
-      url('../../assets/img/ellipse-pink.png');
-    background-repeat: no-repeat, no-repeat;
-    background-position: left bottom, right top;
-  }
-  .containerWrapper {
-    margin: auto;
-    width: 768px;  
-    padding: 0px 32px;
-    }
-
-  .form {       
-    margin: auto;
-    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 38px 0;
+    max-width: none;
+    height: 100%;
   }
 
   .registerImg {
-    margin-top: 60px;    
     margin-right: 40px;
   }
 
@@ -65,46 +41,33 @@
 }
 
 @media screen and (min-width: 1280px) {
-    .container {
-      background-color: #e7eaf2;
-      background-image: url('../../assets/img/ellipse-violet.png'),
-        url('../../assets/img/ellipse-pink.png');
-      background-repeat: no-repeat, no-repeat;
-      background-position: left bottom, right top;
-      height: 105vh;
-      
-    }
+  .container {
+    flex-direction: row;
+    padding: 0;
+  }
 
-    .form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 105vh;
-      background-color: rgba(255, 255, 255, 0.4);
-      backdrop-filter: blur(50px);
-      padding: 52px 91px 52px 107px;
-      margin: 0;
-    }
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: auto;
 
-    .registerImg {
-        margin-left: 66px;
-        margin-bottom: 32px;
-    }
+    background-color: var(--main-background-color);
+    backdrop-filter: blur(50px);
+    padding: 52px 91px 52px 107px;
+  }
 
-    .registerImgWrapper {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .registerImg {
+    margin-left: 66px;
+    margin-bottom: 32px;
+  }
 
-    .containerWrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 1280px;
-        padding: 0px 18px;
-        margin: auto;
-    }
+  .registerImgWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
 }

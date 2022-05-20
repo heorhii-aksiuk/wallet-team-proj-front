@@ -3,15 +3,14 @@ import s from './Navigation.module.css'
 import sprite from '../../assets/svg/sprite.svg'
 import Media from 'react-media'
 
-
 const Navigation = () => {
   return (
     <ul className={s.nav}>
       <li className={s.navItem}>
         <NavLink
-          to="home"
+          to="/"
           className={({ isActive }) => {
-            return isActive ? s.navLinkActive : s.navLink;
+            return isActive ? s.navLinkActive : s.navLink
           }}
         >
           <div className={s.iconWrapper}>
@@ -26,7 +25,7 @@ const Navigation = () => {
         <NavLink
           to="statistics"
           className={({ isActive }) => {
-            return isActive ? s.navLinkActive : s.navLink;
+            return isActive ? s.navLinkActive : s.navLink
           }}
         >
           <div className={s.iconWrapper}>
@@ -44,13 +43,13 @@ const Navigation = () => {
           tablet: '(max-width: 768px)',
         }}
       >
-        {matches =>
+        {(matches) =>
           matches.mobile && (
             <li className={s.navItem}>
               <NavLink
                 to="currency"
                 className={({ isActive }) => {
-                  return isActive ? s.navLinkActive : s.navLink;
+                  return isActive ? s.navLinkActive : s.navLink
                 }}
               >
                 <div className={s.iconWrapper}>
@@ -65,8 +64,7 @@ const Navigation = () => {
         }
       </Media>
     </ul>
-  );
+  )
 }
 
-export default Navigation;
-
+export default Navigation
