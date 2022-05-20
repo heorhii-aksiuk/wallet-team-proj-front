@@ -1,21 +1,25 @@
 import Media from 'react-media'
 import { mediaQueries } from '../../utils/constants'
 import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../redux/session/session-selectors'
+import { getModalLogoutOpen } from '../../redux/globall/global-selectors'
+import { openModalLogout } from '../../redux/globall/global-actions'
 import s from './Header.module.css'
 import sprite from '../../assets/svg/sprite.svg'
+import ModalLogout from '../ModalLogout/ModalLogout'
 
 export default function Header() {
+  const dispatch = useDispatch()
   const { name } = useSelector(getUser)
-  const handleClick = () => console.log('on exit click') // Подключить модальное окно
+  const showModal = useSelector(getModalLogoutOpen)
 
   return (
     <>
       <header className={s.header}>
         <div className={s.logoContainer}>
           <NavLink exact to="./">
-            {/* Подставить путь главной страницы */}
+            {/* TODO:Подставить путь главной страницы */}
             <svg className={s.logoSvg}>
               <use href={`${sprite}#icon-logo-full`}></use>
             </svg>
@@ -32,7 +36,11 @@ export default function Header() {
               )
             }
           </Media>
-          <button className={s.button} onClick={handleClick} type="button">
+          <button
+            className={s.button}
+            onClick={() => dispatch(openModalLogout())}
+            type="button"
+          >
             <svg className={s.exitSvg}>
               <use href={`${sprite}#icon-exit`}></use>
             </svg>
@@ -46,6 +54,7 @@ export default function Header() {
           </button>
         </div>
       </header>
+      {showModal && <ModalLogout />}
     </>
   )
 }
