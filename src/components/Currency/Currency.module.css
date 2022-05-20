@@ -3,6 +3,7 @@
   height: 350px;
   font-family: var(--main-font);
   color: var(--secondary-text-color);
+  max-width: 396px;
 }
 
 .flex_center {
