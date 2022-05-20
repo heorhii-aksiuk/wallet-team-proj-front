@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-const loginSchema = Yup.object({
+export const loginSchema = Yup.object({
   email: Yup.string()
     .email('Неправильный имейл')
     .matches(
@@ -14,7 +14,7 @@ const loginSchema = Yup.object({
     .required('Обязательное поле'),
 })
 
-const singupSchema = Yup.object({
+export const singupSchema = Yup.object({
   name: Yup.string()
     .typeError('Должно быть строкой')
     .required('Обязательное поле'),
@@ -32,5 +32,3 @@ const singupSchema = Yup.object({
     .typeError('Должно быть строкой')
     .required('Обязательное поле'),
 })
-
-export { loginSchema, singupSchema }

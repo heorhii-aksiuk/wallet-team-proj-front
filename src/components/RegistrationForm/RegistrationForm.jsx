@@ -6,7 +6,7 @@ import PasswordStrength from './PasswordStrength'
 import Button from '../Button'
 import { sessionOperations } from '../../redux/session'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { singupSchema } from '../../utils/validationsSchemas'
+import { singupSchema } from '../../utils'
 import sprite from '../../assets/svg/sprite.svg'
 import s from './RegistrationForm.module.css'
 

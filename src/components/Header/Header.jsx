@@ -1,5 +1,5 @@
 import Media from 'react-media'
-import { mediaQueries } from '../../utils/constants'
+import { mediaQueries } from '../../utils'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../redux/session/session-selectors'
