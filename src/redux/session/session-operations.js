@@ -17,10 +17,10 @@ const signUp = createAsyncThunk(
   'session/signUp',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await axios.post('/auth/registration', credentials)
+      await axios.post('/auth/registration', credentials)
 
       toast.success('Регистрация прошла успешно')
-      return data
+      return
     } catch (error) {
       toast.error(error.response.data.message)
 

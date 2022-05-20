@@ -1,49 +1,50 @@
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
-// import Media from 'react-media'
-// import { mediaQueries } from './utils/constants'
-import Header from './components/Header'
-import Navigation from './components/Navigation'
-import HomeTab from './components/HomeTab'
-import DiagramTab from './components/DiagramTab'
-import React, { useState } from 'react'
-// import CommonContainer from './containers/CommonContainer'
-// import ButtonAddTransactions from './components/ButtonAddTransactions'
-// import RegistrationPage from './views/RegistrationPage'
-// import LoginPage from './views/LoginPage'
-// import RegistrationForm from './components/RegistrationForm'
-import ModalAddTransaction from './components/ModalAddTransaction'
-// import Loader from './components/Loader'
-// import withAuthRedirect from './hoc/withAuthRedirect'
-// import { Route, Routes } from 'react-router-dom'
-// import { Switch } from 'react-router-dom'
-// import { BrowserRouter } from 'react-router-dom'
+
+import { sessionOperations } from './redux/session'
+import { globalSelectors } from './redux/globall'
+import CommonContainer from './containers/CommonContainer'
+import WithAuthRedirect from './hoc/withAuthRedirect'
+import DashboardPage from './views/DashboardPage'
+import LoginPage from './views/LoginPage'
+import RegistrationPage from './views/RegistrationPage'
+import Loader from './components/Loader'
 
 function App() {
-  const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
-    useState(false)
+  const dispatch = useDispatch()
 
-  const handleChange = () => {
-    setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
-  }
+  const isLoading = useSelector(globalSelectors.getIsLoading)
+
+  useEffect(() => {
+    dispatch(sessionOperations.refreshCurrentUser())
+  }, [dispatch])
 
   return (
     <>
-      {/* <Media queries={mediaQueries}>
-        {(matches) =>
-          matches.desktop ? <p>I am desktop!</p> : <p>I am not desktop!</p>
-        }
-      </Media> */}
-      <Header />
-      {/* <Loader /> */}
-      <Navigation />
-      <HomeTab />
-      <DiagramTab />
-      {/* <CommonContainer> */}
-        {/* <ModalAddTransaction onChange={() => handleChange} /> */}
-        {/* <ButtonAddTransactions
-          onChange={() => handleChange}
-        ></ButtonAddTransactions> */}
-      {/* </CommonContainer> */}
+      <Switch>
+        <Route exact path="/login">
+          <CommonContainer>
+            <LoginPage />
+          </CommonContainer>
+        </Route>
+
+        <Route exact path="/registration">
+          <CommonContainer>
+            <RegistrationPage />
+          </CommonContainer>
+        </Route>
+
+        <Route exact path="/*">
+          <CommonContainer>
+            <DashboardPage />
+          </CommonContainer>
+        </Route>
+      </Switch>
+
+      {isLoading && <Loader />}
+
       <Toaster />
     </>
   )

@@ -1,27 +1,18 @@
-// import {Navigate} from "react-router-dom";
-import { store } from '../redux/store';
-// import routes from '../routes';
-// import Redirect from 'react-router-dom';
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
+import { sessionSelectors } from '../redux/session'
 
+const WithAuthRedirect = (Component) => {
+  const isAuth = useSelector(sessionSelectors.getIsAuth)
 
-const withAuthRedirect = Component => {
-    const isAuth = store.getState().session.isAuth;
+  const history = useHistory()
 
-        console.log('11111', store.getState().session.isAuth)
-    // const from = Component.props?.state?.from?.pathname || routes.home
+  if (isAuth) {
+    return history.push('/')
+  }
 
-    // if (isAuth) {
-    //     return <Navigate to={from} replace/>
-    // }
-    // const history = useHistory();
-   
-    if (isAuth) {         
-        // return history.push('/')
-        return <Redirect to='/'/>
-    }    
-    return Component
+  return Component
 }
 
-export default withAuthRedirect
+export default WithAuthRedirect

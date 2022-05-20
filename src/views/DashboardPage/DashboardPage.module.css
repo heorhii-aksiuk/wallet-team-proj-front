@@ -1,0 +1,40 @@
+.backgroundWrapper {
+  position: relative;
+  /* padding-top: 60px; */
+  /* height: 100vh; */
+
+  background-color: #e7eaf2;
+  backdrop-filter: blur(10px);
+}
+
+.container {
+  /* padding: 0 20px; */
+
+  background-color: var(--main-background-color);
+  /* backdrop-filter: blur(10px); */
+}
+
+.container header {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  .backgroundWrapper {
+    height: 100vh;
+    /* padding-top: 80px; */
+
+    background-color: transparent;
+  }
+
+  .container {
+    /* padding: 0 32px; */
+    height: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    /* height: 100vh; */
+    /* padding: 0 18px; */
+  }
+}
