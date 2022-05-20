@@ -1,5 +1,4 @@
 import Media from 'react-media'
-import { Redirect } from 'react-router-dom'
 
 import { mediaQueries } from '../../utils'
 import Header from '../../components/Header'

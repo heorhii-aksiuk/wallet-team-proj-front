@@ -23,9 +23,8 @@ const DashboardPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(financeOperations.getAllTransactions())
-    dispatch(financeOperations.getStatistics())
-    dispatch(financeOperations.getAllTransactions())
+    // dispatch(financeOperations.getAllTransactions())
+    // dispatch(financeOperations.getCategories())
   }, [dispatch])
 
   return (
