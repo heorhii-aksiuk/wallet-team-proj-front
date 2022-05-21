@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Datetime from 'react-datetime'
-import moment from 'moment';
 import 'moment/locale/ru'
 import { addTransaction } from '../../redux/finance/finance-operations'
 import { getTotalBalance } from '../../redux/finance/finance-selectors'
 import {getCategories} from "../../redux/finance/finance-selectors";
-import SelectCategory from "../SelectCategory";
 import sprite from '../../assets/svg/sprite.svg'
 import PluSvg from '../../assets/svg/Plus.svg'
 import MinusSvg from '../../assets/svg/Minus.svg'
