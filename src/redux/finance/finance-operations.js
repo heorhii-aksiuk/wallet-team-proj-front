@@ -8,7 +8,9 @@ const getAllTransactions = createAsyncThunk(
   'finance/getAllTransactions',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/transactions')
+      const { data } = await axios.get(
+        `/transactions?startDate=2020-01-31&endDate=2022-12-31`,
+      )
 
       return data
     } catch (error) {
@@ -40,7 +42,9 @@ const getStatistics = createAsyncThunk(
   'finance/getStatistics',
   async (period, thunkAPI) => {
     try {
-      const { data } = await axios.get('/statistics', period)
+      const { data } = await axios.get(
+        `/statistics/statistics?startDate=${period.startDate}&endDate=${period.endDate}`,
+      )
 
       return data
     } catch (error) {
