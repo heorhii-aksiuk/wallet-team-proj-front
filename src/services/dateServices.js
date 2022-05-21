@@ -38,3 +38,20 @@ export const getPeriodStatistics = (month, year) => {
 
   return { monthsList, yearsList, startDate, endDate }
 }
+
+export const getCurrentDate = () => {
+  const currentYear = new Date().getFullYear()
+  const currentMonth = (new Date().getMonth() + 1).toString()
+  const currentDay = new Date().getDate()
+
+  return `${currentYear}-${
+    currentMonth.length === 2 ? currentMonth : '0' + currentMonth
+  }-${currentDay}`
+}
+
+export const normalizeFormatDate = (date) => {
+  if (date.toString().length === 1) {
+    return '0' + date.toString()
+  }
+  return date.toString()
+}
