@@ -1,50 +1,49 @@
 .modal {
   padding: 40px 20px;
-  margin: 20px;
-
-  /* width: 100%; */
-  /* margin-top: 10vh; */
-  height: 70vh;
+  margin: 50px 40px;
   text-align: center;
-  background-color: white;
+  background-color: var(--secondary-background-color);
   border-radius: 20px;
-  border: solid #e7eaf2;
-}
-
-@media screen and (min-width: 768px) {
-  .modal {
-    margin-right: auto;
-    margin-left: auto;
-    width: 540px;
-  }
 }
 
 .text {
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .button {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  border-radius: 20px;
+  margin: 0 auto;
   width: 150px;
   height: 50px;
-  border: 0;
-  font-size: 18px;
-  text-decoration: none;
   padding: 10px;
 }
 
 .button:first-child {
-  margin-top: 40px;
-  color: white;
-  background-color: #ff6596;
+  margin-top: 30px;
+  background-color: var(--red-color);
 }
 
 .button:last-child {
   margin-top: 20px;
-  color: #4a56e2;
-  border: 1px solid #4a56e2;
-  background-color: white;
+}
+
+@media screen and (min-width: 480px) {
+  .modal {
+    margin-right: auto;
+    margin-left: auto;
+    width: 440px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 540px;
+  }
+
+  .text {
+    font-size: 30px;
+  }
+
+  .button:first-child {
+    margin-top: 40px;
+  }
 }

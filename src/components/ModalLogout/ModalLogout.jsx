@@ -1,3 +1,4 @@
+import Button from '../Button'
 import { useDispatch } from 'react-redux'
 import { closeModalLogout } from '../../redux/globall/global-actions'
 import { logOut } from '../../redux/session/session-operations'
@@ -9,20 +10,19 @@ export default function ModalLogout() {
     <div className={s.modal}>
       <p className={s.text}>Вы уверены?</p>
       <div className={s.buttonWrapper}>
-        <button
+        <Button
           onClick={() => dispatch(logOut())}
-          className={s.button}
+          title="Выйти"
           type="button"
-        >
-          Выйти
-        </button>
-        <button
+          className={s.button}
+        />
+        <Button
           onClick={() => dispatch(closeModalLogout())}
-          className={s.button}
+          typeButton="secondary"
+          title="Отмена"
           type="button"
-        >
-          Отмена
-        </button>
+          className={s.button}
+        />
       </div>
     </div>
   )
