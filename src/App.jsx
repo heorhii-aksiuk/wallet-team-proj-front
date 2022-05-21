@@ -30,10 +30,6 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
         <Switch>
-          <Route exact path="/*">
-            <CommonContainer>{PrivateRoute(<DashboardPage />)}</CommonContainer>
-          </Route>
-
           <Route path="/login">
             <CommonContainer>{WithAuthRedirect(<LoginPage />)}</CommonContainer>
           </Route>
@@ -42,6 +38,10 @@ function App() {
             <CommonContainer>
               {WithAuthRedirect(<RegistrationPage />)}
             </CommonContainer>
+          </Route>
+
+          <Route exact path="/*">
+            <CommonContainer>{PrivateRoute(<DashboardPage />)}</CommonContainer>
           </Route>
         </Switch>
       </Suspense>
