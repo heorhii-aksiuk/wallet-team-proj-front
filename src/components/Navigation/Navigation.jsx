@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom'
-import s from './Navigation.module.css'
-import sprite from '../../assets/svg/sprite.svg'
+import { ReactComponent as Homesvg } from '../../assets/svg/home.svg'
+import { ReactComponent as Statissvg } from '../../assets/svg/statis.svg'
+import { ReactComponent as Dollarsvg } from '../../assets/svg/dollar-icon.svg'
 import Media from 'react-media'
+import s from './Navigation.module.css'
 
 const Navigation = () => {
   return (
@@ -13,12 +15,8 @@ const Navigation = () => {
             return isActive ? s.navLinkActive : s.navLink
           }}
         >
-          <div className={s.iconWrapper}>
-            <svg className={s.navIcon}>
-              <use href={`${sprite}#icon-home`}></use>
-            </svg>
-          </div>
-          <p className={s.navText}>Главная</p>
+          <Homesvg className={`${s.svg}`} />
+          <span className={`${s.navText}`}>Главная</span>
         </NavLink>
       </li>
       <li className={s.navItem}>
@@ -28,12 +26,8 @@ const Navigation = () => {
             return isActive ? s.navLinkActive : s.navLink
           }}
         >
-          <div className={s.iconWrapper}>
-            <svg className={s.navIcon}>
-              <use href={`${sprite}#icon-statistic`}></use>
-            </svg>
-          </div>
-          <p className={s.navText}>Статистика</p>
+          <Statissvg className={`${s.svg}`} />
+          <span className={`${s.navText}`}>Статистика</span>
         </NavLink>
       </li>
 
@@ -52,11 +46,7 @@ const Navigation = () => {
                   return isActive ? s.navLinkActive : s.navLink
                 }}
               >
-                <div className={s.iconWrapper}>
-                  <svg className={s.navIcon}>
-                    <use href={`${sprite}#icon-currency`}></use>
-                  </svg>
-                </div>
+                <Dollarsvg className={`${s.svg}`} />
                 <p className={s.navText}>Валюта</p>
               </NavLink>
             </li>
