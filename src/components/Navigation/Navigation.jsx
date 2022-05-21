@@ -15,7 +15,9 @@ const Navigation = () => {
             return isActive ? s.navLinkActive : s.navLink
           }}
         >
-          <Homesvg className={`${s.svg}`} />
+          <div className={s.iconWrapper}>
+            <Homesvg className={`${s.svg}`} />
+          </div>
           <span className={`${s.navText}`}>Главная</span>
         </NavLink>
       </li>
@@ -26,7 +28,9 @@ const Navigation = () => {
             return isActive ? s.navLinkActive : s.navLink
           }}
         >
-          <Statissvg className={`${s.svg}`} />
+           <div className={s.iconWrapper}>
+              <Statissvg className={`${s.svg}`} />
+            </div>
           <span className={`${s.navText}`}>Статистика</span>
         </NavLink>
       </li>
@@ -34,7 +38,7 @@ const Navigation = () => {
       <Media
         queries={{
           mobile: '(max-width: 767px)',
-          tablet: '(max-width: 768px)',
+          //tablet: '(max-width: 768px)',
         }}
       >
         {(matches) =>
@@ -46,7 +50,9 @@ const Navigation = () => {
                   return isActive ? s.navLinkActive : s.navLink
                 }}
               >
-                <Dollarsvg className={`${s.svg}`} />
+                <div className={s.iconWrapper}>
+                  <Dollarsvg className={`${s.svg}`} />
+                </div>
                 <p className={s.navText}>Валюта</p>
               </NavLink>
             </li>
