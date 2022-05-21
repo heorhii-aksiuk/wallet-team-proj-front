@@ -4,7 +4,19 @@
   margin-right: auto;
   background-color: white;
   padding-bottom: 40px;
-  width: 100%;
+  /* width: 100%; */
+  min-width: 320px;
+  max-width: 480px;
+  height: 100vh;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
 }
 
 .closeBtnBox {
@@ -35,6 +47,7 @@
 .form {
   padding: 0 20px;
 }
+
 .transTypeContainer {
   position: relative;
   display: flex;
@@ -128,13 +141,19 @@
 
 .dropDownContainer {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   margin-top: 40px;
+  padding-right: 20px;
+  padding-left: 20px;
   color: black;
   cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 4;
 }
 
-.dropDownContainer::after {
+/* .dropDownContainer::after {
   content: '';
   position: absolute;
   display: block;
@@ -142,33 +161,50 @@
   height: 1px;
   width: 100%;
   background-color: #bdbdbd;
-}
+} */
 
 .dropDownField {
   height: 34px;
+  /* width: 100%; */
   background-color: transparent;
+  /* background-color: green; */
   color: #bdbdbd;
-  border: none;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   font-size: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-.dropDownFieldActive {
+.selectedCategory {
+  font-size: 18px;
+  font-weight: 600;
+
+  color: var(--main-text-color);
+}
+
+.arowIcon {
+  width: 40px;
+  height: 20px;
+}
+
+/* .dropDownFieldActive {
   color: black;
   font-size: 18px;
   font-weight: 400;
-}
+} */
 
 .dropDownList {
   position: absolute;
   padding: 0;
   z-index: 1;
   margin: 0;
-  top: calc(100% + 5px);
+  top: 40px;
+  left: 0;
   width: 100%;
   overflow: scroll;
   border-radius: 20px;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
   background-color: rgba(247, 247, 247, 0.7);
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
 }
@@ -218,9 +254,10 @@
   position: relative;
   margin-top: 40px;
   width: 100%;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.summFieldContainer::after {
+/* .summFieldContainer::after {
   content: '';
   position: absolute;
   display: block;
@@ -228,7 +265,7 @@
   height: 1px;
   width: 100%;
   background-color: #bdbdbd;
-}
+} */
 
 .summField {
   display: block;
@@ -254,9 +291,10 @@
   position: relative;
   margin-top: 40px;
   width: 100%;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.calendarContainer::after {
+/* .calendarContainer::after {
   content: '';
   position: absolute;
   display: block;
@@ -264,7 +302,7 @@
   height: 1px;
   width: 100%;
   background-color: #bdbdbd;
-}
+} */
 
 .calendarField {
   width: 100%;
@@ -292,6 +330,7 @@
 .commentFieldContainer {
   position: relative;
   margin-top: 40px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .commentField {
@@ -306,7 +345,7 @@
   font-weight: 400;
 }
 
-.commentFieldContainer::after {
+/* .commentFieldContainer::after {
   content: '';
   position: absolute;
   display: block;
@@ -314,7 +353,7 @@
   height: 1px;
   width: 100%;
   background-color: #bdbdbd;
-}
+} */
 
 .commentField:focus {
   outline: none;
@@ -326,34 +365,15 @@
 }
 
 .submitButton {
-  display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  height: 50px;
-  border-radius: 20px;
-  border: none;
-  font-size: 18px;
-  font-weight: 400;
-  background-color: #24cca7;
-  color: white;
 }
 
 .cancelButton {
-  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  width: 100%;
-  height: 50px;
-  font-size: 18px;
-  font-weight: 400;
-  border-radius: 20px;
-  border: 1px solid #4a56e2;
-  color: #4a56e2;
-  background-color: transparent;
 }
-
 
 @media screen and (min-width: 768px) {
   .addTransContainer {
@@ -363,6 +383,8 @@
     padding-bottom: 60px;
     top: 204px;
     width: 540px;
+    max-width: none;
+    height: auto;
     border-radius: 20px;
     position: absolute;
     top: 50%;
@@ -381,7 +403,7 @@
     top: 10px;
     right: 10px;
     width: auto;
-    height: auto;
+    height: 38px;
     cursor: pointer;
   }
 
@@ -426,5 +448,4 @@
   .cancelButton {
     width: 300px;
   }
-
 }

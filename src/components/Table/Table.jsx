@@ -159,7 +159,7 @@ function Table({ statistics, setStartDate, setEndDate }) {
       <div className={`${s.result} ${s.expenses}`}>
         Расходы:
         {statistics.length !== 0 ? (
-          <span className={s.sum}>{statistics.expenses}</span>
+          <span className={s.sum}>{normalizeNum(statistics.expenses)}</span>
         ) : (
           <span className={s.empty}>--</span>
         )}
@@ -167,7 +167,7 @@ function Table({ statistics, setStartDate, setEndDate }) {
       <div className={`${s.result} ${s.income}`}>
         Доходы:
         {statistics.length !== 0 ? (
-          <span className={s.sum}>{statistics.income}</span>
+          <span className={s.sum}>{normalizeNum(statistics.income)}</span>
         ) : (
           <span className={s.empty}>--</span>
         )}
