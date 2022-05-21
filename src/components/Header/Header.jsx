@@ -3,23 +3,19 @@ import { mediaQueries } from '../../utils'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../redux/session/session-selectors'
-import { getModalLogoutOpen } from '../../redux/globall/global-selectors'
 import { openModalLogout } from '../../redux/globall/global-actions'
 import s from './Header.module.css'
 import sprite from '../../assets/svg/sprite.svg'
-import ModalLogout from '../ModalLogout/ModalLogout'
 
 export default function Header() {
   const dispatch = useDispatch()
   const { name } = useSelector(getUser)
-  const showModal = useSelector(getModalLogoutOpen)
 
   return (
     <>
       <header className={s.header}>
         <div className={s.logoContainer}>
           <NavLink exact to="./">
-            {/* TODO:Подставить путь главной страницы */}
             <svg className={s.logoSvg}>
               <use href={`${sprite}#icon-logo-full`}></use>
             </svg>
@@ -54,7 +50,6 @@ export default function Header() {
           </button>
         </div>
       </header>
-      {showModal && <ModalLogout />}
     </>
   )
 }
