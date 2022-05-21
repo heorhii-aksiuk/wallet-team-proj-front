@@ -10,6 +10,15 @@
   height: 100vh;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+}
+
 .closeBtnBox {
   display: none;
 }
@@ -141,6 +150,7 @@
   color: black;
   cursor: pointer;
   border-bottom: 1px solid #e0e0e0;
+  z-index: 4;
 }
 
 /* .dropDownContainer::after {
@@ -166,6 +176,13 @@
   cursor: pointer;
 }
 
+.selectedCategory {
+  font-size: 18px;
+  font-weight: 600;
+
+  color: var(--main-text-color);
+}
+
 .arowIcon {
   width: 40px;
   height: 20px;
@@ -182,11 +199,12 @@
   padding: 0;
   z-index: 1;
   margin: 0;
-  top: calc(100% + 5px);
+  top: 40px;
+  left: 0;
   width: 100%;
   overflow: scroll;
   border-radius: 20px;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
   background-color: rgba(247, 247, 247, 0.7);
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
 }
@@ -385,7 +403,7 @@
     top: 10px;
     right: 10px;
     width: auto;
-    height: auto;
+    height: 38px;
     cursor: pointer;
   }
 

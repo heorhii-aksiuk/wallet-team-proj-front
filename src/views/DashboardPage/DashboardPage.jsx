@@ -9,8 +9,7 @@ import StatisticsPage from '../StatisticsPage'
 import CurrencyPage from '../CurrencyPage'
 import Modal from '../../components/Modal'
 import ModalLogout from '../../components/ModalLogout'
-// import ModalAddTransaction from '../../components/ModalAddTransaction'
-import ModalAddTransaction from '../../components/ModalAddTransaction/qwe'
+import ModalAddTransaction from '../../components/ModalAddTransaction'
 import { globalSelectors } from '../../redux/globall'
 import { financeOperations } from '../../redux/finance'
 import s from './DashboardPage.module.css'
@@ -47,15 +46,11 @@ const DashboardPage = () => {
           <Route path="*">{WithAuthRedirect(<LoginPage />)}</Route>
         </Switch>
 
-        {/* {isModalAddTransactionOpen && (
+        {isModalAddTransactionOpen && (
           <Modal>
             <ModalAddTransaction />
           </Modal>
-        )} */}
-
-        <Modal>
-          <ModalAddTransaction />
-        </Modal>
+        )}
 
         {isModalLogoutOpen && (
           <Modal>
