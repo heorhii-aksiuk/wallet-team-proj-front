@@ -13,10 +13,10 @@ const globalSlice = createSlice({
   name: 'finanse',
   initialState,
   extraReducers: {
-    [globalActions.openModalTransaction](state) {
+    [globalActions.openModalAddTransaction](state) {
       state.isModalAddTransactionOpen = true
     },
-    [globalActions.closeModalTransaction](state) {
+    [globalActions.closeModalAddTransaction](state) {
       state.isModalAddTransactionOpen = false
     },
     [globalActions.openModalLogout](state) {

@@ -8,11 +8,13 @@ const getAllTransactions = createAsyncThunk(
   'finance/getAllTransactions',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/transactions')
+      const { data } = await axios.get(
+        `/transactions?startDate=2020-01-31&endDate=2022-12-31`,
+      )
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error('Не удалось загрузить историю транзакций')
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -29,7 +31,7 @@ const addTransaction = createAsyncThunk(
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error('Не удалось создать транзакцию')
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -40,11 +42,13 @@ const getStatistics = createAsyncThunk(
   'finance/getStatistics',
   async (period, thunkAPI) => {
     try {
-      const { data } = await axios.get('/statistics', period)
+      const { data } = await axios.get(
+        `/statistics/statistics?startDate=${period.startDate}&endDate=${period.endDate}`,
+      )
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error('Не удалось получить статистику')
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -55,11 +59,11 @@ const getCategories = createAsyncThunk(
   'finance/getCategories',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/categories')
+      const { data } = await axios.get('/categories/hardcoded')
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error('Не удалось получить список доступных категорий')
 
       return thunkAPI.rejectWithValue(error.response.data)
     }

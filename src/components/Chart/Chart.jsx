@@ -7,9 +7,9 @@ import s from './Chart.module.css'
 
 function Chart({ statistics, totalBalance }) {
   ChartJS.register(ArcElement, Tooltip)
-  const names = statistics.map((obj) => obj.name)
+  const names = statistics.map((obj) => obj.category)
   const colors = statistics.map((obj) => obj.color)
-  const quantities = statistics.map((obj) => obj.quantity)
+  const quantities = statistics.map((obj) => obj.sum)
 
   let doughnutData = {
     labels: names,

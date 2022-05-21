@@ -2,9 +2,9 @@ import s from './ButtonAddTransactions.module.css'
 
 import Plus from '../../assets/svg/Plus.svg'
 
-const ButtonAddTransactions = ({ onChange }) => {
+const ButtonAddTransactions = ({ onClick }) => {
   return (
-    <button className={`${s.button} ${s.position}`} onClick={onChange}>
+    <button className={`${s.button} ${s.position}`} onClick={onClick}>
       <img className={s.icon} src={Plus} alt="Add transaction" />
     </button>
   )
