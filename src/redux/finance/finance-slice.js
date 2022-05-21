@@ -49,7 +49,15 @@ const financeSlice = createSlice({
       state.error = payload
     },
     [sessionOperations.logOut.fulfilled](state) {
-      state = initialState
+      state.totalBalance = null
+      state.transactions = []
+      state.statistics = {
+        data: [],
+        expenses: null,
+        income: null,
+      }
+      state.categories = []
+      state.error = null
     },
   },
 })

@@ -7,10 +7,11 @@ import LoginPage from '../LoginPage'
 import HomePage from '../HomePage'
 import StatisticsPage from '../StatisticsPage'
 import CurrencyPage from '../CurrencyPage'
+import ButtonAddTransactions from '../../components/ButtonAddTransactions'
 import Modal from '../../components/Modal'
 import ModalLogout from '../../components/ModalLogout'
 import ModalAddTransaction from '../../components/ModalAddTransaction'
-import { globalSelectors } from '../../redux/globall'
+import { globalSelectors, globalActions } from '../../redux/globall'
 import { financeOperations } from '../../redux/finance'
 import s from './DashboardPage.module.css'
 
@@ -24,7 +25,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
     // dispatch(financeOperations.getAllTransactions())
-    // dispatch(financeOperations.getCategories())
+    dispatch(financeOperations.getCategories())
   }, [dispatch])
 
   return (
@@ -45,6 +46,10 @@ const DashboardPage = () => {
 
           <Route path="*">{WithAuthRedirect(<LoginPage />)}</Route>
         </Switch>
+
+        <ButtonAddTransactions
+          onClick={() => dispatch(globalActions.openModalAddTransaction())}
+        />
 
         {isModalAddTransactionOpen && (
           <Modal>

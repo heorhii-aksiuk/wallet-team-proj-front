@@ -12,7 +12,7 @@ const getAllTransactions = createAsyncThunk(
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error('Не удалось загрузить историю транзакций')
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -29,7 +29,7 @@ const addTransaction = createAsyncThunk(
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error('Не удалось создать транзакцию')
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -44,7 +44,7 @@ const getStatistics = createAsyncThunk(
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error('Не удалось получить статистику')
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -55,11 +55,11 @@ const getCategories = createAsyncThunk(
   'finance/getCategories',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/categories')
+      const { data } = await axios.get('/categories/hardcoded')
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error('Не удалось получить список доступных категорий')
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
