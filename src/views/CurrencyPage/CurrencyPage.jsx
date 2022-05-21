@@ -2,7 +2,6 @@ import Media from 'react-media'
 import { Redirect } from 'react-router-dom'
 
 import { mediaQueries } from '../../utils'
-
 import Header from '../../components/Header'
 import Navigation from '../../components/Navigation'
 import Currency from '../../components/Currency'

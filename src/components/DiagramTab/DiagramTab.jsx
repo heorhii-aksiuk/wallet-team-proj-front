@@ -16,8 +16,7 @@ function DiagramTab() {
   const totalBalance = useSelector(financeSelectors.getTotalBalance)
 
   useEffect(() => {
-    // dispatch(financeOperations.getStatistics({startDate, endDate}))
-    // console.log(startDate, endDate)
+    // dispatch(financeOperations.getStatistics({ startDate, endDate }))
   }, [startDate, endDate, dispatch])
 
   return (

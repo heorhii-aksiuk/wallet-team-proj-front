@@ -1,5 +1,6 @@
 import React from 'react'
 import Media from 'react-media'
+
 import RegistrationForm from '../../components/RegistrationForm'
 import { mediaQueries } from '../../utils'
 import registerimg from '../../assets/img/register-img.png'

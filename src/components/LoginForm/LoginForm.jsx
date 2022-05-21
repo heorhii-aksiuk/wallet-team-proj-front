@@ -17,6 +17,7 @@ const LoginForm = () => {
 
   const onSubmit = (values, onSubmitProps) => {
     dispatch(sessionOperations.logIn(values))
+    // console.log(values)
 
     onSubmitProps.setSubmitting(false)
     onSubmitProps.resetForm()
@@ -80,7 +81,7 @@ const LoginForm = () => {
             </label>
 
             <Button
-              title="Войти"
+              title="Вход"
               type="submit"
               onSubmit={onSubmit}
               className={s.submitBtn}
