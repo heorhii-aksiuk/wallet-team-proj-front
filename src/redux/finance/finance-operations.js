@@ -10,7 +10,7 @@ const getAllTransactions = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/transactions?startDate=2020-01-31&endDate=2022-12-31`,
+        `/transactions?startDate=01.01.2020&endDate=31.12.2020`,
       )
 
       return data
