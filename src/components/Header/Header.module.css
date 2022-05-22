@@ -46,6 +46,13 @@
   position: absolute;
   right: 30px;
   top: 21px;
+  fill: var(--placeholder-main-color);
+  transition: var(--main-transaction);
+}
+
+.button:hover .exitSvg,
+.button:focus .exitSvg {
+  fill: var(--red-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -93,5 +100,11 @@
     font-size: 18px;
     line-height: 27px;
     color: var(--placeholder-main-color);
+    transition: var(--main-transaction);
+  }
+
+  .button:hover .exit,
+  .button:focus .exit {
+    color: var(--red-color);
   }
 }

@@ -26,7 +26,7 @@
     flex-direction: column;
     align-items: flex-start;
     width: 143px;
-    margin-bottom: 13px;
+    /* margin-bottom: 13px; */
   }
   .navItem {
     height: 27px;
@@ -54,7 +54,7 @@
   }
 
   .navText:hover,
-  .navText:focus{
+  .navText:focus {
     color: var(--main-text-color);
     font-weight: 700;
   }
@@ -65,7 +65,6 @@
     height: 18px;
     margin-right: 23px;
   }
-
 }
 
 .navLink {
@@ -96,7 +95,7 @@
 
 @media screen and (min-width: 1280px) {
   .nav {
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
   }
 
   .navItem {
@@ -112,6 +111,6 @@
 }
 
 .svg:hover,
-.svg:focus{
+.svg:focus {
   fill: var(--main-color);
 }

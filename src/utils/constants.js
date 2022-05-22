@@ -5,3 +5,9 @@ export const mediaQueries = {
   desktop: '(min-width: 1280px)',
 }
 
+export const Status = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+}

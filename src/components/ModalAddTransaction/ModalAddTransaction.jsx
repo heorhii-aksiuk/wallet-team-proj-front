@@ -42,7 +42,6 @@ function ModalAddTransaction() {
     }
 
     dispatch(financeOperations.addTransaction(transaction))
-    dispatch(globalActions.closeModalAddTransaction())
     dispatch(financeOperations.getAllTransactions())
   }
 

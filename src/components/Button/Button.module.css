@@ -15,7 +15,7 @@
   text-transform: uppercase;
 
   border-radius: 20px;
-  transition: all 250ms ease;
+  transition: var(--main-transaction);
   cursor: pointer;
 }
 
