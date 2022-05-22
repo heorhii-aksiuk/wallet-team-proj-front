@@ -7,8 +7,8 @@ import { financeOperations, financeSelectors } from '../../redux/finance'
 import s from './DiagramTab.module.css'
 
 function DiagramTab() {
-  const [startDate, setStartDate] = useState('2020-01-01')
-  const [endDate, setEndDate] = useState('2022-12-31')
+  const [startDate, setStartDate] = useState('01.01.2020')
+  const [endDate, setEndDate] = useState('31.12.2022')
 
   const dispatch = useDispatch()
 
@@ -17,7 +17,6 @@ function DiagramTab() {
 
   useEffect(() => {
     dispatch(financeOperations.getStatistics({ startDate, endDate }))
-    // console.log(startDate, endDate)
   }, [startDate, endDate, dispatch])
 
   return (

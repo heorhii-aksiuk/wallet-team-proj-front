@@ -38,8 +38,8 @@ export const getPeriodStatistics = (selectedMonth, selectedYear) => {
     endYear = selectedYear
   }
 
-  const startDate = `${startYear}-${startMonth}-01`
-  const endDate = `${endYear}-${endMonth}-${endDay}`
+  const startDate = `01.${startMonth}.${startYear}`
+  const endDate = `${endDay}.${endMonth}.${endYear}`
 
   return { startDate, endDate }
 }

@@ -2,15 +2,10 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
 import Datetime from 'react-datetime'
-// import 'moment/locale/ru'
 import Button from '../Button'
 import { financeOperations, financeSelectors } from '../../redux/finance'
 import { globalActions } from '../../redux/globall'
-import {
-  getCurrentDate,
-  normalizeNumDate,
-  normalizeFormatDate,
-} from '../../services'
+import { getCurrentDate, normalizeFormatDate } from '../../services'
 import sprite from '../../assets/svg/sprite.svg'
 import PluSvg from '../../assets/svg/Plus.svg'
 import MinusSvg from '../../assets/svg/Minus.svg'
@@ -20,14 +15,13 @@ import styles from './ModalAddTransaction.module.css'
 
 function ModalAddTransaction() {
   const [transactionType, setTransactionType] = useState('spending')
-  const [selectedDate, setSelectedDate] = useState(null)
-  const [categoriesMenu, setCategoriesMenu] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const [categoriesMenu, setCategoriesMenu] = useState(false)
   const categories = useSelector(financeSelectors.getCategories)
   const initialValues = {
     sum: '',
     comment: '',
-    dateTime: getCurrentDate(),
+    date: getCurrentDate(),
   }
   const spendingCategories = Array.isArray(categories)
     ? categories.filter((item) => item.income === false)
@@ -39,12 +33,6 @@ function ModalAddTransaction() {
   const dispatch = useDispatch()
 
   const onSubmit = (values) => {
-    const date = selectedDate
-      ? `${normalizeNumDate(selectedDate.getDate())}.${normalizeNumDate(
-          selectedDate.getMonth() + 1,
-        )}.${selectedDate.getFullYear()}`
-      : getCurrentDate()
-
     let category = ''
 
     if (transactionType === 'spending' && !selectedCategory) {
@@ -59,15 +47,12 @@ function ModalAddTransaction() {
 
     const transaction = {
       ...values,
-      // date,
-      income: transactionType === 'spending' ? false : true,
       category,
+      income: transactionType === 'spending' ? false : true,
     }
 
-    // console.log(normalizeFormatDate(values.dateTime))
-    console.log(transaction)
-    // dispatch(financeOperations.addTransaction(transaction))
-    // dispatch(financeOperations.getAllTransactions())
+    dispatch(financeOperations.addTransaction(transaction))
+    dispatch(financeOperations.getAllTransactions())
   }
 
   const changeCategory = (e, category) => {
@@ -138,7 +123,7 @@ function ModalAddTransaction() {
         onSubmit={onSubmit}
         validateOnChange={false}
       >
-        {({ setFieldValue }) => (
+        {({ setFieldValue, values }) => (
           <Form className={styles.form}>
             <div className={styles.transTypeContainer}>
               <span className={incomeActiveTrigger()}>Доход</span>
@@ -249,33 +234,25 @@ function ModalAddTransaction() {
               />
             </div>
 
-            {/* <div className={styles.calendarContainer}>
-              <Datetime
-                inputProps={{ className: styles.calendarField }}
-                initialValue={getCurrentDate()}
-                closeOnSelect={true}
-                timeFormat={false}
-                onChange={(e) => setSelectedDate(new Date(e))}
-                dateFormat="DD.MM.YYYY"
-              />
-              <svg width="24" height="24" className={styles.calendarIcon}>
-                <use href={`${sprite}#icon-calendar`} />
-              </svg>
-            </div> */}
-
             <div className={styles.calendarContainer}>
-              <Field name="dateTime">
-                {(values) => (
-                  <Datetime
-                    inputProps={{ className: styles.calendarField }}
-                    initialValue={getCurrentDate()}
-                    closeOnSelect={true}
-                    timeFormat={false}
-                    onChange={(time) => {
-                      setFieldValue('dateTime', normalizeFormatDate(time._d))
-                    }}
-                    dateFormat="DD.MM.YYYY"
-                  ></Datetime>
+              <Field name="date">
+                {() => (
+                  <>
+                    <Datetime
+                      inputProps={{ className: styles.calendarField }}
+                      value={values.date}
+                      closeOnSelect={true}
+                      timeFormat={false}
+                      onChange={(date) => {
+                        setFieldValue('date', normalizeFormatDate(date._d))
+                      }}
+                      dateFormat="DD.MM.YYYY"
+                    ></Datetime>
+
+                    <svg width="24" height="24" className={styles.calendarIcon}>
+                      <use href={`${sprite}#icon-calendar`} />
+                    </svg>
+                  </>
                 )}
               </Field>
             </div>
