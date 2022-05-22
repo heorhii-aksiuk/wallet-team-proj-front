@@ -214,7 +214,7 @@
   height: 0;
 }
 
-.dropDownItem {
+.dropDownItemSpending {
   display: flex;
   align-items: center;
   list-style: none;
@@ -226,8 +226,25 @@
   cursor: pointer;
 }
 
-.dropDownItem:hover {
-  color: #ff6596;
+.dropDownItemSpending:hover {
+  color: var(--red-color);
+  background-color: rgb(255, 255, 255);
+}
+
+.dropDownItemIncome {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 20px;
+  height: 44px;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.dropDownItemIncome:hover {
+  color: var(--green-color);
   background-color: rgb(255, 255, 255);
 }
 

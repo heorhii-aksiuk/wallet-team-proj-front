@@ -1,3 +1,5 @@
+import { normalizeNumDate } from './normalizeService'
+
 export const monthsList = [
   { id: '01', name: 'Январь', lastDay: '31' },
   { id: '02', name: 'Февраль', lastDay: '28' },
@@ -43,11 +45,11 @@ export const getPeriodStatistics = (selectedMonth, selectedYear) => {
 }
 
 export const getCurrentDate = () => {
-  const currentYear = new Date().getFullYear()
-  const currentMonth = (new Date().getMonth() + 1).toString()
   const currentDay = new Date().getDate()
+  const currentMonth = (new Date().getMonth() + 1).toString()
+  const currentYear = new Date().getFullYear()
 
-  return `${currentYear}-${
-    currentMonth.length === 2 ? currentMonth : '0' + currentMonth
-  }-${currentDay}`
+  return `${normalizeNumDate(currentDay)}.${normalizeNumDate(
+    currentMonth,
+  )}.${currentYear}`
 }
