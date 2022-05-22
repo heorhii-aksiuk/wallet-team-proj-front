@@ -53,12 +53,6 @@
     font-weight: 700;
   }
 
-  .navText:hover,
-  .navText:focus {
-    color: var(--main-text-color);
-    font-weight: 700;
-  }
-
   .iconWrapper,
   .svg {
     width: 18px;
@@ -75,9 +69,14 @@
   transition: color 250ms linear;
 }
 
-.navLink:hover,
-.navLink:focus {
+.navLink:hover .navText,
+.navLink:hover .svg,
+.navLink:focus .navText,
+.navLink:focus .svg {
   transition: color 250ms linear;
+  color: var(--main-text-color);
+  font-weight: 700;
+  fill: var(--main-color);
 }
 
 .navLinkActive {
@@ -85,12 +84,16 @@
   align-items: center;
   justify-content: center;
   color: var(--main-text-color);
+
   transition: color 250ms linear;
 }
 
-.navLinkActive:hover,
-.navLinkActive:focus {
+.navLinkActive:hover .navText,
+.navLinkActive:hover .svg .navLinkActive:focus .navText,
+.navLinkActive:hover .svg {
   color: var(--main-text-color);
+  font-weight: 700;
+  fill: var(--main-color);
 }
 
 @media screen and (min-width: 1280px) {
@@ -108,9 +111,4 @@
   background-color: var(--secondary-background-color);
   border-radius: 6px;
   filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
-}
-
-.svg:hover,
-.svg:focus {
-  fill: var(--main-color);
 }

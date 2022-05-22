@@ -28,9 +28,9 @@ const Navigation = () => {
             return isActive ? s.navLinkActive : s.navLink
           }}
         >
-           <div className={s.iconWrapper}>
-              <Statissvg className={`${s.svg}`} />
-            </div>
+          <div className={s.iconWrapper}>
+            <Statissvg className={`${s.svg}`} />
+          </div>
           <span className={`${s.navText}`}>Статистика</span>
         </NavLink>
       </li>
