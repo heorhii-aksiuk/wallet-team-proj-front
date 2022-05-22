@@ -20,7 +20,7 @@ const financeSlice = createSlice({
   extraReducers: {
     [financeOperations.getAllTransactions.fulfilled](state, { payload }) {
       state.totalBalance = payload.data.totals.balance
-      state.transactions = payload.data.transactions
+      state.transactions = payload.data.allTransactions
       state.error = null
     },
     [financeOperations.getAllTransactions.rejected](state, { payload }) {

@@ -9,9 +9,7 @@ const getAllTransactions = createAsyncThunk(
   'finance/getAllTransactions',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        `/transactions?startDate=01.01.2020&endDate=31.12.2020`,
-      )
+      const { data } = await axios.get(`/transactions`)
 
       return data
     } catch (error) {
@@ -33,6 +31,7 @@ const addTransaction = createAsyncThunk(
 
       successNotif('Трансакция добавлена', 2000)
 
+      thunkAPI.dispatch(getAllTransactions())
       thunkAPI.dispatch(globalActions.closeModalAddTransaction())
 
       return data
