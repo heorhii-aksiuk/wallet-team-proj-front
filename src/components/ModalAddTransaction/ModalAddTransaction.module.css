@@ -121,6 +121,10 @@
   transition: transform 0.25s ease-in-out;
 }
 
+svg[data-src="/static/media/Minus.8fbfeac6337b8e7674275c5595939370.svg"] {
+  height: 5px;
+}
+
 .switchToggleInput {
   position: absolute;
   left: 0;
@@ -466,3 +470,5 @@
     width: 300px;
   }
 }
+
+
