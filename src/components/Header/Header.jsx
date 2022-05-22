@@ -22,7 +22,7 @@ export default function Header() {
           </NavLink>
         </div>
         <div className={s.authContainer}>
-          <p className={s.name}>{name ?? 'Имя'}</p>
+          <p className={s.name}>{name}</p>
           <Media queries={mediaQueries}>
             {(matches) =>
               (matches.tablet || matches.desktop) && (
