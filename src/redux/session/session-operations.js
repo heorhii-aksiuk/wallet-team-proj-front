@@ -4,6 +4,10 @@ import { successNotif, errorNotif } from '../../services'
 
 axios.defaults.baseURL = 'https://wallet-team-proj.herokuapp.com'
 
+export const publicAxios = axios.create({
+  baseURL: 'https://wallet-team-proj.herokuapp.com',
+})
+
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`
