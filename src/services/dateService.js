@@ -51,10 +51,3 @@ export const getCurrentDate = () => {
     currentMonth.length === 2 ? currentMonth : '0' + currentMonth
   }-${currentDay}`
 }
-
-export const normalizeFormatDate = (date) => {
-  if (date.toString().length === 1) {
-    return '0' + date.toString()
-  }
-  return date.toString()
-}

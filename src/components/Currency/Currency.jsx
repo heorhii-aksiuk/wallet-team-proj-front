@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { getListCurrency, Status } from '../../services'
+import { getListCurrency } from '../../services'
+import { Status } from '../../utils'
 import Loader from '../Loader'
 import s from './Currency.module.css'
 
