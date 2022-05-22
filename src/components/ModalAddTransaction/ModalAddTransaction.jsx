@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
 import Datetime from 'react-datetime'
-import 'moment/locale/ru'
 import Button from '../Button'
 import { financeOperations, financeSelectors } from '../../redux/finance'
 import { globalActions } from '../../redux/globall'
@@ -16,29 +15,40 @@ import styles from './ModalAddTransaction.module.css'
 
 function ModalAddTransaction() {
   const [transactionType, setTransactionType] = useState('spending')
-  const [selectedDate, setSelectedDate] = useState(null)
-  const [categoriesMenu, setCategoriesMenu] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState(null)
+  const [categoriesMenu, setCategoriesMenu] = useState(false)
   const categories = useSelector(financeSelectors.getCategories)
   const initialValues = {
     sum: '',
     comment: '',
+    date: getCurrentDate(),
   }
+  const spendingCategories = Array.isArray(categories)
+    ? categories.filter((item) => item.income === false)
+    : null
+  const incomeCategories = Array.isArray(categories)
+    ? categories.filter((item) => item.income === true)
+    : null
 
   const dispatch = useDispatch()
 
   const onSubmit = (values) => {
-    const date = selectedDate
-      ? `${selectedDate.getFullYear()}-${normalizeFormatDate(
-          selectedDate.getMonth() + 1,
-        )}-${normalizeFormatDate(selectedDate.getDate())}`
-      : getCurrentDate()
+    let category = ''
+
+    if (transactionType === 'spending' && !selectedCategory) {
+      category = 'Разное'
+    } else if (transactionType === 'spending' && selectedCategory) {
+      category = selectedCategory.name
+    } else if (transactionType === 'income' && !selectedCategory) {
+      category = 'Регулярный доход'
+    } else if (transactionType === 'income' && selectedCategory) {
+      category = selectedCategory.name
+    }
 
     const transaction = {
       ...values,
-      date,
-      income: selectedCategory ? selectedCategory.income : false,
-      category: selectedCategory ? selectedCategory.name : 'Разное',
+      category,
+      income: transactionType === 'spending' ? false : true,
     }
 
     dispatch(financeOperations.addTransaction(transaction))
@@ -81,6 +91,7 @@ function ModalAddTransaction() {
 
   const switchClickHandler = () => {
     setTransactionType(transactionType === 'spending' ? 'income' : 'spending')
+    setSelectedCategory(null)
   }
 
   return (
@@ -112,120 +123,168 @@ function ModalAddTransaction() {
         onSubmit={onSubmit}
         validateOnChange={false}
       >
-        <Form className={styles.form}>
-          <div className={styles.transTypeContainer}>
-            <span className={incomeActiveTrigger()}>Доход</span>
+        {({ setFieldValue, values }) => (
+          <Form className={styles.form}>
+            <div className={styles.transTypeContainer}>
+              <span className={incomeActiveTrigger()}>Доход</span>
 
-            <div className={styles.switchToggleContainer}>
-              <label
-                className={styles.switchToggleBody}
-                htmlFor="transType"
-              ></label>
-              <span className={switchToggle()}>
-                <ReactSVG
-                  className={styles.switchToggleSvg}
-                  src={transactionType === 'income' ? PluSvg : MinusSvg}
-                />
-              </span>
-            </div>
-
-            <input
-              className={styles.switchToggleInput}
-              onChange={switchClickHandler}
-              name="transactionType"
-              type="checkbox"
-              id="transType"
-              defaultChecked
-            />
-            <span className={spendingActiveTrigger()}>Расход</span>
-          </div>
-
-          {transactionType === 'spending' && (
-            <div
-              className={styles.dropDownContainer}
-              onClick={() => setCategoriesMenu(true)}
-            >
-              <div className={styles.dropDownField}>
-                {selectedCategory ? (
-                  <p className={styles.selectedCategory}>
-                    {selectedCategory.name}
-                  </p>
-                ) : (
-                  <p>Выберите категорию</p>
-                )}
+              <div className={styles.switchToggleContainer}>
+                <label
+                  className={styles.switchToggleBody}
+                  htmlFor="transType"
+                ></label>
+                <span className={switchToggle()}>
+                  <ReactSVG
+                    className={styles.switchToggleSvg}
+                    src={transactionType === 'income' ? PluSvg : MinusSvg}
+                  />
+                </span>
               </div>
 
-              <svg className={styles.arowIcon}>
-                <use href={`${sprite}#icon-arrow`} x={10}></use>
-              </svg>
-
-              {categoriesMenu && (
-                <ul className={styles.dropDownList}>
-                  {categories.map((category, index) => (
-                    <li
-                      key={index}
-                      className={styles.dropDownItem}
-                      onClick={(e) => changeCategory(e, category)}
-                    >
-                      {category.name}
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <input
+                className={styles.switchToggleInput}
+                onChange={switchClickHandler}
+                name="transactionType"
+                type="checkbox"
+                id="transType"
+                defaultChecked
+              />
+              <span className={spendingActiveTrigger()}>Расход</span>
             </div>
-          )}
 
-          <div className={styles.summFieldContainer}>
-            <Field
-              className={styles.summField}
-              required
-              min="0.00"
-              step="0.01"
-              type="number"
-              name="sum"
-              placeholder="0.00"
-            />
-          </div>
+            {transactionType === 'spending' && (
+              <div
+                className={styles.dropDownContainer}
+                onClick={() => setCategoriesMenu(true)}
+              >
+                <div className={styles.dropDownField}>
+                  {selectedCategory ? (
+                    <p className={styles.selectedCategory}>
+                      {selectedCategory.name}
+                    </p>
+                  ) : (
+                    <p>Выберите категорию</p>
+                  )}
+                </div>
 
-          <div className={styles.calendarContainer}>
-            <Datetime
-              inputProps={{ className: styles.calendarField }}
-              initialValue={getCurrentDate()}
-              closeOnSelect={true}
-              timeFormat={false}
-              onChange={(e) => setSelectedDate(new Date(e))}
-              dateFormat="YYYY-MM-DD"
-            />
-            <svg width="24" height="24" className={styles.calendarIcon}>
-              <use href={`${sprite}#icon-calendar`} />
-            </svg>
-          </div>
+                <svg className={styles.arowIcon}>
+                  <use href={`${sprite}#icon-arrow`} x={10}></use>
+                </svg>
 
-          <div className={styles.commentFieldContainer}>
-            <Field
-              as="textarea"
-              name="comment"
-              className={styles.commentField}
-              placeholder="Комментарий"
-            />
-          </div>
+                {categoriesMenu && spendingCategories && (
+                  <ul className={styles.dropDownList}>
+                    {spendingCategories.map((category, index) => (
+                      <li
+                        key={index}
+                        className={styles.dropDownItemSpending}
+                        onClick={(e) => changeCategory(e, category)}
+                      >
+                        {category.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
 
-          <div className={styles.buttonsContainer}>
-            <Button
-              className={styles.submitButton}
-              title="Добавить"
-              type="submit"
-            />
+            {transactionType === 'income' && (
+              <div
+                className={styles.dropDownContainer}
+                onClick={() => setCategoriesMenu(true)}
+              >
+                <div className={styles.dropDownField}>
+                  {selectedCategory ? (
+                    <p className={styles.selectedCategory}>
+                      {selectedCategory.name}
+                    </p>
+                  ) : (
+                    <p>Выберите категорию</p>
+                  )}
+                </div>
 
-            <Button
-              className={styles.cancelButton}
-              title="Отмена"
-              type="button"
-              typeButton="secondary"
-              onClick={() => dispatch(globalActions.closeModalAddTransaction())}
-            />
-          </div>
-        </Form>
+                <svg className={styles.arowIcon}>
+                  <use href={`${sprite}#icon-arrow`} x={10}></use>
+                </svg>
+
+                {categoriesMenu && incomeCategories && (
+                  <ul className={styles.dropDownList}>
+                    {incomeCategories.map((category, index) => (
+                      <li
+                        key={index}
+                        className={styles.dropDownItemIncome}
+                        onClick={(e) => changeCategory(e, category)}
+                      >
+                        {category.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+
+            <div className={styles.summFieldContainer}>
+              <Field
+                className={styles.summField}
+                required
+                min="0.00"
+                step="0.01"
+                type="number"
+                name="sum"
+                placeholder="0.00"
+              />
+            </div>
+
+            <div className={styles.calendarContainer}>
+              <Field name="date">
+                {() => (
+                  <>
+                    <Datetime
+                      inputProps={{ className: styles.calendarField }}
+                      value={values.date}
+                      closeOnSelect={true}
+                      timeFormat={false}
+                      onChange={(date) => {
+                        setFieldValue('date', normalizeFormatDate(date._d))
+                      }}
+                      dateFormat="DD.MM.YYYY"
+                    ></Datetime>
+
+                    <svg width="24" height="24" className={styles.calendarIcon}>
+                      <use href={`${sprite}#icon-calendar`} />
+                    </svg>
+                  </>
+                )}
+              </Field>
+            </div>
+
+            <div className={styles.commentFieldContainer}>
+              <Field
+                as="textarea"
+                name="comment"
+                className={styles.commentField}
+                placeholder="Комментарий"
+              />
+            </div>
+
+            <div className={styles.buttonsContainer}>
+              <Button
+                className={styles.submitButton}
+                title="Добавить"
+                type="submit"
+              />
+
+              <Button
+                className={styles.cancelButton}
+                title="Отмена"
+                type="button"
+                typeButton="secondary"
+                onClick={() =>
+                  dispatch(globalActions.closeModalAddTransaction())
+                }
+              />
+            </div>
+          </Form>
+        )}
       </Formik>
     </div>
   )
