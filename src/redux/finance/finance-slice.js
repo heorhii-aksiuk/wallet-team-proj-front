@@ -3,7 +3,7 @@ import * as financeOperations from './finance-operations'
 import { sessionOperations } from '../session'
 
 const initialState = {
-  totalBalance: 78987,
+  totalBalance: null,
   transactions: [],
   statistics: {
     data: [],
