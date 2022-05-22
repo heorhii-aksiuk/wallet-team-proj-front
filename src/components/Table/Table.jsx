@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { getPeriodStatistics, monthsList, yearsList } from '../../services'
-import { normalizeNum } from '../../utils'
+import { normalizeNum } from '../../services'
 import sprite from '../../assets/svg/sprite.svg'
 import s from './Table.module.css'
 

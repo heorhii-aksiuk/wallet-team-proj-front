@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { financeSelectors } from '../../redux/finance'
-import { normalizeNum } from '../../utils'
+import { normalizeNum } from '../../services'
 
 import s from './Balance.module.css'
 

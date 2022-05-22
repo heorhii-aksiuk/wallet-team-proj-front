@@ -36,6 +36,10 @@
     padding-top: 25px;
   }
 
+  .subBox1 > ul {
+    margin-bottom: 30px;
+  }
+
   .box2 {
     padding: 0 32px;
   }
@@ -57,6 +61,11 @@
     justify-content: flex-start;
     padding-left: 18px;
     padding-right: 0;
+    padding-top: 25px;
+  }
+
+  .box1 > ul {
+    margin-bottom: 30px;
   }
 
   .box2 {
@@ -64,5 +73,6 @@
     flex-direction: column;
     padding-right: 18px;
     padding-left: 0;
+    padding-top: 30px;
   }
 }

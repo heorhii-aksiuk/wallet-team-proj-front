@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import toast from 'react-hot-toast'
+import { successNotif, errorNotif } from '../../services'
 
 axios.defaults.baseURL = 'https://wallet-team-proj.herokuapp.com'
 
@@ -19,12 +19,16 @@ const signUp = createAsyncThunk(
     try {
       await axios.post('/auth/registration', credentials)
 
-      toast.success('Регистрация прошла успешно')
+      successNotif('Регистрация прошла успешно', 1000)
+
       return
     } catch (error) {
-      toast.error(error.response.data.message)
+      errorNotif('Не удалось зарегистрировать пользователя', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
-      return thunkAPI.rejectWithValue(error.response.data)
+      return thunkAPI.rejectWithValue(error?.response?.data)
     }
   },
 )
@@ -39,7 +43,10 @@ const logIn = createAsyncThunk(
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      errorNotif('Не удалось войти в учетную запись', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -74,7 +81,10 @@ const logOut = createAsyncThunk('session/logout', async (_, thunkAPI) => {
 
     token.unSet()
   } catch (error) {
-    toast.error(error.response.data.message)
+    errorNotif('Не удалось выйти из учетной записи', {
+      comment: error.response.data.message || null,
+      closeTime: 5000,
+    })
 
     return thunkAPI.rejectWithValue(error.response.data)
   }

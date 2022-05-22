@@ -1,3 +1,4 @@
 export * from './privateBankApi'
-export * from './status'
-export * from './dateServices'
+export * from './dateService'
+export * from './normalizeService'
+export * from './notificateService'

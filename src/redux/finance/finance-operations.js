@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import toast from 'react-hot-toast'
+import { successNotif, errorNotif } from '../../services'
+import { globalActions } from '../globall'
 
 axios.defaults.baseURL = 'https://wallet-team-proj.herokuapp.com'
 
@@ -14,7 +15,10 @@ const getAllTransactions = createAsyncThunk(
 
       return data
     } catch (error) {
-      toast.error('Не удалось загрузить историю транзакций')
+      errorNotif('Не удалось загрузить историю транзакций', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -27,11 +31,16 @@ const addTransaction = createAsyncThunk(
     try {
       const { data } = await axios.post('/transactions', transaction)
 
-      toast.success('Трансакция добавлена')
+      successNotif('Трансакция добавлена', 2000)
+
+      thunkAPI.dispatch(globalActions.closeModalAddTransaction())
 
       return data
     } catch (error) {
-      toast.error('Не удалось создать транзакцию')
+      errorNotif('Не удалось создать транзакцию', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -48,7 +57,10 @@ const getStatistics = createAsyncThunk(
 
       return data
     } catch (error) {
-      toast.error('Не удалось получить статистику')
+      errorNotif('Не удалось получить статистику', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -63,7 +75,10 @@ const getCategories = createAsyncThunk(
 
       return data
     } catch (error) {
-      toast.error('Не удалось получить список доступных категорий')
+      errorNotif('Не удалось получить список доступных категорий', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
       return thunkAPI.rejectWithValue(error.response.data)
     }

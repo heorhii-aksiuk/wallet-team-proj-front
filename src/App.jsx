@@ -1,16 +1,13 @@
 import React, { useEffect, lazy, Suspense } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
-import { Toaster } from 'react-hot-toast'
+import { ToastContainer } from 'react-toastify'
 
 import { sessionOperations } from './redux/session'
 import { globalSelectors } from './redux/globall'
 import CommonContainer from './containers/CommonContainer'
 import WithAuthRedirect from './hoc/withAuthRedirect'
 import PrivateRoute from './routes/PrivateRoute'
-// import DashboardPage from './views/DashboardPage'
-// import LoginPage from './views/LoginPage'
-// import RegistrationPage from './views/RegistrationPage'
 import Loader from './components/Loader'
 
 const DashboardPage = lazy(() => import('./views/DashboardPage'))
@@ -48,7 +45,7 @@ function App() {
 
       {isLoading && <Loader />}
 
-      <Toaster />
+      <ToastContainer />
     </>
   )
 }
