@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
 import Datetime from 'react-datetime'
+import { ReactSVG } from 'react-svg'
+import 'react-datetime/css/react-datetime.css'
+
 import Button from '../Button'
 import { financeOperations, financeSelectors } from '../../redux/finance'
 import { globalActions } from '../../redux/globall'
@@ -9,8 +12,6 @@ import { getCurrentDate, normalizeFormatDate } from '../../services'
 import sprite from '../../assets/svg/sprite.svg'
 import PluSvg from '../../assets/svg/Plus.svg'
 import MinusSvg from '../../assets/svg/Minus.svg'
-import { ReactSVG } from 'react-svg'
-import 'react-datetime/css/react-datetime.css'
 import styles from './ModalAddTransaction.module.css'
 
 function ModalAddTransaction() {
@@ -18,6 +19,7 @@ function ModalAddTransaction() {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [categoriesMenu, setCategoriesMenu] = useState(false)
   const categories = useSelector(financeSelectors.getCategories)
+  const totalBalance = useSelector(financeSelectors.getTotalBalance)
   const initialValues = {
     sum: '',
     comment: '',
@@ -34,25 +36,32 @@ function ModalAddTransaction() {
 
   const onSubmit = (values) => {
     let category = ''
+    let balance = ''
 
     if (transactionType === 'spending' && !selectedCategory) {
       category = 'Разное'
     } else if (transactionType === 'spending' && selectedCategory) {
-      category = selectedCategory.name
+      category = selectedCategory?.name
     } else if (transactionType === 'income' && !selectedCategory) {
       category = 'Регулярный доход'
     } else if (transactionType === 'income' && selectedCategory) {
-      category = selectedCategory.name
+      category = selectedCategory?.name
+    }
+
+    if (transactionType === 'spending') {
+      balance = totalBalance ? (totalBalance - values.sum).toString() : '0'
+    } else if (transactionType === 'income') {
+      balance = totalBalance ? (totalBalance + values.sum).toString() : '0'
     }
 
     const transaction = {
       ...values,
       category,
       income: transactionType === 'spending' ? false : true,
+      balance,
     }
 
     dispatch(financeOperations.addTransaction(transaction))
-    dispatch(financeOperations.getAllTransactions())
   }
 
   const changeCategory = (e, category) => {
