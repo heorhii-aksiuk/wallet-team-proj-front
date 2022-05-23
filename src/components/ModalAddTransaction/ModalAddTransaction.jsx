@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik, Form, Field } from 'formik'
-import Datetime from 'react-datetime'
 import { ReactSVG } from 'react-svg'
+import moment from 'moment'
+import Datetime from 'react-datetime'
 import 'react-datetime/css/react-datetime.css'
 
 import Button from '../Button'
 import { financeOperations, financeSelectors } from '../../redux/finance'
 import { globalActions } from '../../redux/globall'
-import { getCurrentDate, normalizeFormatDate } from '../../services'
 import sprite from '../../assets/svg/sprite.svg'
 import PluSvg from '../../assets/svg/Plus.svg'
 import MinusSvg from '../../assets/svg/Minus.svg'
@@ -23,7 +23,7 @@ function ModalAddTransaction() {
   const initialValues = {
     sum: '',
     comment: '',
-    date: getCurrentDate(),
+    date: moment(),
   }
   const spendingCategories = Array.isArray(categories)
     ? categories.filter((item) => item.income === false)
@@ -56,6 +56,7 @@ function ModalAddTransaction() {
 
     const transaction = {
       ...values,
+      date: moment(values.date).format('YYYY-MM-DD'),
       category,
       income: transactionType === 'spending' ? false : true,
       balance,
@@ -253,9 +254,13 @@ function ModalAddTransaction() {
                       closeOnSelect={true}
                       timeFormat={false}
                       onChange={(date) => {
-                        setFieldValue('date', normalizeFormatDate(date._d))
+                        setFieldValue('date', date)
                       }}
                       dateFormat="DD.MM.YYYY"
+                      isValidDate={(currenatDate) =>
+                        currenatDate.isBefore(moment())
+                      }
+                      // input={false}
                     ></Datetime>
 
                     <svg width="24" height="24" className={styles.calendarIcon}>
