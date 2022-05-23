@@ -1,59 +1,56 @@
-import { NavLink } from 'react-router-dom'
-import { ReactComponent as Homesvg } from '../../assets/svg/home.svg'
-import { ReactComponent as Statissvg } from '../../assets/svg/statis.svg'
-import { ReactComponent as Dollarsvg } from '../../assets/svg/dollar-icon.svg'
 import Media from 'react-media'
+import { mediaQueries } from '../../utils'
+import { NavLink } from 'react-router-dom'
 import s from './Navigation.module.css'
+import sprite from '../../assets/svg/sprite.svg'
 
 const Navigation = () => {
   return (
     <ul className={s.nav}>
       <li className={s.navItem}>
         <NavLink
+          exact
           to="/"
-          className={({ isActive }) => {
-            return isActive ? s.navLinkActive : s.navLink
-          }}
+          className={s.navLink}
+          activeClassName={s.navLinkActive}
         >
           <div className={s.iconWrapper}>
-            <Homesvg className={`${s.svg}`} />
+            <svg className={s.svg}>
+              <use href={`${sprite}#icon-home`}></use>
+            </svg>
           </div>
-          <span className={`${s.navText}`}>Главная</span>
+          <span className={s.navText}>Главная</span>
         </NavLink>
       </li>
       <li className={s.navItem}>
         <NavLink
           to="statistics"
-          className={({ isActive }) => {
-            return isActive ? s.navLinkActive : s.navLink
-          }}
+          className={s.navLink}
+          activeClassName={s.navLinkActive}
         >
           <div className={s.iconWrapper}>
-            <Statissvg className={`${s.svg}`} />
+            <svg className={s.svg}>
+              <use href={`${sprite}#icon-statistic`}></use>
+            </svg>
           </div>
-          <span className={`${s.navText}`}>Статистика</span>
+          <span className={s.navText}>Статистика</span>
         </NavLink>
       </li>
 
-      <Media
-        queries={{
-          mobile: '(max-width: 767px)',
-          //tablet: '(max-width: 768px)',
-        }}
-      >
+      <Media queries={mediaQueries}>
         {(matches) =>
-          matches.mobile && (
+          (matches.mobile || matches.response) && (
             <li className={s.navItem}>
               <NavLink
                 to="currency"
-                className={({ isActive }) => {
-                  return isActive ? s.navLinkActive : s.navLink
-                }}
+                className={s.navLink}
+                activeClassName={s.navLinkActive}
               >
                 <div className={s.iconWrapper}>
-                  <Dollarsvg className={`${s.svg}`} />
+                  <svg className={s.svg}>
+                    <use href={`${sprite}#icon-currency`}></use>
+                  </svg>
                 </div>
-                <p className={s.navText}>Валюта</p>
               </NavLink>
             </li>
           )
