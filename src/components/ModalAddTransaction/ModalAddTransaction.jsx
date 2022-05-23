@@ -49,9 +49,9 @@ function ModalAddTransaction() {
     }
 
     if (transactionType === 'spending') {
-      balance = totalBalance ? (totalBalance - values.sum).toString() : '0'
+      balance = totalBalance ? totalBalance - values.sum : 0 - values.sum
     } else if (transactionType === 'income') {
-      balance = totalBalance ? (totalBalance + values.sum).toString() : '0'
+      balance = totalBalance ? totalBalance + values.sum : 0 + values.sum
     }
 
     const transaction = {
@@ -59,7 +59,7 @@ function ModalAddTransaction() {
       date: moment(values.date).format('YYYY-MM-DD'),
       category,
       income: transactionType === 'spending' ? false : true,
-      balance,
+      balance: balance.toString(),
     }
 
     dispatch(financeOperations.addTransaction(transaction))
