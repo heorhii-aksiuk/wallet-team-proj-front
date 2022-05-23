@@ -1,5 +1,6 @@
-import { NavLink } from 'react-router-dom'
 import Media from 'react-media'
+import { mediaQueries } from '../../utils'
+import { NavLink } from 'react-router-dom'
 import s from './Navigation.module.css'
 import sprite from '../../assets/svg/sprite.svg'
 
@@ -37,14 +38,9 @@ const Navigation = () => {
         </NavLink>
       </li>
 
-      <Media
-        queries={{
-          mobile: '(max-width: 767px)',
-          //tablet: '(max-width: 768px)',
-        }}
-      >
+      <Media queries={mediaQueries}>
         {(matches) =>
-          matches.mobile && (
+          (matches.mobile || matches.response) && (
             <li className={s.navItem}>
               <NavLink
                 to="currency"
