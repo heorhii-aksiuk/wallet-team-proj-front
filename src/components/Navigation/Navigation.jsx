@@ -18,7 +18,7 @@ const Navigation = () => {
               <use href={`${sprite}#icon-home`}></use>
             </svg>
           </div>
-          <span className={`${s.navText}`}>Главная</span>
+          <span className={s.navText}>Главная</span>
         </NavLink>
       </li>
       <li className={s.navItem}>
@@ -33,7 +33,7 @@ const Navigation = () => {
               <use href={`${sprite}#icon-statistic`}></use>
             </svg>
           </div>
-          <span className={`${s.navText}`}>Статистика</span>
+          <span className={s.navText}>Статистика</span>
         </NavLink>
       </li>
 
