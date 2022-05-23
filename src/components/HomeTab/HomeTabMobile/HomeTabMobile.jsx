@@ -1,38 +1,35 @@
-import { useSelector } from 'react-redux';
-import { getAllTransactions } from '../../../redux/finance/finance-selectors';
-import s from "./HomeTabMobile.module.css";
+import { useSelector } from 'react-redux'
+import { getAllTransactions } from '../../../redux/finance/finance-selectors'
+import { normalizeNum, normalizeFormatDate } from '../../../services'
+import s from './HomeTabMobile.module.css'
 
 const HomeTabeMobile = () => {
-  const transactions = useSelector(state => getAllTransactions(state));
+  const transactions = useSelector((state) => getAllTransactions(state))
   return (
     <div className={s.container}>
-      {transactions.length === 0 &&
-        <table
-          className={s.item}
-          >        
-        <tbody>
-          <tr>
-            <th>
-              У Вас еще нет транзакций
-            </th>           
-          </tr>
-        </tbody>
+      {transactions.length === 0 && (
+        <table className={s.item}>
+          <tbody>
+            <tr>
+              <th>У Вас еще нет транзакций</th>
+            </tr>
+          </tbody>
         </table>
-      }
-      {transactions?.map(item => { 
-        const border = item.income === false ? '#ff6596' : '#24cca7';
-        const text = item.income === false ? '-' : '+';
-        const colorTxt = item.income === false ? s.lose : s.profit;
+      )}
+      {transactions?.map((item) => {
+        const border = item.income === false ? '#ff6596' : '#24cca7'
+        const text = item.income === false ? '-' : '+'
+        const colorTxt = item.income === false ? s.lose : s.profit
         return (
           <table
-          key={item.id}
-          className={s.item}
-          style={{ borderColor: border }}
+            key={item.id}
+            className={s.item}
+            style={{ borderColor: border }}
           >
             <tbody>
               <tr>
                 <th>Дата</th>
-                <td>{item.date}</td>
+                <td>{normalizeFormatDate(item.date)}</td>
               </tr>
               <tr>
                 <th>Тип</th>
@@ -48,18 +45,18 @@ const HomeTabeMobile = () => {
               </tr>
               <tr>
                 <th>Сумма</th>
-                <td className={colorTxt}>{item.sum}</td>
+                <td className={colorTxt}>{normalizeNum(item.sum)}</td>
               </tr>
               <tr>
                 <th>Баланс</th>
-                <td>{item.balance}</td>
+                <td>{normalizeNum(item.balance)}</td>
               </tr>
             </tbody>
           </table>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default HomeTabeMobile;
+export default HomeTabeMobile

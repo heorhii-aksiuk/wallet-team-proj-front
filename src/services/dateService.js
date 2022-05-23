@@ -1,36 +1,42 @@
+import moment from 'moment'
+
 import { normalizeNumDate } from './normalizeService'
 
 export const monthsList = [
-  { id: '01', name: 'Январь', lastDay: '31' },
-  { id: '02', name: 'Февраль', lastDay: '28' },
-  { id: '03', name: 'Март', lastDay: '31' },
-  { id: '04', name: 'Апрель', lastDay: '30' },
-  { id: '05', name: 'Май', lastDay: '31' },
-  { id: '06', name: 'Июнь', lastDay: '30' },
-  { id: '07', name: 'Июль', lastDay: '31' },
-  { id: '08', name: 'Август', lastDay: '31' },
-  { id: '09', name: 'Сентябрь', lastDay: '30' },
-  { id: '10', name: 'Октябрь', lastDay: '31' },
-  { id: '11', name: 'Ноябрь', lastDay: '30' },
-  { id: '12', name: 'Декабрь', lastDay: '31' },
+  { id: '01', name: 'Январь' },
+  { id: '02', name: 'Февраль' },
+  { id: '03', name: 'Март' },
+  { id: '04', name: 'Апрель' },
+  { id: '05', name: 'Май' },
+  { id: '06', name: 'Июнь' },
+  { id: '07', name: 'Июль' },
+  { id: '08', name: 'Август' },
+  { id: '09', name: 'Сентябрь' },
+  { id: '10', name: 'Октябрь' },
+  { id: '11', name: 'Ноябрь' },
+  { id: '12', name: 'Декабрь' },
 ]
 
 export const yearsList = [{ name: '2020' }, { name: '2021' }, { name: '2022' }]
 
 export const getPeriodStatistics = (selectedMonth, selectedYear) => {
   const currentYear = new Date().getFullYear()
+  const currentMonth = new Date().getMonth() + 1
+  const currentDay = new Date().getDate()
 
   let startMonth = '01'
-  let startYear = '2020'
+  let startYear = '2000'
 
-  let endDay = '31'
-  let endMonth = '12'
-  let endYear = `${currentYear}`
+  let endDay = normalizeNumDate(currentDay)
+  let endMonth = normalizeNumDate(currentMonth)
+  let endYear = currentYear
 
   if (selectedMonth) {
     startMonth = selectedMonth.id
-    endDay = selectedMonth.lastDay
     endMonth = selectedMonth.id
+    endDay = moment(`${selectedYear}-${selectedMonth.id}`)
+      .endOf('month')
+      .format('DD')
   }
 
   if (selectedYear) {
@@ -38,10 +44,15 @@ export const getPeriodStatistics = (selectedMonth, selectedYear) => {
     endYear = selectedYear
   }
 
-  const startDate = `01.${startMonth}.${startYear}`
-  const endDate = `${endDay}.${endMonth}.${endYear}`
+  if (selectedYear && !selectedMonth) {
+    endMonth = '12'
+    endDay = '31'
+  }
 
-  return { startDate, endDate }
+  return {
+    startDate: moment(`${startYear}-${startMonth}`).format('YYYY-MM-DD'),
+    endDate: moment(`${endYear}-${endMonth}-${endDay}`).format('YYYY-MM-DD'),
+  }
 }
 
 export const getCurrentDate = () => {

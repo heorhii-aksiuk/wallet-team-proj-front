@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import moment from 'moment'
 
 import Chart from '../Chart'
 import Table from '../Table'
@@ -7,8 +8,10 @@ import { financeOperations, financeSelectors } from '../../redux/finance'
 import s from './DiagramTab.module.css'
 
 function DiagramTab() {
-  const [startDate, setStartDate] = useState('01.01.2020')
-  const [endDate, setEndDate] = useState('31.12.2022')
+  const [startDate, setStartDate] = useState(
+    moment('2000-01').format('YYYY-MM-DD'),
+  )
+  const [endDate, setEndDate] = useState(moment().format('YYYY-MM-DD'))
 
   const dispatch = useDispatch()
 
@@ -17,6 +20,7 @@ function DiagramTab() {
 
   useEffect(() => {
     dispatch(financeOperations.getStatistics({ startDate, endDate }))
+    console.log(startDate, endDate)
   }, [startDate, endDate, dispatch])
 
   return (
