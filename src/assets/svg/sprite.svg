@@ -75,5 +75,11 @@
         <symbol id="icon-vertical-line" viewBox="0 0 2 30" fill="none">
             <path d="M1 0V30" stroke="#BDBDBD" />
         </symbol>
+        <symbol id="icon-delete" viewBox="0 0 32 32" fill="#000">
+            <path d="M10 26h12v-16h-12v16zM7 7.333v-2h4.467l1.333-1.333h6.4l1.333 1.333h4.467v2zM10 28q-0.8 0-1.4-0.6t-0.6-1.4v-18h16v18q0 0.8-0.6 1.4t-1.4 0.6zM10 26v0z"></path>
+        </symbol>
+        <symbol id="icon-edit" viewBox="0 0 32 32">
+            <path d="M6 26h1.467l16.167-16.167-1.467-1.467-16.167 16.167zM4 28v-4.267l19.6-19.6q0.567-0.567 1.417-0.55t1.417 0.583l1.433 1.433q0.567 0.567 0.567 1.4t-0.567 1.4l-19.6 19.6zM26.333 6.967l-1.367-1.367zM23.633 9.833v0z"></path>
+        </symbol>
     </defs>
 </svg>
