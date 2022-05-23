@@ -9,10 +9,10 @@ const Navigation = () => {
     <ul className={s.nav}>
       <li className={s.navItem}>
         <NavLink
+          exact
           to="/"
-          className={({ isActive }) => {
-            return isActive ? s.navLinkActive : s.navLink
-          }}
+          className={s.navLink}
+          activeClassName={s.navLinkActive}
         >
           <div className={s.iconWrapper}>
             <svg className={s.svg}>
@@ -25,9 +25,8 @@ const Navigation = () => {
       <li className={s.navItem}>
         <NavLink
           to="statistics"
-          className={({ isActive }) => {
-            return isActive ? s.navLinkActive : s.navLink
-          }}
+          className={s.navLink}
+          activeClassName={s.navLinkActive}
         >
           <div className={s.iconWrapper}>
             <svg className={s.svg}>
@@ -44,9 +43,8 @@ const Navigation = () => {
             <li className={s.navItem}>
               <NavLink
                 to="currency"
-                className={({ isActive }) => {
-                  return isActive ? s.navLinkActive : s.navLink
-                }}
+                className={s.navLink}
+                activeClassName={s.navLinkActive}
               >
                 <div className={s.iconWrapper}>
                   <svg className={s.svg}>
