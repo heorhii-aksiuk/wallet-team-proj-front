@@ -51,7 +51,6 @@ const Navigation = () => {
                     <use href={`${sprite}#icon-currency`}></use>
                   </svg>
                 </div>
-                <p className={s.navText}>Валюта</p>
               </NavLink>
             </li>
           )
