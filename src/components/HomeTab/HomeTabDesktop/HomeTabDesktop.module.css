@@ -60,6 +60,13 @@
   }
 }
 
+@media (min-width: 1280px) {
+  .table {
+    width: 715px;
+    text-align: center;
+  }
+}
+
 .table tr th:first-child {
   padding-left: 20px;
   padding-right: 15px;

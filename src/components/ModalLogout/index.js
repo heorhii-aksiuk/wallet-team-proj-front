@@ -1,1 +1,1 @@
-export { default } from './ModalLogout'
+export { default } from './ModalLogout.jsx'

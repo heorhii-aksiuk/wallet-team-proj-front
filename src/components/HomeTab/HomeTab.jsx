@@ -1,17 +1,16 @@
 import HomeTabMobile from './HomeTabMobile'
 import HomeTabDesktop from './HomeTabDesktop'
+import {mediaQueries} from '../../utils'
 
 import Media from 'react-media'
 
-const TransactionTab = () => {
+const HomeTab = () => {
   return (
-    <Media queries={{
-      mobile: '(max-width: 767px)',
-    }}
+    <Media queries={mediaQueries}
     >
-      {matches => (matches ? <HomeTabMobile /> : <HomeTabDesktop />)}
+      {matches => (matches.mobile || matches.response ? <HomeTabMobile /> : <HomeTabDesktop />)}
     </Media>
   );
 };
 
-export default TransactionTab;
+export default HomeTab;

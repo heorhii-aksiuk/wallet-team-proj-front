@@ -20,18 +20,28 @@ const HomeTabDesktop = () => {
                     </tr>
                 </thead>
                 <tbody className={s.tbody}>
-                    {transactions?.map(item => {
-                        const text = item.isExpense ? '-' : '+';
-                        const colorTxt = item.isExpense ? s.lose : s.profit;
-
+                    {transactions.length === 0 && 
+                        <tr key={1} className={s.tr}>
+                                <td>Дата транзакции</td>
+                                <td>+</td>
+                                <td>Категория</td>
+                                <td>Комментарий</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                    }
+                    {transactions?.map(item => { console.log(item)
+                        const text = item.income === false ? '-' : '+';
+                        const colorTxt = item.income === false ? s.lose : s.profit;
+                        
                         return (
                             <tr key={item.id} className={s.tr}>
-                                <td>{item.date_str}</td>
+                                <td>{item.date}</td>
                                 <td>{text}</td>
-                                <td>{item.category.name}</td>
+                                <td>{item.category}</td>
                                 <td>{item.comment}</td>
-                                <td className={colorTxt}>{item.amount}</td>
-                                <td>{item.balanceAfter}</td>
+                                <td className={colorTxt}>{item.sum}</td>
+                                <td>{item.balance}</td>
                             </tr>
                         );
                     })}
