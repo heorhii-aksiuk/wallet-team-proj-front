@@ -1,5 +1,5 @@
 import HomeTabMobile from './HomeTabMobile'
-import HomeTabDesktop from './HomeTabDesktop/HomeTabDesktop'
+import HomeTabDesktop from './HomeTabDesktop'
 import { mediaQueries } from '../../utils'
 
 import Media from 'react-media'
