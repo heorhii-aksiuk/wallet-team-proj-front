@@ -1,7 +1,6 @@
 .container {
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 @media (min-width: 480px) {
@@ -11,24 +10,23 @@
 }
 
 @media (min-width: 768px) {
-  .container {
-    width: 768px;
-
+  .background {
+    width: 100%;
+    min-height: 100vh;
     background-color: #e7eaf2;
     background-image: url('../../assets/img/ellipse-violet.png'),
       url('../../assets/img/ellipse-pink.png');
     background-repeat: no-repeat, no-repeat;
     background-position: left bottom, right top;
   }
+
+  .container {
+    width: 768px;
+  }
 }
 
 @media (min-width: 1280px) {
   .container {
     width: 1280px;
-
-    background-image: url('../../assets/img/ellipse-violet.png'),
-      url('../../assets/img/ellipse-pink.png');
-    background-repeat: no-repeat, no-repeat;
-    background-position: left bottom, right top;
   }
 }
