@@ -4,23 +4,35 @@ import s from "./HomeTabMobile.module.css";
 
 const HomeTabeMobile = () => {
   const transactions = useSelector(state => getAllTransactions(state));
-
   return (
     <div className={s.container}>
-      {transactions?.map(item => {
-        const border = item.isExpense ? '#ff6596' : '#24cca7';
-        const text = item.isExpense ? '-' : '+';
-        const colorTxt = item.isExpense ? s.lose : s.profit;
+      {transactions.length === 0 &&
+        <table
+          className={s.item}
+          >        
+        <tbody>
+          <tr>
+            <th>
+              У Вас еще нет транзакций
+            </th>           
+          </tr>
+        </tbody>
+        </table>
+      }
+      {transactions?.map(item => { 
+        const border = item.income === false ? '#ff6596' : '#24cca7';
+        const text = item.income === false ? '-' : '+';
+        const colorTxt = item.income === false ? s.lose : s.profit;
         return (
           <table
-            key={item.id}
-            className={s.item}
-            style={{ borderColor: border }}
+          key={item.id}
+          className={s.item}
+          style={{ borderColor: border }}
           >
             <tbody>
               <tr>
                 <th>Дата</th>
-                <td>{item.date_str}</td>
+                <td>{item.date}</td>
               </tr>
               <tr>
                 <th>Тип</th>
@@ -28,7 +40,7 @@ const HomeTabeMobile = () => {
               </tr>
               <tr>
                 <th>Категория</th>
-                <td>{item.category.name}</td>
+                <td>{item.category}</td>
               </tr>
               <tr>
                 <th>Комментарий</th>
@@ -36,11 +48,11 @@ const HomeTabeMobile = () => {
               </tr>
               <tr>
                 <th>Сумма</th>
-                <td className={colorTxt}>{item.amount}</td>
+                <td className={colorTxt}>{item.sum}</td>
               </tr>
               <tr>
                 <th>Баланс</th>
-                <td>{item.balanceAfter}</td>
+                <td>{item.balance}</td>
               </tr>
             </tbody>
           </table>
