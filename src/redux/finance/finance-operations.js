@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import toast from 'react-hot-toast'
+import { successNotif, errorNotif } from '../../services'
+import { globalActions } from '../globall'
 
 axios.defaults.baseURL = 'https://wallet-team-proj.herokuapp.com'
 
@@ -8,11 +9,14 @@ const getAllTransactions = createAsyncThunk(
   'finance/getAllTransactions',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/transactions')
+      const { data } = await axios.get(`/transactions`)
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      errorNotif('Не удалось загрузить историю транзакций', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -25,11 +29,17 @@ const addTransaction = createAsyncThunk(
     try {
       const { data } = await axios.post('/transactions', transaction)
 
-      toast.success('Трансакция добавлена')
+      successNotif('Трансакция добавлена', 2000)
+
+      thunkAPI.dispatch(getAllTransactions())
+      thunkAPI.dispatch(globalActions.closeModalAddTransaction())
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      errorNotif('Не удалось создать транзакцию', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -40,11 +50,16 @@ const getStatistics = createAsyncThunk(
   'finance/getStatistics',
   async (period, thunkAPI) => {
     try {
-      const { data } = await axios.get('/statistics', period)
+      const { data } = await axios.get(
+        `/statistics/statistics?startDate=${period.startDate}&endDate=${period.endDate}`,
+      )
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      errorNotif('Не удалось получить статистику', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
       return thunkAPI.rejectWithValue(error.response.data)
     }
@@ -55,11 +70,14 @@ const getCategories = createAsyncThunk(
   'finance/getCategories',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/categories')
+      const { data } = await axios.get('/categories/hardcoded')
 
       return data
     } catch (error) {
-      toast.error(error.response.data.message)
+      errorNotif('Не удалось получить список доступных категорий', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
 
       return thunkAPI.rejectWithValue(error.response.data)
     }

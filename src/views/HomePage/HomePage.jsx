@@ -1,15 +1,19 @@
 import Media from 'react-media'
-import { Redirect } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
-import { mediaQueries } from '../../utils/constants'
+import { mediaQueries } from '../../utils'
 import Header from '../../components/Header'
 import Navigation from '../../components/Navigation'
 import Balance from '../../components/Balance'
 import Currency from '../../components/Currency'
 import HomeTab from '../../components/HomeTab'
+import ButtonAddTransactions from '../../components/ButtonAddTransactions'
+import { globalActions } from '../../redux/globall'
 import s from './HomePage.module.css'
 
 function HomePage() {
+  const dispatch = useDispatch()
+
   return (
     <div className={s.container}>
       <Header />
@@ -57,6 +61,10 @@ function HomePage() {
       <div className={s.box2}>
         <HomeTab />
       </div>
+
+      <ButtonAddTransactions
+        onClick={() => dispatch(globalActions.openModalAddTransaction())}
+      />
     </div>
   )
 }

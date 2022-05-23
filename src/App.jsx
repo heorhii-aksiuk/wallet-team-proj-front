@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, lazy, Suspense } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
-import { Toaster } from 'react-hot-toast'
+import { ToastContainer } from 'react-toastify'
 
 import { sessionOperations } from './redux/session'
 import { globalSelectors } from './redux/globall'
 import CommonContainer from './containers/CommonContainer'
 import WithAuthRedirect from './hoc/withAuthRedirect'
-import DashboardPage from './views/DashboardPage'
-import LoginPage from './views/LoginPage'
-import RegistrationPage from './views/RegistrationPage'
+import PrivateRoute from './routes/PrivateRoute'
 import Loader from './components/Loader'
 
-function App() {
-  const dispatch = useDispatch()
+const DashboardPage = lazy(() => import('./views/DashboardPage'))
+const LoginPage = lazy(() => import('./views/LoginPage'))
+const RegistrationPage = lazy(() => import('./views/RegistrationPage'))
 
+function App() {
   const isLoading = useSelector(globalSelectors.getIsLoading)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(sessionOperations.refreshCurrentUser())
@@ -23,29 +25,27 @@ function App() {
 
   return (
     <>
-      <Switch>
-        <Route exact path="/login">
-          <CommonContainer>
-            <LoginPage />
-          </CommonContainer>
-        </Route>
+      <Suspense fallback={<Loader />}>
+        <Switch>
+          <Route path="/login">
+            <CommonContainer>{WithAuthRedirect(<LoginPage />)}</CommonContainer>
+          </Route>
 
-        <Route exact path="/registration">
-          <CommonContainer>
-            <RegistrationPage />
-          </CommonContainer>
-        </Route>
+          <Route path="/registration">
+            <CommonContainer>
+              {WithAuthRedirect(<RegistrationPage />)}
+            </CommonContainer>
+          </Route>
 
-        <Route exact path="/*">
-          <CommonContainer>
-            <DashboardPage />
-          </CommonContainer>
-        </Route>
-      </Switch>
+          <Route exact path="/*">
+            <CommonContainer>{PrivateRoute(<DashboardPage />)}</CommonContainer>
+          </Route>
+        </Switch>
+      </Suspense>
 
       {isLoading && <Loader />}
 
-      <Toaster />
+      <ToastContainer />
     </>
   )
 }

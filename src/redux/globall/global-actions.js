@@ -1,16 +1,16 @@
 import { createAction } from '@reduxjs/toolkit'
 
-const openModalTransaction = createAction('global/openModalTransaction')
+const openModalAddTransaction = createAction('global/openModalAddTransaction')
 
-const closeModalTransaction = createAction('global/closeModalTransaction')
+const closeModalAddTransaction = createAction('global/closeModalAddTransaction')
 
 const openModalLogout = createAction('global/openModalLogout')
 
 const closeModalLogout = createAction('global/closeModalLogout')
 
 export {
-  openModalTransaction,
-  closeModalTransaction,
+  openModalAddTransaction,
+  closeModalAddTransaction,
   openModalLogout,
   closeModalLogout,
 }

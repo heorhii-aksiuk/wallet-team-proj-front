@@ -19,8 +19,8 @@ const financeSlice = createSlice({
   initialState,
   extraReducers: {
     [financeOperations.getAllTransactions.fulfilled](state, { payload }) {
-      state.totalBalance = payload.totals.balance
-      state.transactions = payload.AllTransactions
+      state.totalBalance = payload.data.totals.balance
+      state.transactions = payload.data.allTransactions
       state.error = null
     },
     [financeOperations.getAllTransactions.rejected](state, { payload }) {
@@ -34,7 +34,7 @@ const financeSlice = createSlice({
     },
     [financeOperations.getStatistics.fulfilled](state, { payload }) {
       state.statistics.data = payload.data.statistics
-      state.statistics.extenses = payload.data.totals.expense
+      state.statistics.expenses = payload.data.totals.expense
       state.statistics.income = payload.data.totals.income
       state.error = null
     },
@@ -49,7 +49,15 @@ const financeSlice = createSlice({
       state.error = payload
     },
     [sessionOperations.logOut.fulfilled](state) {
-      state = initialState
+      state.totalBalance = null
+      state.transactions = []
+      state.statistics = {
+        data: [],
+        expenses: null,
+        income: null,
+      }
+      state.categories = []
+      state.error = null
     },
   },
 })

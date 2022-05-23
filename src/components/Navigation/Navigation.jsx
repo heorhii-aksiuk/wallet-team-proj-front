@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom'
-import s from './Navigation.module.css'
-import sprite from '../../assets/svg/sprite.svg'
+import { ReactComponent as Homesvg } from '../../assets/svg/home.svg'
+import { ReactComponent as Statissvg } from '../../assets/svg/statis.svg'
+import { ReactComponent as Dollarsvg } from '../../assets/svg/dollar-icon.svg'
 import Media from 'react-media'
+import s from './Navigation.module.css'
 
 const Navigation = () => {
   return (
@@ -14,11 +16,9 @@ const Navigation = () => {
           }}
         >
           <div className={s.iconWrapper}>
-            <svg className={s.navIcon}>
-              <use href={`${sprite}#icon-home`}></use>
-            </svg>
+            <Homesvg className={`${s.svg}`} />
           </div>
-          <p className={s.navText}>Главная</p>
+          <span className={`${s.navText}`}>Главная</span>
         </NavLink>
       </li>
       <li className={s.navItem}>
@@ -29,18 +29,16 @@ const Navigation = () => {
           }}
         >
           <div className={s.iconWrapper}>
-            <svg className={s.navIcon}>
-              <use href={`${sprite}#icon-statistic`}></use>
-            </svg>
+            <Statissvg className={`${s.svg}`} />
           </div>
-          <p className={s.navText}>Статистика</p>
+          <span className={`${s.navText}`}>Статистика</span>
         </NavLink>
       </li>
 
       <Media
         queries={{
           mobile: '(max-width: 767px)',
-          tablet: '(max-width: 768px)',
+          //tablet: '(max-width: 768px)',
         }}
       >
         {(matches) =>
@@ -53,9 +51,7 @@ const Navigation = () => {
                 }}
               >
                 <div className={s.iconWrapper}>
-                  <svg className={s.navIcon}>
-                    <use href={`${sprite}#icon-currency`}></use>
-                  </svg>
+                  <Dollarsvg className={`${s.svg}`} />
                 </div>
                 <p className={s.navText}>Валюта</p>
               </NavLink>

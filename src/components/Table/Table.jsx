@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-import { getPeriodStatistics } from '../../services/dateServices'
+import { getPeriodStatistics, monthsList, yearsList } from '../../services'
+import { normalizeNum } from '../../services'
 import sprite from '../../assets/svg/sprite.svg'
 import s from './Table.module.css'
 
@@ -10,15 +11,15 @@ function Table({ statistics, setStartDate, setEndDate }) {
   const [monthsMenu, setMonthsMenu] = useState(false)
   const [yearsMenu, setYearsMenu] = useState(false)
 
-  const { monthsList, yearsList, startDate, endDate } = getPeriodStatistics(
-    selectedMonth,
-    selectedYear,
-  )
-
   useEffect(() => {
+    const { startDate, endDate } = getPeriodStatistics(
+      selectedMonth,
+      selectedYear,
+    )
+
     setStartDate(startDate)
     setEndDate(endDate)
-  }, [startDate, endDate, setStartDate, setEndDate])
+  }, [setStartDate, setEndDate, selectedMonth, selectedYear])
 
   const openMonthMenu = () => {
     setMonthsMenu(true)
@@ -59,10 +60,6 @@ function Table({ statistics, setStartDate, setEndDate }) {
     e.stopPropagation()
     setSelectedYear(null)
     setYearsMenu(false)
-  }
-
-  const normalizeNum = (str) => {
-    return str.replace(/(\d)(?=(\d{3})+(\D|$))/g, '$1 ')
   }
 
   return (
@@ -132,9 +129,9 @@ function Table({ statistics, setStartDate, setEndDate }) {
         <p>Сумма</p>
       </div>
 
-      {statistics.length !== 0 ? (
+      {statistics.data.length !== 0 ? (
         <ul className={s.tableBody}>
-          {statistics.map((operation, index) => (
+          {statistics.data.map((operation, index) => (
             <li key={index} className={s.tableItem}>
               <div>
                 <svg width={24} height={24} className={s.tableItemSvg}>
@@ -145,10 +142,10 @@ function Table({ statistics, setStartDate, setEndDate }) {
                     rx={2}
                   ></rect>
                 </svg>
-                <p className={s.tableItemName}>{operation.name}</p>
+                <p className={s.tableItemName}>{operation.category}</p>
               </div>
               <p className={s.tableItemQuantity}>
-                {normalizeNum(operation.quantity)}
+                {normalizeNum(operation.sum)}
               </p>
             </li>
           ))}
@@ -162,7 +159,7 @@ function Table({ statistics, setStartDate, setEndDate }) {
       <div className={`${s.result} ${s.expenses}`}>
         Расходы:
         {statistics.length !== 0 ? (
-          <span className={s.sum}>22 549.24</span>
+          <span className={s.sum}>{normalizeNum(statistics.expenses)}</span>
         ) : (
           <span className={s.empty}>--</span>
         )}
@@ -170,7 +167,7 @@ function Table({ statistics, setStartDate, setEndDate }) {
       <div className={`${s.result} ${s.income}`}>
         Доходы:
         {statistics.length !== 0 ? (
-          <span className={s.sum}>27 350.00</span>
+          <span className={s.sum}>{normalizeNum(statistics.income)}</span>
         ) : (
           <span className={s.empty}>--</span>
         )}

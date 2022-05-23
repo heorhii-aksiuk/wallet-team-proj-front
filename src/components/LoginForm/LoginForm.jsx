@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 
 import Button from '../Button'
 import { sessionOperations } from '../../redux/session'
-import { loginSchema } from '../../utils/validationsSchemas'
+import { loginSchema } from '../../utils'
 import sprite from '../../assets/svg/sprite.svg'
 import s from './LoginForm.module.css'
 
@@ -17,6 +17,7 @@ const LoginForm = () => {
 
   const onSubmit = (values, onSubmitProps) => {
     dispatch(sessionOperations.logIn(values))
+    // console.log(values)
 
     onSubmitProps.setSubmitting(false)
     onSubmitProps.resetForm()
@@ -80,7 +81,7 @@ const LoginForm = () => {
             </label>
 
             <Button
-              title="Войти"
+              title="Вход"
               type="submit"
               onSubmit={onSubmit}
               className={s.submitBtn}

@@ -4,54 +4,23 @@
   margin-right: auto;
   background-color: white;
   padding-bottom: 40px;
-  width: 100%;
+  /* width: 100%; */
+  min-width: 320px;
+  max-width: 480px;
+  height: 100vh;
 }
 
-@media screen and (min-width: 768px) {
-  .addTransContainer {
-    padding-top: 40px;
-    padding-left: 65px;
-    padding-right: 65px;
-    padding-bottom: 60px;
-    top: 204px;
-    width: 540px;
-    border-radius: 20px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .addTransContainer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
 }
 
 .closeBtnBox {
   display: none;
-}
-
-@media screen and (min-width: 768px) {
-  .closeBtnBox {
-    position: absolute;
-    box-sizing: border-box;
-    display: block;
-    padding: 8px;
-    opacity: 1;
-    pointer-events: all;
-    border: 2px solid #ff659600;
-    top: 10px;
-    right: 10px;
-    width: auto;
-    height: auto;
-    cursor: pointer;
-  }
-  .closeBtnBox:hover,
-  .closeBtnBox:focus {
-    border-radius: 50%;
-    border: 2px solid #ff6596;
-  }
 }
 
 .closeButton {
@@ -75,20 +44,8 @@
   text-align: center;
 }
 
-@media screen and (min-width: 768px) {
-  .title {
-    font-size: 30px;
-  }
-}
-
 .form {
   padding: 0 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .form {
-    padding: 0;
-  }
 }
 
 .transTypeContainer {
@@ -109,8 +66,12 @@
   color: #bdbdbd;
 }
 
-.transTypeTextActive {
+.transTypeTextActiveIncome {
   color: #24cca7;
+}
+
+.transTypeTextActiveSpending {
+  color: #ff6596;
 }
 
 .switchToggleContainer {
@@ -160,6 +121,10 @@
   transition: transform 0.25s ease-in-out;
 }
 
+svg[data-src="/static/media/Minus.8fbfeac6337b8e7674275c5595939370.svg"] {
+  height: 5px;
+}
+
 .switchToggleInput {
   position: absolute;
   left: 0;
@@ -180,13 +145,19 @@
 
 .dropDownContainer {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   margin-top: 40px;
+  padding-right: 20px;
+  padding-left: 20px;
   color: black;
   cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 4;
 }
 
-.dropDownContainer::after {
+/* .dropDownContainer::after {
   content: '';
   position: absolute;
   display: block;
@@ -194,33 +165,50 @@
   height: 1px;
   width: 100%;
   background-color: #bdbdbd;
-}
+} */
 
 .dropDownField {
   height: 34px;
+  /* width: 100%; */
   background-color: transparent;
+  /* background-color: green; */
   color: #bdbdbd;
-  border: none;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   font-size: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-.dropDownFieldActive {
+.selectedCategory {
+  font-size: 18px;
+  font-weight: 600;
+
+  color: var(--main-text-color);
+}
+
+.arowIcon {
+  width: 40px;
+  height: 20px;
+}
+
+/* .dropDownFieldActive {
   color: black;
   font-size: 18px;
   font-weight: 400;
-}
+} */
 
 .dropDownList {
   position: absolute;
   padding: 0;
   z-index: 1;
   margin: 0;
-  top: calc(100% + 5px);
+  top: 40px;
+  left: 0;
   width: 100%;
   overflow: scroll;
   border-radius: 20px;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
   background-color: rgba(247, 247, 247, 0.7);
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
 }
@@ -230,7 +218,7 @@
   height: 0;
 }
 
-.dropDownItem {
+.dropDownItemSpending {
   display: flex;
   align-items: center;
   list-style: none;
@@ -242,8 +230,25 @@
   cursor: pointer;
 }
 
-.dropDownItem:hover {
-  color: #ff6596;
+.dropDownItemSpending:hover {
+  color: var(--red-color);
+  background-color: rgb(255, 255, 255);
+}
+
+.dropDownItemIncome {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 20px;
+  height: 44px;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.dropDownItemIncome:hover {
+  color: var(--green-color);
   background-color: rgb(255, 255, 255);
 }
 
@@ -270,16 +275,10 @@
   position: relative;
   margin-top: 40px;
   width: 100%;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-@media screen and (min-width: 768px) {
-  .summFieldContainer {
-    display: inline-block;
-    width: 190px;
-  }
-}
-
-.summFieldContainer::after {
+/* .summFieldContainer::after {
   content: '';
   position: absolute;
   display: block;
@@ -287,7 +286,7 @@
   height: 1px;
   width: 100%;
   background-color: #bdbdbd;
-}
+} */
 
 .summField {
   display: block;
@@ -298,13 +297,6 @@
   font-weight: 600;
   border: none;
   cursor: pointer;
-}
-
-@media screen and (min-width: 768px) {
-  .summField {
-    padding-left: 0;
-    text-align: center;
-  }
 }
 
 .summField:focus {
@@ -320,17 +312,10 @@
   position: relative;
   margin-top: 40px;
   width: 100%;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-@media screen and (min-width: 768px) {
-  .calendarContainer {
-    display: inline-block;
-    margin-left: 30px;
-    width: 190px;
-  }
-}
-
-.calendarContainer::after {
+/* .calendarContainer::after {
   content: '';
   position: absolute;
   display: block;
@@ -338,7 +323,7 @@
   height: 1px;
   width: 100%;
   background-color: #bdbdbd;
-}
+} */
 
 .calendarField {
   width: 100%;
@@ -366,6 +351,7 @@
 .commentFieldContainer {
   position: relative;
   margin-top: 40px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .commentField {
@@ -380,13 +366,7 @@
   font-weight: 400;
 }
 
-@media screen and (min-width: 768px) {
-  .commentField {
-    min-height: 34px;
-  }
-}
-
-.commentFieldContainer::after {
+/* .commentFieldContainer::after {
   content: '';
   position: absolute;
   display: block;
@@ -394,7 +374,7 @@
   height: 1px;
   width: 100%;
   background-color: #bdbdbd;
-}
+} */
 
 .commentField:focus {
   outline: none;
@@ -406,42 +386,89 @@
 }
 
 .submitButton {
-  display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  height: 50px;
-  border-radius: 20px;
-  border: none;
-  font-size: 18px;
-  font-weight: 400;
-  background-color: #24cca7;
-  color: white;
-}
-
-@media screen and (min-width: 768px) {
-  .submitButton {
-    width: 300px;
-  }
 }
 
 .cancelButton {
-  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  width: 100%;
-  height: 50px;
-  font-size: 18px;
-  font-weight: 400;
-  border-radius: 20px;
-  border: 1px solid #4a56e2;
-  color: #4a56e2;
-  background-color: transparent;
 }
 
 @media screen and (min-width: 768px) {
+  .addTransContainer {
+    padding-top: 40px;
+    padding-left: 65px;
+    padding-right: 65px;
+    padding-bottom: 60px;
+    top: 204px;
+    width: 540px;
+    max-width: none;
+    height: auto;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .closeBtnBox {
+    position: absolute;
+    box-sizing: border-box;
+    display: block;
+    padding: 8px;
+    opacity: 1;
+    pointer-events: all;
+    border: 2px solid #ff659600;
+    top: 10px;
+    right: 10px;
+    width: auto;
+    height: 38px;
+    cursor: pointer;
+  }
+
+  .closeBtnBox:hover,
+  .closeBtnBox:focus {
+    border-radius: 50%;
+    border: 2px solid #ff6596;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .form {
+    padding: 0;
+  }
+
+  .summFieldContainer {
+    display: inline-block;
+    width: 190px;
+  }
+
+  .summField {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .calendarContainer {
+    display: inline-block;
+    margin-left: 30px;
+    width: 190px;
+  }
+
+  .commentField {
+    min-height: 34px;
+  }
+
+  .submitButton {
+    width: 300px;
+  }
+
   .cancelButton {
     width: 300px;
   }
 }
+
+
