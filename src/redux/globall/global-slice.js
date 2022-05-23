@@ -6,6 +6,7 @@ import { sessionOperations } from '../session'
 const initialState = {
   isLoading: false,
   isModalAddTransactionOpen: false,
+  isModalUpdateTransactionOpen: false,
   isModalLogoutOpen: false,
 }
 
@@ -18,6 +19,12 @@ const globalSlice = createSlice({
     },
     [globalActions.closeModalAddTransaction](state) {
       state.isModalAddTransactionOpen = false
+    },
+    [globalActions.openModalUpdateTransaction](state) {
+      state.isModalUpdateTransactionOpen = true
+    },
+    [globalActions.closeModalUpdateTransaction](state) {
+      state.isModalUpdateTransactionOpen = false
     },
     [globalActions.openModalLogout](state) {
       state.isModalLogoutOpen = true
@@ -41,6 +48,24 @@ const globalSlice = createSlice({
       state.isLoading = false
     },
     [financeOperations.addTransaction.rejected](state) {
+      state.isLoading = false
+    },
+    [financeOperations.updateTransaction.pending](state) {
+      state.isLoading = true
+    },
+    [financeOperations.updateTransaction.fulfilled](state) {
+      state.isLoading = false
+    },
+    [financeOperations.updateTransaction.rejected](state) {
+      state.isLoading = false
+    },
+    [financeOperations.deleteTransaction.pending](state) {
+      state.isLoading = true
+    },
+    [financeOperations.deleteTransaction.fulfilled](state) {
+      state.isLoading = false
+    },
+    [financeOperations.deleteTransaction.rejected](state) {
       state.isLoading = false
     },
     [financeOperations.getStatistics.pending](state) {

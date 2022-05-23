@@ -46,6 +46,50 @@ const addTransaction = createAsyncThunk(
   },
 )
 
+const updateTransaction = createAsyncThunk(
+  'finance/updateTransaction',
+  async ({ id, transaction }, thunkAPI) => {
+    try {
+      await axios.put(`/transactions/${id}`, transaction)
+
+      successNotif('Транзакция успешно изменена', 2000)
+
+      thunkAPI.dispatch(getAllTransactions())
+
+      return
+    } catch (error) {
+      errorNotif('Не удалось изменить транзакцию', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
+
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  },
+)
+
+const deleteTransaction = createAsyncThunk(
+  'finance/deleteTransaction',
+  async (id, thunkAPI) => {
+    try {
+      await axios.delete(`/transactions/${id}`)
+
+      successNotif('Транзакция успешно удалена', 2000)
+
+      thunkAPI.dispatch(getAllTransactions())
+
+      return
+    } catch (error) {
+      errorNotif('Не удалось удалить транзакцию', {
+        comment: error.response.data.message || null,
+        closeTime: 5000,
+      })
+
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  },
+)
+
 const getStatistics = createAsyncThunk(
   'finance/getStatistics',
   async (period, thunkAPI) => {
@@ -84,4 +128,11 @@ const getCategories = createAsyncThunk(
   },
 )
 
-export { getAllTransactions, addTransaction, getStatistics, getCategories }
+export {
+  getAllTransactions,
+  addTransaction,
+  updateTransaction,
+  deleteTransaction,
+  getStatistics,
+  getCategories,
+}

@@ -10,6 +10,7 @@ export default function Modal({ children }) {
 
   const closeModal = () => {
     dispatch(globalActions.closeModalAddTransaction())
+    dispatch(globalActions.closeModalUpdateTransaction())
     dispatch(globalActions.closeModalLogout())
   }
 
