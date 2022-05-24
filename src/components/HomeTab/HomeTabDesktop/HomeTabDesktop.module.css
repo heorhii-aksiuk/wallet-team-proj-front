@@ -1,8 +1,8 @@
 @media (min-width: 768px) {
   .container {
-    /* margin-top: 40px; */
     max-height: 60vh;
     overflow: auto;
+    width: fit-content;
   }
 
   .edit{
@@ -22,11 +22,11 @@
 
   .editBtn,
   .deleteBtn{
-      opacity: 1;
-      border: 2px solid #ff659600;
-      background-color: transparent;
+    opacity: 1;
+    border: 2px solid #ff659600;
+    background-color: transparent;
   }
-
+  
   .delete {
     object-fit: contain;
     width: 22px;
@@ -68,7 +68,7 @@
 .container::-webkit-scrollbar-track-piece:start {
   background: transparent;
   margin-top: 22px;
-  overflow: hidden;
+  
 }
 
 .container::-webkit-scrollbar-track-piece:end {
@@ -93,6 +93,7 @@
   .table {
     width: 100%;
     text-align: center;
+    border-collapse: collapse;
   }
 }
 
