@@ -9,6 +9,7 @@ import 'react-datetime/css/react-datetime.css'
 import Button from '../Button'
 import { financeOperations, financeSelectors } from '../../redux/finance'
 import { globalActions } from '../../redux/globall'
+import { transactionSchema } from '../../utils'
 import sprite from '../../assets/svg/sprite.svg'
 import PluSvg from '../../assets/svg/Plus.svg'
 import MinusSvg from '../../assets/svg/Minus.svg'
@@ -131,6 +132,7 @@ function ModalAddTransaction() {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
+        validationSchema={transactionSchema}
         validateOnChange={false}
       >
         {({ setFieldValue, values }) => (
@@ -277,6 +279,7 @@ function ModalAddTransaction() {
                 name="comment"
                 className={styles.commentField}
                 placeholder="Комментарий"
+                maxLength={18}
               />
             </div>
 

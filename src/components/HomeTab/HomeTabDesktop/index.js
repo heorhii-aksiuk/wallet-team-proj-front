@@ -1,1 +1,1 @@
-export { default } from './HomeTabDesktop';
+export { default } from './HomeTabDesktop'

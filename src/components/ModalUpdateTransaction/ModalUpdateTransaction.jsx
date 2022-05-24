@@ -8,6 +8,7 @@ import 'react-datetime/css/react-datetime.css'
 import Button from '../Button'
 import { financeOperations, financeSelectors } from '../../redux/finance'
 import { globalActions } from '../../redux/globall'
+import { transactionSchema } from '../../utils'
 import sprite from '../../assets/svg/sprite.svg'
 import styles from './ModalUpdateTransaction.module.css'
 
@@ -17,7 +18,6 @@ function ModalUpdateTransaction({ selectedTransaction }) {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [categoriesMenu, setCategoriesMenu] = useState(false)
   const categories = useSelector(financeSelectors.getCategories)
-  // const totalBalance = useSelector(financeSelectors.getTotalBalance)
   const initialValues = {
     sum: selectedTransaction.sum,
     comment: selectedTransaction.comment,
@@ -41,7 +41,6 @@ function ModalUpdateTransaction({ selectedTransaction }) {
         ? selectedTransaction.balance + selectedTransaction.sum
         : selectedTransaction.balance - selectedTransaction.sum
 
-    // console.log(selectedCategory)
     if (!selectedCategory) {
       category = selectedTransaction.category
     } else {
@@ -49,9 +48,9 @@ function ModalUpdateTransaction({ selectedTransaction }) {
     }
 
     if (transactionType === 'spending') {
-      balance = (balance - values.sum).toString()
+      balance = balance - values.sum
     } else if (transactionType === 'income') {
-      balance = (balance + values.sum).toString()
+      balance = balance + values.sum
     }
 
     const transaction = {
@@ -59,7 +58,7 @@ function ModalUpdateTransaction({ selectedTransaction }) {
       date: moment(values.date).format('YYYY-MM-DD'),
       category,
       income: selectedTransaction.income,
-      balance,
+      balance: balance.toString(),
     }
 
     console.log(transaction)
@@ -105,6 +104,7 @@ function ModalUpdateTransaction({ selectedTransaction }) {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
+        validationSchema={transactionSchema}
         validateOnChange={false}
       >
         {({ setFieldValue, values }) => (

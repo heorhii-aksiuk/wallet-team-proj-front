@@ -34,9 +34,7 @@ export const singupSchema = Yup.object({
 })
 
 export const transactionSchema = Yup.object({
-  typeTransaction: Yup.boolean().required(),
   sum: Yup.number().required(),
   date: Yup.string().required(),
-  description: Yup.string(),
-  category: Yup.string(),
+  comment: Yup.string().max(18),
 })
