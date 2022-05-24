@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux'
 import { getAllTransactions } from '../../../redux/finance/finance-selectors'
 import { normalizeNum, normalizeFormatDate } from '../../../services'
+import sprite from '../../../assets/svg/sprite.svg'
+
 import s from './HomeTabDesktop.module.css'
 
 const HomeTabDesktop = () => {
@@ -18,6 +20,16 @@ const HomeTabDesktop = () => {
             <th>Комментарий</th>
             <th>Сумма</th>
             <th>Баланс</th>
+            <th>
+              <svg className={s.edit}>
+                <use href={`${sprite}#icon-edit`}></use>
+              </svg>
+            </th>
+            <th className={s.border__end}>
+              <svg className={s.delete}>
+                <use href={`${sprite}#icon-delete`}></use>
+              </svg>
+            </th>
           </tr>
         </thead>
         <tbody className={s.tbody}>
@@ -44,6 +56,20 @@ const HomeTabDesktop = () => {
                 <td>{item.comment}</td>
                 <td className={colorTxt}>{normalizeNum(item.sum)}</td>
                 <td>{normalizeNum(item.balance)}</td>
+                <td>
+                  <button className={s.editBtn}>
+                  <svg className={s.edit}>
+                    <use href={`${sprite}#icon-edit`} operationId={item.id} type={text} category={item.category} comment={item.comment} amount={item.sum} ></use>
+                    </svg> 
+                  </button>
+                </td>
+                <td>
+                  <button className={s.deleteBtn}>
+                  <svg className={s.delete}>
+                    <use href={`${sprite}#icon-delete`} operationId={item.id} ></use>
+                  </svg> 
+                 </button>
+                </td>
               </tr>
             )
           })}
