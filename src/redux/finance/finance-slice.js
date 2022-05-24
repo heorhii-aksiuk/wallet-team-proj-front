@@ -32,6 +32,12 @@ const financeSlice = createSlice({
     [financeOperations.addTransaction.rejected](state, { payload }) {
       state.error = payload
     },
+    [financeOperations.updateTransaction.fulfilled](state, { payload }) {
+      state.error = null
+    },
+    [financeOperations.updateTransaction.rejected](state, { payload }) {
+      state.error = payload
+    },
     [financeOperations.getStatistics.fulfilled](state, { payload }) {
       state.statistics.data = payload.data.statistics
       state.statistics.expenses = payload.data.totals.expense
