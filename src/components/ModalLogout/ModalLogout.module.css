@@ -1,4 +1,4 @@
-.modal {
+.modalContainer {
   padding: 40px 20px;
   margin: 50px 40px;
   text-align: center;
@@ -27,7 +27,7 @@
 }
 
 @media screen and (min-width: 480px) {
-  .modal {
+  .modalContainer {
     margin-right: auto;
     margin-left: auto;
     width: 440px;
@@ -35,7 +35,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .modal {
+  .modalContainer {
     width: 540px;
   }
 

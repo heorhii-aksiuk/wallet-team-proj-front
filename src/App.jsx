@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify'
 
 import { sessionOperations } from './redux/session'
 import { globalSelectors } from './redux/globall'
-import CommonContainer from './containers/CommonContainer'
 import WithAuthRedirect from './hoc/withAuthRedirect'
 import PrivateRoute from './routes/PrivateRoute'
 import Loader from './components/Loader'
@@ -27,18 +26,14 @@ function App() {
     <>
       <Suspense fallback={<Loader />}>
         <Switch>
-          <Route path="/login">
-            <CommonContainer>{WithAuthRedirect(<LoginPage />)}</CommonContainer>
-          </Route>
+          <Route path="/login">{WithAuthRedirect(<LoginPage />)}</Route>
 
           <Route path="/registration">
-            <CommonContainer>
-              {WithAuthRedirect(<RegistrationPage />)}
-            </CommonContainer>
+            {WithAuthRedirect(<RegistrationPage />)}
           </Route>
 
           <Route exact path="/*">
-            <CommonContainer>{PrivateRoute(<DashboardPage />)}</CommonContainer>
+            {PrivateRoute(<DashboardPage />)}
           </Route>
         </Switch>
       </Suspense>
