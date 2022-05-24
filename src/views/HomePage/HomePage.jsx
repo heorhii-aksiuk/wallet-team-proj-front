@@ -2,6 +2,8 @@ import Media from 'react-media'
 import { useDispatch } from 'react-redux'
 
 import { mediaQueries } from '../../utils'
+import CommonContainer from '../../containers/CommonContainer'
+
 import Header from '../../components/Header'
 import Navigation from '../../components/Navigation'
 import Balance from '../../components/Balance'
@@ -15,57 +17,60 @@ function HomePage() {
   const dispatch = useDispatch()
 
   return (
-    <div className={s.container}>
-      <Header />
-
-      <div className={s.box1}>
-        <Media queries={mediaQueries}>
-          {(matches) => (
-            <>
-              {matches.response && (
+    <>
+      <Header></Header>
+      <CommonContainer>
+        <div className={s.container}>
+          <div className={s.box1}>
+            <Media queries={mediaQueries}>
+              {(matches) => (
                 <>
-                  <Navigation />
-                  <Balance />
+                  {matches.response && (
+                    <>
+                      <Navigation />
+                      <Balance />
+                    </>
+                  )}
+                  {matches.mobile && (
+                    <>
+                      <Navigation />
+                      <Balance />
+                    </>
+                  )}
+                  {matches.tablet && (
+                    <>
+                      <div className={s.subBox1}>
+                        <Navigation />
+                        <Balance />
+                      </div>
+
+                      <div className={s.subBox2}>
+                        <Currency />
+                      </div>
+                    </>
+                  )}
+                  {matches.desktop && (
+                    <>
+                      <Navigation />
+                      <Balance />
+                      <Currency />
+                    </>
+                  )}
                 </>
               )}
-              {matches.mobile && (
-                <>
-                  <Navigation />
-                  <Balance />
-                </>
-              )}
-              {matches.tablet && (
-                <>
-                  <div className={s.subBox1}>
-                    <Navigation />
-                    <Balance />
-                  </div>
+            </Media>
+          </div>
 
-                  <div className={s.subBox2}>
-                    <Currency />
-                  </div>
-                </>
-              )}
-              {matches.desktop && (
-                <>
-                  <Navigation />
-                  <Balance />
-                  <Currency />
-                </>
-              )}
-            </>
-          )}
-        </Media>
-      </div>
+          <div className={s.box2}>
+            <HomeTab />
+          </div>
 
-      <div className={s.box2}>
-        <HomeTab />
-      </div>
-
-      <ButtonAddTransactions
-        onClick={() => dispatch(globalActions.openModalAddTransaction())}
-      />
-    </div>
+          <ButtonAddTransactions
+            onClick={() => dispatch(globalActions.openModalAddTransaction())}
+          />
+        </div>
+      </CommonContainer>
+    </>
   )
 }
 
